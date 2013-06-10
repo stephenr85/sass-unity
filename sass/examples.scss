@@ -1,0 +1,83 @@
+@import "compass";
+@import "dimension";
+@import "grid";
+
+$total-columns: 4; //Mobile first
+@include grid-semantics(4);
+
+
+* {
+	@include box-sizing(border-box);
+}
+
+html {text-align:center; font-size: $baseline; min-width:320px;}
+
+body {
+	@include box-sizing(content-box);
+	@include rem(font-size 13px, padding 0 1rem);
+	font-family:sans-serif;
+	 min-width:320px;
+	&:before {
+		content:("Grid width: "+grid-width());
+	}
+}
+
+
+.col {
+	border: 1px dotted #eee; 
+	padding: rem(.75em);
+	
+	&:nth-of-type(2n) {background:#eee;};
+}
+
+#container {
+	@include container;
+	text-align:left;
+}
+
+.small-hidden {display:none}
+
+
+//
+// MEDIUM
+//================================================================================
+@include with-grid(4){
+	$total-columns: 8;
+	body {
+		max-width: grid-width(12); //Set max-width to the next breakpoint
+		&:before {
+			content:("Grid width: "+grid-width($total-columns));
+		}
+	}
+	@include grid-semantics($total-columns, $prefix:"medium");
+	
+	#container {
+		@include container($total-columns);
+	}
+	
+	.medium-hidden {
+		display:none;
+	}
+}
+
+
+//
+// LARGE
+//================================================================================
+@include with-grid(8){
+	$total-columns: 12;
+	body {
+		max-width: none;
+		&:before {
+			content:("Grid width: "+grid-width($total-columns));
+		}
+	}
+	@include grid-semantics($total-columns, $prefix:"large");
+	#container {
+		@include container($total-columns);
+	}
+	
+	.large-hidden {
+		display:none;
+	}
+}

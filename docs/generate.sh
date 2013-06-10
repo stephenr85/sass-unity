@@ -1,0 +1,1 @@
+sassdoc ../sass -d ./out -name Dimension
