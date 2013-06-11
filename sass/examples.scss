@@ -2,8 +2,19 @@
 @import "dimension";
 @import "grid";
 
-$total-columns: 4; //Mobile first
-@include grid-semantics(4);
+$baseline: 16px;
+$em-baseline: 13px;
+
+$small-columns:4;
+$medium-columns:8;
+$large-columns:12;
+$xlarge-columns:16;
+
+$grid-padding: 1rem;
+
+$total-columns: $small-columns; //Mobile first
+
+@include grid-semantics($total-columns); 
 
 
 * {
@@ -13,10 +24,10 @@ $total-columns: 4; //Mobile first
 html {text-align:center; font-size: $baseline; min-width:320px;}
 
 body {
-	@include box-sizing(content-box);
-	@include rem(font-size 13px, padding 0 1rem);
+	@include rem(padding 0 1rem);
+	font-size: em(13px, 1rem);
+	
 	font-family:sans-serif;
-	 min-width:320px;
 	&:before {
 		content:("Grid width: "+grid-width());
 	}
@@ -31,28 +42,107 @@ body {
 }
 
 #container {
-	@include container;
+	//include flux-container($small-columns, $medium-columns);
 	text-align:left;
 }
 
-.small-hidden {display:none}
+//.small-hidden {display:none}
+
+
+$grid-breakpoints: grid-breakpoints(
+	("small" $small-columns), 
+	("small-only" $small-columns $medium-columns),
+	//("small-down" 1 $medium-columns),
+	
+	("medium" $medium-columns), 
+	//("medium-only" $medium-columns $large-columns),
+	//("medium-down" 1 $large-columns),
+	
+	("large" $large-columns), 
+	//("large-only" $large-columns $xlarge-columns),
+	//("large-down" 1 $large-columns),
+	
+	("xlarge" $xlarge-columns)
+	//("xlarge-only" $large-columns $xlarge-columns),
+	//("xlarge-down" 1 $xlarge-columns)
+);
+
+@each $breakpoint in $grid-breakpoints {
+
+	@include grid-breakpoint($breakpoint){
+		$handle: grid-breakpoint-handle($breakpoint);
+		$limit-columns: grid-breakpoint-limit($breakpoint);
+		
+		body {
+			min-width: grid-width($total-columns); 
+			@if($limit-columns != null){
+				max-width: grid-width($limit-columns); //Set max-width to the next breakpoint
+			}
+			
+			&:before {
+				content:($total-columns + " columns (min "+grid-width($total-columns)+")");
+			}
+		}
+		
+		// Include semantics classes for testing
+		//---------------------------------------------------------------------------------
+		@include grid-semantics($total-columns, $prefix: $handle);
+		
+		// Setup our main containers.
+		//---------------------------------------------------------------------------------
+		#container {
+			@include flux-container($total-columns, $limit-columns);
+			//@include container($total-columns);
+		}
+		
+		// Add some helper classes for this breakpoint
+		//---------------------------------------------------------------------------------
+		#{"."+ $handle +"-hidden"} {
+			display:none;
+		}
+	}
+		
+}
+
+
+
+@include grid-breakpoint("small-only"){
+	body {color:red;}
+}
+
+@include grid-breakpoint("xlarge"){
+	body {max-width:grid-width();}
+}
+/*
+@include grid-breakpoint("medium-down"){
+	body {color:green;}
+}
+
+
+//
+// SMALL-DOWN
+//================================================================================
+@include grid-breakpoint(0, $small-columns){
+	
+	@include grid-semantics($small-columns, $prefix:"small");	
+	
+}
 
 
 //
 // MEDIUM
 //================================================================================
-@include with-grid(4){
-	$total-columns: 8;
+@include grid-breakpoint($medium-columns){
 	body {
-		max-width: grid-width(12); //Set max-width to the next breakpoint
+		max-width: grid-width($large-columns); //Set max-width to the next breakpoint
 		&:before {
-			content:("Grid width: "+grid-width($total-columns));
+			content:("Grid width: "+grid-width($medium-columns));
 		}
 	}
-	@include grid-semantics($total-columns, $prefix:"medium");
+	@include grid-semantics($medium-columns, $prefix:"medium");
 	
 	#container {
-		@include container($total-columns);
+		@include flux-container($medium-columns, $large-columns);
 	}
 	
 	.medium-hidden {
@@ -64,20 +154,44 @@ body {
 //
 // LARGE
 //================================================================================
-@include with-grid(8){
-	$total-columns: 12;
+
+@include grid-breakpoint($large-columns){
 	body {
 		max-width: none;
 		&:before {
-			content:("Grid width: "+grid-width($total-columns));
+			content:("Grid width: "+grid-width($large-columns));
 		}
 	}
-	@include grid-semantics($total-columns, $prefix:"large");
+	@include grid-semantics($large-columns, $prefix:"large");
 	#container {
-		@include container($total-columns);
+		@include flux-container($large-columns, $xlarge-columns);
 	}
 	
 	.large-hidden {
 		display:none;
 	}
 }
+
+
+//
+// XLARGE
+//================================================================================
+
+@include grid-breakpoint($xlarge-columns){
+	body {
+		max-width: none;
+		&:before {
+			content:("Grid width: "+grid-width($xlarge-columns));
+		}
+	}
+	@include grid-semantics($xlarge-columns, $prefix:"xlarge");
+	#container {
+		@include flux-container($xlarge-columns, $xlarge-columns);
+	}
+	
+	.xlarge-hidden {
+		display:none;
+	}
+}
+
+*/

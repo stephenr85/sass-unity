@@ -4,7 +4,7 @@
 
 $baseline: 16px !default;
 $em-baseline: $baseline !default;
-$px-per-inch: 96 !default;
+$px-per-inch: 96px !default;
 
 
 // Removes the unit from a number.
@@ -15,6 +15,33 @@ $px-per-inch: 96 !default;
 }
 
 
+// Find the first unit in a list of dimensions.
+// @function first-unit
+// @param $dims...
+@function first-unit($dims...){
+	$unit: null;
+	@each $dim in $dims {
+		@if($unit == null){
+			@if(type-of($dim) == "number" and unitless($dim) == false){
+				@return unit($dim);
+			}@else if(type-of($dim) == "list" or type-of($dim) == "arglist"){
+				@each $val in $dim {
+					//repeat logic
+					@if($unit == null){
+						@if(type-of($val) == "number" and unitless($val) == false){
+							@return unit($val);
+						}@else if(type-of($val) == "list" or type-of($val) == "arglist"){
+							$unit: first-unit($val);
+						}
+					}
+				}
+			}
+		}
+	}
+	@return $unit;
+}
+
+
 //Convert a rem/em to a px, or ensure an rem value.
 //If $dim is an rem or em value, it will be returned as-is, with an rem unit.
 //If $dim is a px value, it will be converted to an rem.
@@ -22,8 +49,7 @@ $px-per-inch: 96 !default;
 // @function rem
 // @param $dim {Number} An rem value.
 @function rem($dim){
-	$dims: -compass-list($dim);
-	@if(type-of($dims) == "list" and length($dims) > 1){
+	@if(type-of($dim) == "arglist" or type-of($dim) == "list" and length($dim) > 1){
 		$rems: ();
 		@each $value in $dim {
 			$rems: append($rems, rem($value), space);
@@ -47,10 +73,9 @@ $px-per-inch: 96 !default;
 // @param $dim {Number}
 // @param $baseline {Number} However many px = 1em, or the relative em of the current context. Defaults to global $baseline.
 @function em($dim, $baseline: $baseline){	
-	$dims: -compass-list($dim);
-	@if(type-of($dim) == "list" and length($dims) > 1){
+	@if(type-of($dim) == "arglist" or type-of($dim) == "list" and length($dim) > 1){
 		$ems: ();
-		@each $value in $dims {
+		@each $value in $dim {
 			$ems: append($ems, em($value), space);
 		}
 		@return $ems;		
@@ -68,13 +93,10 @@ $px-per-inch: 96 !default;
 // @function px
 // @param $dim
 // @return {Number} A px value.
-@function px($dim){
-	$dims: -compass-list($dim);
-	$dim: nth($dims, 1);
-	
-	@if(type-of($dims) == "list" and length($dims) > 1){
+@function px($dim){	
+	@if(type-of($dim) == "arglist" or type-of($dim) == "list" and length($dim) > 1){
 		$pxs: ();
-		@each $value in $dims {
+		@each $value in $dim {
 			$pxs: append($pxs, px($value));
 		}
 		@return $pxs;
@@ -101,10 +123,9 @@ $px-per-inch: 96 !default;
 // @return {Number} A % value.
 // =percent(1.5em, 240px)
 @function percent($dim, $context){
-	$dims: -compass-list($dim);
-	@if(type-of($dims) == "list" and length($dims) > 1){
+	@if(type-of($dim) == "arglist" or type-of($dim) == "list" and length($dim) > 1){
 		$percents: ();
-		@each $value in $dims {
+		@each $value in $dim {
 			$percents: append($percents, percent($value), space);
 		}
 		@return $percents;
@@ -127,10 +148,9 @@ $px-per-inch: 96 !default;
 // @return {Number} A pt value.
 // =pt(20px)
 @function pt($dim, $px-per-inch:$px-per-inch){
-	$dims: -compass-list($dim);
-	@if(type-of($dims) == "list" and length($dims) > 1){
+	@if(type-of($dim) == "arglist" or type-of($dim) == "list" and length($dim) > 1){
 		$pts: ();
-		@each $value in $dims {
+		@each $value in $dim {
 			$pts: append($pts, pts($value), space);
 		}
 		@return $pts;
@@ -173,42 +193,39 @@ $px-per-inch: 96 !default;
 }
 
 
+
 // Convert all dimensions to the same unit type. Percentages are ignored. Convert them first with percent(), if necessary.
 // @mixin unity
 // @param $dims...
 @function unity($dims...){	
-	@if(length($dims) > 1){
-		$unified: ();
-		@each $dim in $dims {
-			$unified: append($unified, unity($dim));
+	$unified:();
+	$unit: first-unit($dims);	
+	@each $dim in $dims {
+		@if(type-of($dim) != "list" and type-of($dim) != "arglist"){
+			$dim: ($dim);
 		}
-		@return $unified;
-	}@else if(type-of(nth($dims, 1)) == "list"){
-		$unified: ();
-		@each $dim in nth($dims, 1) {
-			$unified: append($unified, unity($dim));
-		}
-		@return $unified;
+		@each $val in $dim {
+			@if($unit == "em"){
+				$val: em($val);
+			}@else if($unit == "rem"){
+				$val: rem($val);
+			}@else if($unit == "pt"){
+				$val: pt($val);
+			}@else if($unit == "px"){
+				$val: px(($val));
+			}
+			
+			$unified: append($unified, $val);
+		}		
 	}
-	$unit: unit(nth($dims, 1));
-	@if($unit == "em"){
-		@return em(($dims));
-	}@else if($unit == "rem"){
-		@return rem(($dims));
-	}@else if($unit == "pt"){
-		@return pt(($dims));
-	}
-	@else if($unit == "px"){
-		@return px(($dims));
-	}
-	@return $dims;
+	@return $unified;
 }
 
 // Add dimensions together, normalizing them first. Percentages are ignored. Convert them first with percent(), if necessary.
 // @mixin plus
 // @param $dims...
 @function plus($dims...){
-	$dims: unity(-compass-list($dims));
+	$dims: unity($dims);
 	$total: 0;
 	@each $dim in $dims {
 		@if(unit($dim) != "%"){
@@ -223,7 +240,7 @@ $px-per-inch: 96 !default;
 // @mixin minus
 // @param $dims...
 @function minus($dims...){
-	$dims: unity(-compass-list($dims));
+	$dims: unity($dims);
 	$total: 0;
 	@each $dim in $dims {
 		@if(unit($dim) != "%"){

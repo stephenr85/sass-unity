@@ -13,62 +13,82 @@ $column-width: 68px !default;
 $gutter-width: 12px !default;
 $grid-unit: px !default; //px or rem
 
+// Convert any dimension to the unit preferred by the grid (see global $grid-unit).
+// @function grid-unit
+// @param $dim
+@function grid-unit($dim){
+	@if(type-of($dim) == "list" or type-of($dim) == "arglist"){
+		$list: ();
+		@each $val in $dim {
+			@if(type-of($val) == "number"){
+				$list: append($list, $val);
+			}@else if(type-of($val) == "list" or type-of($val) == "arglist"){
+				$list: join($list, grid-unit($val));
+			}
+		}
+		@return $list;
+	}
+	//Convert
+	@if($grid-unit == "rem"){
+		@return rem($dim);
+	}@else{
+		@return px($dim);
+	}
+}
+
 // Get the static grid width for a number of columns.
 // @function grid-width
 // @param {Number} $total-columns Defaults to global $total-columns.
-@function grid-width($total-columns: $total-columns, $column-width: $column-width, $gutter-width: $gutter-width, $grid-unit: $grid-unit){
+@function grid-width($total-columns: $total-columns, $column-width: $column-width, $gutter-width: $gutter-width, $grid-padding:$grid-padding, $grid-unit: $grid-unit){
 	$cols-width: px($total-columns * $column-width);
 	$guts-width: px(($total-columns - 1) * $gutter-width);
-	$width: $cols-width + $guts-width;
+	$width: $cols-width + $guts-width;	
 	
-	@if($grid-unit == "rem"){
-		@return rem($width);
-	}@else{
-		@return $width;
-	}	
+	$matte-width:0;
+	@if(length($grid-padding) > 1 and length($grid-padding) < 3){
+		$matte-width: nth($grid-padding, 1) * 2;
+	}@else if(length($grid-padding) >= 3){
+		$matte-width: plus(nth($grid-padding, 1), nth($grid-padding, 3));
+	}
+	
+	$width: plus($width, $matte-width);	
+	@return grid-unit($width);	
 }
 
 
 // Get the width of a number of columns, without gutters.
 // @function columns
-// @param $count {Number}
+// @param $span {Number}
 // @param $style {String} [fluid|static]
 // @param $total-columns {Number} Total number of columns. Defaults to global $total-columns.
 // @param $grid-unit {String} The unit to use when calculating static dimensions. [px|rem] 
-@function columns($count, $style: static, $total-columns: $total-columns, $grid-unit: $grid-unit){
+@function columns($span, $style: static, $total-columns: $total-columns, $grid-unit: $grid-unit){
 	@if($style == "fluid"){
-		@return percent($column-width, grid-width($total-columns, $grid-unit: $grid-unit)) * $count;
+		@return percent($column-width, grid-width($total-columns, $grid-unit: $grid-unit)) * $span;
 	}@else{
-		$cols: $count * $column-width; 
-		@if($grid-unit == "rem"){
-			@return rem($cols);
-		}@else{
-			@return px($cols);
-		}
+		$cols: $span * $column-width; 
+		@return grid-unit($cols);
 	}
 }
 
 // Convenience function for fluid columns.
 // @function fluid-columns
-@function fluid-columns($count, $total-columns: $total-columns, $grid-unit: $grid-unit){
-	@return columns($count, fluid, $total-columns, $grid-unit);
+@function fluid-columns($span, $total-columns: $total-columns, $grid-unit: $grid-unit){
+	@return columns($span, fluid, $total-columns, $grid-unit);
 }
 
 // Get the width of a number of gutters.
 // @function gutters
+// @param $span {Number}
 // @param $style {String} [fluid|static]
 // @param $total-columns {Number} The totla number of columns. Defaults to global $total-columns.
 // @param $grid-unit {String} The unit to use when calculating static dimensions. [px|em]
-@function gutters($count, $style: static, $total-columns: $total-columns, $grid-unit: $grid-unit){
+@function gutters($span, $style: static, $total-columns: $total-columns, $column-width: $column-width, $gutter-width:$gutter-width, $grid-unit: $grid-unit){
 	@if($style == "fluid"){
-		@return percent($gutter-width, grid-width($total-columns)) * $count;
+		@return percent($gutter-width, grid-width($total-columns:$total-columns, $column-width:$column-width, $gutter-width: $gutter-width, $grid-unit:$grid-unit)) * $span;
 	}@else{
-		$gut: $count * $gutter-width;
-		@if($grid-unit == "rem"){
-			@return rem($gut);
-		}@else{
-			@return px($gut);
-		}
+		$gut: $span * $gutter-width;
+		@return grid-unit($gut);
 	}
 }
 
@@ -79,32 +99,35 @@ $grid-unit: px !default; //px or rem
 }
 
 
-// @function space
-// @param $count {Number}
+// @function span
+// @param $span {Number}
 // @param $style {String} [fluid|static]
 // @param $total-columns {Number} Defaults to global $total-columns.
 // @param $grid-unit {String} Defaults to $grid-unit.
-@function space($count, $style: static, $total-columns: $total-columns, $grid-unit: $grid-unit){
-	$cols: columns($count: $count, $style: $style, $total-columns: $total-columns, $grid-unit: $grid-unit);
-	$guts: gutters($count: $count - 1, $style: $style, $total-columns: $total-columns, $grid-unit: $grid-unit);	
+@function span($span, $style: static, $total-columns: $total-columns, $column-width: $column-width, $gutter-width: $gutter-width, $grid-unit: $grid-unit){
+	$cols: columns($span: $span, $style: $style, $total-columns: $total-columns, $grid-unit: $grid-unit);
+	$guts: gutters($span: $span - 1, $style: $style, $total-columns: $total-columns, $grid-unit: $grid-unit);	
 	@return $cols + $guts;
 }
 
-// Convenience function for fluid space.
-// @function fluid-space
-@function fluid-space($count, $total-columns: $total-columns, $grid-unit: $grid-unit){
-	@return space($count, fluid, $total-columns, $grid-unit);
+// Convenience function for fluid span.
+// @function fluid-span
+@function fluid-span($span, $total-columns: $total-columns, $grid-unit: $grid-unit){
+	@return span($span, fluid, $total-columns, $grid-unit);
 }
 
 // @mixin container
 // @param $total-columns {Number}
 // @param $style {String} [fluid|static]
+// @param $column-width {Number} 
+// @param $gutter-width {Number}
 // @param $grid-unit {String} [rem|px] Defaults to global $grid-unit.
 // @param $semantics {Boolean|String} Calls grid-semantics(), using parameters as $prefix, if it is a string.
-@mixin container($total-columns: $total-columns, $style:static, $grid-unit: $grid-unit, $semantics: false){
+@mixin container($total-columns: $total-columns, $style:static, $column-width: $column-width, $gutter-width: $gutter-width, $grid-unit: $grid-unit, $semantics: false){
 	@include clearfix();
 	width:100%;
 	clear:both;
+	float:none;
 	margin-left:auto; 
 	margin-right:auto;
 	
@@ -125,12 +148,33 @@ $grid-unit: px !default; //px or rem
 
 // Convenience method for fluid containers. Fluid containers are often easier with nesting.
 // @mixin fluid-container
-@mixin fluid-container($total-columns: $total-columns, $grid-unit: $grid-unit, $semantics: false){
-	@include container($total-columns: $total-columns, $style: fluid, $grid-unit: $grid-unit, $semantics: $semantics);
+// @param $span {Number} Defaults to $total-columns
+// @param $column-width {Number} Defaults to $column-width
+// @param $gutter-width {Number} Defaults to global $gutter-width
+// @param $grid-unit {String} [rem|px]
+// @param $semantics {Boolean|String} 
+@mixin fluid-container($span: $total-columns, $column-width: $column-width, $gutter-width: $gutter-width, $grid-unit: $grid-unit, $semantics: false){
+	@include container($total-columns: $span, $style: fluid, $grid-unit: $grid-unit, $semantics: $semantics);
+}
+
+// Create a container that spans a range of columns.
+// @mixin flux-container
+// @param $min-span {Number} Defaults to 1.
+// @param $max-span {Number} Defaults to global $total-columns.
+// @param $total-columns {Number} Defaults to global $total-columns.
+// @param $column-width {Number} Defaults to global $column-width.
+// @param $gutter-width {Number} Defaults to global $gutter-width.
+// @param $grid-unit {String} [rem|px] Defaults to global $grid-unit.
+// @param $semantics {Boolean|String}
+@mixin flux-container($min-span: 1, $max-span: $total-columns, $total-columns: $total-columns, $column-width: $column-width, $gutter-width: $gutter-width, $grid-unit: $grid-unit, $semantics: false){
+	@include container($total-columns: $max-span, $style: fluid, $grid-unit: $grid-unit, $semantics: $semantics);
+	min-width:0; 
+	max-width:none;	
+	@include span-limit($min-span, $max-span);
 }
 
 
-// Use for the last element of a row.
+// Use for the last element of a row. Basically floats right and removes right margin.
 // @mixin omega
 @mixin omega(){
 	float:right;
@@ -149,14 +193,14 @@ $grid-unit: px !default; //px or rem
 // @param $total-columns {Number}
 // @param $grid-unit [rem|px]
 // @param $semantics {Boolean|String} Adds &.omega, &.fluid, &.static, &.collapse classes for semantic markup. Pass a string to prefix the semantic classes.
-@mixin columns($span: null, $style:static, $total-columns: $total-columns, $grid-unit: $grid-unit, $semantics: false){
+@mixin columns($span: null, $style:static, $column-width: $column-width, $gutter-width: $gutter-width, $total-columns: $total-columns, $grid-unit: $grid-unit, $semantics: false){
 	float:left;
 	width: 100%;
 	margin-right: gutters(1, $style: $style, $total-columns: $total-columns, $grid-unit: $grid-unit);
 	margin-bottom: gutters(1, $style: static, $total-columns: $total-columns, $grid-unit: $grid-unit);
 	
 	@if($span != null){
-		$max-width: space($count: $span, $style: $style, $total-columns: $total-columns, $grid-unit: $grid-unit);
+		$max-width: span($span: $span, $style: $style, $total-columns: $total-columns, $grid-unit: $grid-unit);
 	
 		@if($style == "static" and $grid-unit == "rem"){
 			@include rem(max-width $max-width);
@@ -178,8 +222,9 @@ $grid-unit: px !default; //px or rem
 		@if(type-of($semantics) == "string"){
 			$static-selector: $semantics+"-"+$static-selector;
 		}
+		.static &,
 		#{"&."+$static-selector} {
-			$max-width: space($count: $span, $style: static, $total-columns: $total-columns, $grid-unit: $grid-unit);
+			$max-width: span($span: $span, $style: static, $total-columns: $total-columns, $grid-unit: $grid-unit);
 			@if($grid-unit == "rem"){
 				@include rem(max-width $max-width);
 			}@else{
@@ -187,12 +232,13 @@ $grid-unit: px !default; //px or rem
 			}
 		}
 		
-		$fluid-selector: "static";
+		$fluid-selector: "fluid";
 		@if(type-of($semantics) == "string"){
 			$fluid-selector: $semantics+"-"+$fluid-selector;
 		}
+		.fluid &,
 		#{"&."+$fluid-selector} {
-			$max-width: space($count: $span, $style: fluid, $total-columns: $total-columns, $grid-unit: $grid-unit);
+			$max-width: span($span: $span, $style: fluid, $total-columns: $total-columns, $grid-unit: $grid-unit);
 			max-width: $max-width;
 		}
 		
@@ -206,16 +252,49 @@ $grid-unit: px !default; //px or rem
 	}	
 }
 
+// Creates a fluid column
 // @mixin fluid-column()	
-@mixin fluid-columns($span: 1, $total-columns: $total-columns, $grid-unit: $grid-unit, $semantics: false){
+// @param $span {Number}
+// @param $column-width {Number}
+// @param $gutter-width {Number}
+// @param $total-columns {Number}
+// @param $grid-unit {String} [rem|px]
+// @param $semantics {Boolean}
+@mixin fluid-columns($span: 1, $column-width: $column-width, $gutter-width:$gutter-width, $total-columns: $total-columns, $grid-unit: $grid-unit, $semantics: false){
 	@include columns($span: $span, $total-columns: $total-columns, $grid-unit: $grid-unit, $semantics: $semantics);
+}
+
+
+// @mixin span-limit
+// @param $min-columns
+// @param $max-columns
+@mixin span-limit($min-columns:null, $max-columns:null, $column-width: $column-width, $gutter-width:$gutter-width){
+	@if($min-columns != null){
+		$min-width: span($min-columns, $column-width: $column-width, $gutter-width: $gutter-width);
+		@if(unit($min-width) == "rem"){
+			@include rem(min-width $min-width);
+		}@else{
+			min-width: $min-width;
+		}
+	}
+	
+	@if($max-columns != null){
+		$max-width: span($max-columns, $column-width: $column-width, $gutter-width: $gutter-width);
+		@if(unit($max-width) == "rem"){
+			@include rem(max-width $max-width);
+		}@else{
+			max-width: $max-width;
+		}
+	}
+	
+	width:100%;
 }
 
 
 // @mixin grid-semantics
 // @param $grid-unit {Number} Defaults to global $grid-unit.
 // @param $prefix {String} A string to prefix the classes with (ie. "small", "medium", "large")
-@mixin grid-semantics($total-columns: $total-columns, $grid-unit: $grid-unit, $prefix:null){
+@mixin grid-semantics($total-columns: $total-columns, $column-width: $column-width, $gutter-width: $gutter-width, $grid-unit: $grid-unit, $prefix: null){
 	@if($prefix == null){
 		$prefix: true; //Used for $semantics parameter in called mixins.
 	}
@@ -235,9 +314,22 @@ $grid-unit: px !default; //px or rem
 		@include row;
 		> .col {
 			&:last-child,
-			&[class*="span"]:last-child {
+			&[class*="span"]:last-child,
+			 {
 				@include omega;
 			}			
+		}
+	}
+	
+	$omega-selector: "omega";
+	@if(type-of($prefix) == "string"){
+		$omega-selector: $prefix + "-" + $omega-selector;
+	}
+	#{"."+$omega-selector} {
+		&,
+		.fluid &,
+		.static & {
+			@include omega;
 		}
 	}
 	
@@ -274,24 +366,46 @@ $grid-unit: px !default; //px or rem
 
 
 
-// @mixin with-grid
-// @param $min-columns {Number}
-// @param $max-columns {Number} Defaults to $total-columns.
-// @param $column-width {Number} Defaults to $column-width.
-// @param $gutter-width {Number} Defaults to $gutter-width.
-// @param $grid-unit {String} Defaults to $grid-unit.
+// @mixin grid
+// @param $with-total-columns {Number} Defaults to global $total-columns.
+// @param $with-column-width {Number} Defaults to global $column-width.
+// @param $with-gutter-width {Number} Defaults to global $gutter-width.
+// @param $with-grid-padding {Number} Defaults to global $grid-padding.
+// @param $with-grid-unit {String} Defaults to global $grid-unit.
 // @param $scope {Selector} Scope these styles to a class rather than a media query.
+// @param $base-media-query 
 // @param $semantics {Boolean|String} If boolean, calls mixin grid-semantics() with the given grid parameters. A string it used as the $prefix parameter for grid-semantics().
-@mixin with-grid($min-columns:1, $max-columns: null, $matte: 1rem 1rem, $column-width: $column-width, $gutter-width: $gutter-width, $grid-unit: $grid-unit, $scope:null, $semantics: false){
-	$min-width: plus(grid-width($min-columns, $column-width: $column-width, $gutter-width: $gutter-width, $grid-unit: $grid-unit), 1px);
+@mixin grid($with-total-columns, $with-column-width: $column-width, $with-gutter-width: $gutter-width, $with-grid-padding: $grid-padding, $with-grid-unit: $grid-unit, $scope:null, $base-media-query:"all", $semantics: false){
+	//Cache globals
+	$prev-total-columns: $total-columns;
+	$prev-column-width: $column-width;
+	$prev-gutter-width: $gutter-width;
+	$prev-grid-padding: $grid-padding;	
+	$prev-grid-unit: $grid-unit;
+	
+	//Redefine globals
+	$total-columns: $with-total-columns;
+	$column-width: $with-column-width;
+	$gutter-width: $with-gutter-width;
+	$grid-padding: $with-grid-padding;	
+	$grid-unit: $with-grid-unit;
+	
+	//Setup the media query/scope
+	$min-width: plus(grid-width($total-columns), 1px);
 	$max-width: null;
 	
-	@if($max-columns == null){
-		$max-columns: $total-columns;
-		$max-width: 9999rem;
-	}@else{
+	
+	/*
+	@if($min-columns != null){
+		$min-width: grid-width($min-columns, $column-width: $column-width, $gutter-width: $gutter-width, $grid-unit: $grid-unit);
+		$min-width: plus($min-width, $matte-width);
+		$media-query: $media-query + " and (min-width:"+$min-width+")";
+	}
+	
+	@if($max-columns != null){
 		$max-width: grid-width($max-columns, $column-width: $column-width, $gutter-width: $gutter-width, $grid-unit: $grid-unit);
-		
+		$max-width: plus($max-width, $matte-width);
+		$media-query: $media-query + " and (max-width:"+$max-width+")";
 		@if(length($matte) == 1){
 			$max-width: plus($max-width, $matte * 2);
 		}@else if(length($matte) > 1){
@@ -299,33 +413,172 @@ $grid-unit: px !default; //px or rem
 				$max-width: plus($max-width, $pad);
 			}
 		}
-		$total-columns: $max-columns;
+	}*/
+	
+	
+	@content;
+	
+	//Revert globals
+	$total-columns: $prev-total-columns;
+	$column-width: $prev-column-width;
+	$gutter-width: $prev-gutter-width;
+	$grid-padding: $prev-grid-padding;	
+	$grid-unit: $prev-grid-unit;
+}
+
+
+
+
+
+
+
+$grid-breakpoints:null;
+
+// @function grid-breakpoints
+@function grid-breakpoints($breakpoints...){
+	$grid-breakpoints: compact(join($breakpoints, $grid-breakpoints));
+	@return $grid-breakpoints;
+}
+
+// @function grid-breakpoint-handle
+// @param {String} The breakpoint handle. A list is assumed to be an actualy breakpoint.
+@function grid-breakpoint($handle){
+	//Just in case a breakpoint was directly passed...
+	@if(type-of($handle) == "list"){
+		@return $handle;
+	}
+	//Find it by alias
+	@each $breakpoint in grid-breakpoints() {
+		@if($handle == nth($breakpoint, 1)){
+			@return $breakpoint;
+		}
+	}
+	@return null;
+}
+
+// @function grid-breakpoint-handle
+// @param {List|String} The breakpoint or breakpoint handle.
+@function grid-breakpoint-handle($breakpoint){
+	$breakpoint: grid-breakpoint($breakpoint);
+	$handle: nth($breakpoint, 1);
+	@if(type-of($handle) == "string"){
+		@return $handle;
+	}
+	@return null;
+}
+
+// Returns the columns for a breakpoint.
+// @function grid-breakpoint-columns
+// @param {List|String} The breakpoint or breakpoint handle.
+@function grid-breakpoint-columns($breakpoint){
+	$breakpoint: grid-breakpoint($breakpoint);
+	@if(type-of($breakpoint) == "list"){
+		$nth: nth($breakpoint, 1);
+		@if(type-of($nth) != "number"){
+			$nth: nth($breakpoint, 2);
+		}
+		@return $nth;
+	}
+	@return null;
+}
+
+// Returns the columns that a breakpoint is limited to.
+// @function grid-breakpoint-limit
+// @param {List|String} The breakpoint or breakpoint handle.
+@function grid-breakpoint-limit($breakpoint){
+	$breakpoint: grid-breakpoint($breakpoint);
+	$offset: 0;
+	@if(type-of(nth($breakpoint, 1)) == "string"){
+		//Skip handle index, if present
+		$offset: $offset + 1;
+	}
+	@if(length($breakpoint) >= ($offset + 2) and type-of(nth($breakpoint, ($offset + 2))) == "number"){
+		//Limit specified
+		@return nth($breakpoint, $offset + 2);
+	}
+	@return null;
+}
+
+
+
+// Returns the base selector scope for the breakpoint.
+// @function grid-breakpoint-scope
+// @param {List|String} The breakpoint or breakpoint handle.
+@function grid-breakpoint-scope($breakpoint){
+	$breakpoint: grid-breakpoint($breakpoint);
+	$last: nth($breakpoint, length($breakpoint));
+	@if(type-of($last) == "string"){
+		@return $last;
+	}
+	@return null;
+}
+
+
+
+// @mixin grid-breakpoint
+// @param $breakpoint {List}
+// @param $media-query {Selector}
+// @param $semantics {Boolean}
+@mixin grid-breakpoint($breakpoint, $media-query:"all", $semantics: false){
+	$orig: $breakpoint;
+	$breakpoint-handle: null;
+	@if(type-of($breakpoint) == "string"){
+		$breakpoint-handle: $breakpoint;
+		$breakpoint: grid-breakpoint($breakpoint-handle);
+	}@else {
+		$breakpoint-handle: grid-breakpoint-handle($breakpoint);
 	}
 	
-	$grid-unit: $grid-unit;
+	@if(type-of($breakpoint) != "list"){
+		@warn "The following breakpoint is not valid: " + $orig;
+	}@else{
+		
+		$breakpoint-columns: grid-breakpoint-columns($breakpoint);
+		$breakpoint-limit: grid-breakpoint-limit($breakpoint);
+		$breakpoint-scope: grid-breakpoint-scope($breakpoint);
 	
-	@if($scope != null){
-		@media only screen {
-			#{$scope} {
-				//Add the semantics classes, if requested
-				@if($semantics == true){
-					@include grid-semantics($total-columns: $max-columns, $grid-unit: $grid-unit);
-				}@else if(type-of($semantics) == "string"){
-					@include grid-semantics($total-columns: $max-columns, $grid-unit: $grid-unit, $prefix: $semantics);
-				}
-				
+		@if(type-of($breakpoint-columns) == "number"){
+			$min-width: grid-width($breakpoint-columns);
+			$media-query: $media-query + " and (min-width:"+ $min-width +")";
+		}
+	
+		@if(type-of($breakpoint-limit) == "number"){
+			$max-width: grid-width($breakpoint-limit);
+			$media-query: $media-query + " and (max-width:"+ $max-width +")";
+		}
+	
+		@media #{$media-query} {
+			//Add the semantics classes, if requested
+			@if($semantics == true){
+				@include grid-semantics($total-columns: $max-columns, $column-width: $column-width, $grid-unit: $grid-unit);
+			}@else if(type-of($semantics) == "string"){
+				@include grid-semantics($total-columns: $max-columns, $column-width: $column-width, $grid-unit: $grid-unit, $prefix: $semantics);
+			}
+			@include grid($breakpoint-columns){
 				@content;
 			}
 		}
-	}@else{
-		@media only screen and (min-width: $min-width) and (max-width: $max-width) {
-			//Add the semantics classes, if requested
-			@if($semantics == true){
-				@include grid-semantics($total-columns: $max-columns, $grid-unit: $grid-unit);
-			}@else if(type-of($semantics) == "string"){
-				@include grid-semantics($total-columns: $max-columns, $grid-unit: $grid-unit, $prefix: $semantics);
+	
+	
+		@if($breakpoint-scope != null){
+			@warn "Breakpoint scopes do not work until this is resolved: https://github.com/nex3/sass/issues/286";
+			#{$breakpoint-scope} & {
+				//Add the semantics classes, if requested
+				@if($semantics == true){
+					@include grid-semantics($total-columns: $max-columns, $column-width: $column-width, $grid-width: $grid-width, $grid-unit: $grid-unit);
+				}@else if(type-of($semantics) == "string"){
+					@include grid-semantics($total-columns: $max-columns, $column-width: $column-width, $grid-width: $grid-width, $grid-unit: $grid-unit, $prefix: $semantics);
+				}
+
+				@include grid($breakpoint-columns){
+					@content;
+				}			
 			}
-			@content;
+		
+		
 		}
 	}
+	
 }
+
+
