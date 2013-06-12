@@ -1,0 +1,68 @@
+//@import "grid";
+@import "grid-semantics";
+
+$grid-width: 972px;
+$column-width: 68px;
+$gutter-width: auto;
+
+body {
+	@include rem(padding 0 1rem);
+	font: em(13px, 1rem) sans-serif;
+}
+
+#container {
+	@include container;
+	text-align:left;
+}
+
+.row {
+	@include row;
+}
+
+.col {
+	border: 1px dotted #eee; 
+	padding: rem(.75em);
+	
+	&:nth-of-type(2n) {background:#eee;};
+}
+
+
+@each $breakpoint in $grid-breakpoints {
+	@include grid-breakpoint($breakpoint){
+		body {
+			breakpoint:"#{$breakpoint}";
+			grid-width: grid-width();
+			gutter-width: gutter-width();
+			column-width: column-width();
+			columns: $grid-columns;
+			grid-width: (column-width() * $grid-columns) + (gutter-width() * ($grid-columns - 1));
+		
+			@if(grid-breakpoint-limit($breakpoint) != $grid-columns){
+				&:before {
+					content:($grid-columns + " columns (min "+grid-width()+")");
+				}
+			}
+		}
+	}
+}
+
+
+@include grid-breakpoint(small){
+	body {color: blue;}
+	#container {@include container;}
+}
+
+@include grid-breakpoint(medium){
+	body {color: green;}
+	#container {@include container;}
+}
+
+@include grid-breakpoint(large){
+	body {color: purple;}
+	#container {@include container;}
+}
+
+@include grid-breakpoint(xlarge){
+	body {color: black;}
+	#container {@include container;}
+}

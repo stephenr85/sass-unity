@@ -1,0 +1,5304 @@
+/* line 13, ../sass/grid/_semantics.scss */
+.container {
+  overflow: hidden;
+  *zoom: 1;
+  width: 100%;
+  clear: both;
+  float: none;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 336px;
+}
+
+/* line 21, ../sass/grid/_semantics.scss */
+.row {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin: 0;
+}
+/* line 26, ../sass/grid/_semantics.scss */
+.row > .col:last-child, .row > .col[class*="span"]:last-child {
+  float: right;
+  margin-right: 0;
+}
+
+/* line 39, ../sass/grid/_semantics.scss */
+.omega, .fluid .omega, .static .omega {
+  float: right;
+  margin-right: 0;
+}
+
+/* line 48, ../sass/grid/_semantics.scss */
+.col {
+  float: left;
+  width: 100%;
+  margin-right: 16px;
+  margin-bottom: 16px;
+  max-width: 68px;
+}
+/* line 84, ../sass/grid/_semantics.scss */
+.col.omega {
+  float: right;
+  margin-right: 0;
+}
+/* line 93, ../sass/grid/_semantics.scss */
+.static .col, .col.static {
+  max-width: 68px;
+  margin-right: 16px;
+}
+/* line 108, ../sass/grid/_semantics.scss */
+.fluid .col, .col.fluid {
+  max-width: 21.25%;
+  margin-right: 5%;
+}
+/* line 122, ../sass/grid/_semantics.scss */
+.col.collapse {
+  margin: 0;
+}
+/* line 51, ../sass/grid/_semantics.scss */
+.col:last-child, .col[class*="span"]:last-child {
+  float: right;
+  margin-right: 0;
+}
+
+/* line 60, ../sass/grid/_semantics.scss */
+.span1 {
+  float: left;
+  width: 100%;
+  margin-right: 16px;
+  margin-bottom: 16px;
+  max-width: 68px;
+}
+/* line 84, ../sass/grid/_semantics.scss */
+.span1.omega {
+  float: right;
+  margin-right: 0;
+}
+/* line 93, ../sass/grid/_semantics.scss */
+.static .span1, .span1.static {
+  max-width: 68px;
+  margin-right: 16px;
+}
+/* line 108, ../sass/grid/_semantics.scss */
+.fluid .span1, .span1.fluid {
+  max-width: 21.25%;
+  margin-right: 5%;
+}
+/* line 122, ../sass/grid/_semantics.scss */
+.span1.collapse {
+  margin: 0;
+}
+
+/* line 60, ../sass/grid/_semantics.scss */
+.span2 {
+  float: left;
+  width: 100%;
+  margin-right: 16px;
+  margin-bottom: 16px;
+  max-width: 152px;
+}
+/* line 84, ../sass/grid/_semantics.scss */
+.span2.omega {
+  float: right;
+  margin-right: 0;
+}
+/* line 93, ../sass/grid/_semantics.scss */
+.static .span2, .span2.static {
+  max-width: 152px;
+  margin-right: 16px;
+}
+/* line 108, ../sass/grid/_semantics.scss */
+.fluid .span2, .span2.fluid {
+  max-width: 47.5%;
+  margin-right: 5%;
+}
+/* line 122, ../sass/grid/_semantics.scss */
+.span2.collapse {
+  margin: 0;
+}
+
+/* line 60, ../sass/grid/_semantics.scss */
+.span3 {
+  float: left;
+  width: 100%;
+  margin-right: 16px;
+  margin-bottom: 16px;
+  max-width: 236px;
+}
+/* line 84, ../sass/grid/_semantics.scss */
+.span3.omega {
+  float: right;
+  margin-right: 0;
+}
+/* line 93, ../sass/grid/_semantics.scss */
+.static .span3, .span3.static {
+  max-width: 236px;
+  margin-right: 16px;
+}
+/* line 108, ../sass/grid/_semantics.scss */
+.fluid .span3, .span3.fluid {
+  max-width: 73.75%;
+  margin-right: 5%;
+}
+/* line 122, ../sass/grid/_semantics.scss */
+.span3.collapse {
+  margin: 0;
+}
+
+/* line 60, ../sass/grid/_semantics.scss */
+.span4 {
+  float: left;
+  width: 100%;
+  margin-right: 16px;
+  margin-bottom: 16px;
+  max-width: 320px;
+}
+/* line 84, ../sass/grid/_semantics.scss */
+.span4.omega {
+  float: right;
+  margin-right: 0;
+}
+/* line 93, ../sass/grid/_semantics.scss */
+.static .span4, .span4.static {
+  max-width: 320px;
+  margin-right: 16px;
+}
+/* line 108, ../sass/grid/_semantics.scss */
+.fluid .span4, .span4.fluid {
+  max-width: 100%;
+  margin-right: 5%;
+}
+/* line 122, ../sass/grid/_semantics.scss */
+.span4.collapse {
+  margin: 0;
+}
+
+/* line 18, ../sass/grid-semantics.scss */
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* line 22, ../sass/grid-semantics.scss */
+html {
+  text-align: center;
+  font-size: 16px;
+}
+
+@media all and (max-width: 672px) {
+  /* ==== ("small" 0 8) ======================== 
+  		 Display to 8 columns
+     ======================================== */
+  /* line 50, ../sass/grid-semantics.scss */
+  body {
+    max-width: 672px;
+  }
+
+  /* line 13, ../sass/grid/_semantics.scss */
+  .small-container {
+    overflow: hidden;
+    *zoom: 1;
+    width: 100%;
+    clear: both;
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 672px;
+  }
+
+  /* line 21, ../sass/grid/_semantics.scss */
+  .small-row {
+    clear: both;
+    float: left;
+    width: 100%;
+    margin: 0;
+  }
+  /* line 26, ../sass/grid/_semantics.scss */
+  .small-row > .col:last-child, .small-row > .col[class*="span"]:last-child {
+    float: right;
+    margin-right: 0;
+  }
+
+  /* line 39, ../sass/grid/_semantics.scss */
+  .small-omega, .fluid .small-omega, .static .small-omega {
+    float: right;
+    margin-right: 0;
+  }
+
+  /* line 48, ../sass/grid/_semantics.scss */
+  .small-col {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 68px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .small-col.small-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .small-static .small-col, .small-col.small-static {
+    max-width: 68px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .small-fluid .small-col, .small-col.small-fluid {
+    max-width: 10.36585%;
+    margin-right: 2.43902%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .small-col.small-collapse {
+    margin: 0;
+  }
+  /* line 51, ../sass/grid/_semantics.scss */
+  .small-col:last-child, .small-col[class*="span"]:last-child {
+    float: right;
+    margin-right: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .small-span1 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 68px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .small-span1.small-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .small-static .small-span1, .small-span1.small-static {
+    max-width: 68px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .small-fluid .small-span1, .small-span1.small-fluid {
+    max-width: 10.36585%;
+    margin-right: 2.43902%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .small-span1.small-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .small-span2 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 152px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .small-span2.small-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .small-static .small-span2, .small-span2.small-static {
+    max-width: 152px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .small-fluid .small-span2, .small-span2.small-fluid {
+    max-width: 23.17073%;
+    margin-right: 2.43902%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .small-span2.small-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .small-span3 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 236px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .small-span3.small-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .small-static .small-span3, .small-span3.small-static {
+    max-width: 236px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .small-fluid .small-span3, .small-span3.small-fluid {
+    max-width: 35.97561%;
+    margin-right: 2.43902%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .small-span3.small-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .small-span4 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 320px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .small-span4.small-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .small-static .small-span4, .small-span4.small-static {
+    max-width: 320px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .small-fluid .small-span4, .small-span4.small-fluid {
+    max-width: 48.78049%;
+    margin-right: 2.43902%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .small-span4.small-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .small-span5 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 404px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .small-span5.small-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .small-static .small-span5, .small-span5.small-static {
+    max-width: 404px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .small-fluid .small-span5, .small-span5.small-fluid {
+    max-width: 61.58537%;
+    margin-right: 2.43902%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .small-span5.small-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .small-span6 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 488px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .small-span6.small-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .small-static .small-span6, .small-span6.small-static {
+    max-width: 488px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .small-fluid .small-span6, .small-span6.small-fluid {
+    max-width: 74.39024%;
+    margin-right: 2.43902%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .small-span6.small-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .small-span7 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 572px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .small-span7.small-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .small-static .small-span7, .small-span7.small-static {
+    max-width: 572px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .small-fluid .small-span7, .small-span7.small-fluid {
+    max-width: 87.19512%;
+    margin-right: 2.43902%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .small-span7.small-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .small-span8 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 656px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .small-span8.small-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .small-static .small-span8, .small-span8.small-static {
+    max-width: 656px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .small-fluid .small-span8, .small-span8.small-fluid {
+    max-width: 100%;
+    margin-right: 2.43902%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .small-span8.small-collapse {
+    margin: 0;
+  }
+
+  /* line 66, ../sass/grid-semantics.scss */
+  #container {
+    overflow: hidden;
+    *zoom: 1;
+    width: 100%;
+    clear: both;
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+    min-width: -16px;
+    max-width: 656px;
+    width: 100%;
+  }
+
+  /* line 76, ../sass/grid-semantics.scss */
+  .small-hidden {
+    display: none;
+  }
+}
+@media all and (max-width: 672px) {
+  /* ==== ("small-only" 0 8) ======================== 
+  		 Display to 8 columns
+     ======================================== */
+  /* line 50, ../sass/grid-semantics.scss */
+  body {
+    max-width: 672px;
+  }
+
+  /* line 13, ../sass/grid/_semantics.scss */
+  .small-only-container {
+    overflow: hidden;
+    *zoom: 1;
+    width: 100%;
+    clear: both;
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 672px;
+  }
+
+  /* line 21, ../sass/grid/_semantics.scss */
+  .small-only-row {
+    clear: both;
+    float: left;
+    width: 100%;
+    margin: 0;
+  }
+  /* line 26, ../sass/grid/_semantics.scss */
+  .small-only-row > .col:last-child, .small-only-row > .col[class*="span"]:last-child {
+    float: right;
+    margin-right: 0;
+  }
+
+  /* line 39, ../sass/grid/_semantics.scss */
+  .small-only-omega, .fluid .small-only-omega, .static .small-only-omega {
+    float: right;
+    margin-right: 0;
+  }
+
+  /* line 48, ../sass/grid/_semantics.scss */
+  .small-only-col {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 68px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .small-only-col.small-only-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .small-only-static .small-only-col, .small-only-col.small-only-static {
+    max-width: 68px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .small-only-fluid .small-only-col, .small-only-col.small-only-fluid {
+    max-width: 10.36585%;
+    margin-right: 2.43902%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .small-only-col.small-only-collapse {
+    margin: 0;
+  }
+  /* line 51, ../sass/grid/_semantics.scss */
+  .small-only-col:last-child, .small-only-col[class*="span"]:last-child {
+    float: right;
+    margin-right: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .small-only-span1 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 68px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .small-only-span1.small-only-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .small-only-static .small-only-span1, .small-only-span1.small-only-static {
+    max-width: 68px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .small-only-fluid .small-only-span1, .small-only-span1.small-only-fluid {
+    max-width: 10.36585%;
+    margin-right: 2.43902%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .small-only-span1.small-only-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .small-only-span2 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 152px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .small-only-span2.small-only-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .small-only-static .small-only-span2, .small-only-span2.small-only-static {
+    max-width: 152px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .small-only-fluid .small-only-span2, .small-only-span2.small-only-fluid {
+    max-width: 23.17073%;
+    margin-right: 2.43902%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .small-only-span2.small-only-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .small-only-span3 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 236px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .small-only-span3.small-only-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .small-only-static .small-only-span3, .small-only-span3.small-only-static {
+    max-width: 236px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .small-only-fluid .small-only-span3, .small-only-span3.small-only-fluid {
+    max-width: 35.97561%;
+    margin-right: 2.43902%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .small-only-span3.small-only-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .small-only-span4 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 320px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .small-only-span4.small-only-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .small-only-static .small-only-span4, .small-only-span4.small-only-static {
+    max-width: 320px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .small-only-fluid .small-only-span4, .small-only-span4.small-only-fluid {
+    max-width: 48.78049%;
+    margin-right: 2.43902%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .small-only-span4.small-only-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .small-only-span5 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 404px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .small-only-span5.small-only-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .small-only-static .small-only-span5, .small-only-span5.small-only-static {
+    max-width: 404px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .small-only-fluid .small-only-span5, .small-only-span5.small-only-fluid {
+    max-width: 61.58537%;
+    margin-right: 2.43902%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .small-only-span5.small-only-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .small-only-span6 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 488px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .small-only-span6.small-only-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .small-only-static .small-only-span6, .small-only-span6.small-only-static {
+    max-width: 488px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .small-only-fluid .small-only-span6, .small-only-span6.small-only-fluid {
+    max-width: 74.39024%;
+    margin-right: 2.43902%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .small-only-span6.small-only-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .small-only-span7 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 572px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .small-only-span7.small-only-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .small-only-static .small-only-span7, .small-only-span7.small-only-static {
+    max-width: 572px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .small-only-fluid .small-only-span7, .small-only-span7.small-only-fluid {
+    max-width: 87.19512%;
+    margin-right: 2.43902%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .small-only-span7.small-only-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .small-only-span8 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 656px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .small-only-span8.small-only-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .small-only-static .small-only-span8, .small-only-span8.small-only-static {
+    max-width: 656px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .small-only-fluid .small-only-span8, .small-only-span8.small-only-fluid {
+    max-width: 100%;
+    margin-right: 2.43902%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .small-only-span8.small-only-collapse {
+    margin: 0;
+  }
+
+  /* line 66, ../sass/grid-semantics.scss */
+  #container {
+    overflow: hidden;
+    *zoom: 1;
+    width: 100%;
+    clear: both;
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+    min-width: -16px;
+    max-width: 656px;
+    width: 100%;
+  }
+
+  /* line 76, ../sass/grid-semantics.scss */
+  .small-only-hidden {
+    display: none;
+  }
+}
+@media all and (max-width: 672px) {
+  /* ==== ("small-down" 0 8) ======================== 
+  		 Display to 8 columns
+     ======================================== */
+  /* line 50, ../sass/grid-semantics.scss */
+  body {
+    max-width: 672px;
+  }
+
+  /* line 13, ../sass/grid/_semantics.scss */
+  .small-down-container {
+    overflow: hidden;
+    *zoom: 1;
+    width: 100%;
+    clear: both;
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 672px;
+  }
+
+  /* line 21, ../sass/grid/_semantics.scss */
+  .small-down-row {
+    clear: both;
+    float: left;
+    width: 100%;
+    margin: 0;
+  }
+  /* line 26, ../sass/grid/_semantics.scss */
+  .small-down-row > .col:last-child, .small-down-row > .col[class*="span"]:last-child {
+    float: right;
+    margin-right: 0;
+  }
+
+  /* line 39, ../sass/grid/_semantics.scss */
+  .small-down-omega, .fluid .small-down-omega, .static .small-down-omega {
+    float: right;
+    margin-right: 0;
+  }
+
+  /* line 48, ../sass/grid/_semantics.scss */
+  .small-down-col {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 68px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .small-down-col.small-down-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .small-down-static .small-down-col, .small-down-col.small-down-static {
+    max-width: 68px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .small-down-fluid .small-down-col, .small-down-col.small-down-fluid {
+    max-width: 10.36585%;
+    margin-right: 2.43902%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .small-down-col.small-down-collapse {
+    margin: 0;
+  }
+  /* line 51, ../sass/grid/_semantics.scss */
+  .small-down-col:last-child, .small-down-col[class*="span"]:last-child {
+    float: right;
+    margin-right: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .small-down-span1 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 68px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .small-down-span1.small-down-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .small-down-static .small-down-span1, .small-down-span1.small-down-static {
+    max-width: 68px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .small-down-fluid .small-down-span1, .small-down-span1.small-down-fluid {
+    max-width: 10.36585%;
+    margin-right: 2.43902%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .small-down-span1.small-down-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .small-down-span2 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 152px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .small-down-span2.small-down-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .small-down-static .small-down-span2, .small-down-span2.small-down-static {
+    max-width: 152px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .small-down-fluid .small-down-span2, .small-down-span2.small-down-fluid {
+    max-width: 23.17073%;
+    margin-right: 2.43902%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .small-down-span2.small-down-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .small-down-span3 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 236px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .small-down-span3.small-down-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .small-down-static .small-down-span3, .small-down-span3.small-down-static {
+    max-width: 236px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .small-down-fluid .small-down-span3, .small-down-span3.small-down-fluid {
+    max-width: 35.97561%;
+    margin-right: 2.43902%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .small-down-span3.small-down-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .small-down-span4 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 320px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .small-down-span4.small-down-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .small-down-static .small-down-span4, .small-down-span4.small-down-static {
+    max-width: 320px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .small-down-fluid .small-down-span4, .small-down-span4.small-down-fluid {
+    max-width: 48.78049%;
+    margin-right: 2.43902%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .small-down-span4.small-down-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .small-down-span5 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 404px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .small-down-span5.small-down-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .small-down-static .small-down-span5, .small-down-span5.small-down-static {
+    max-width: 404px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .small-down-fluid .small-down-span5, .small-down-span5.small-down-fluid {
+    max-width: 61.58537%;
+    margin-right: 2.43902%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .small-down-span5.small-down-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .small-down-span6 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 488px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .small-down-span6.small-down-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .small-down-static .small-down-span6, .small-down-span6.small-down-static {
+    max-width: 488px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .small-down-fluid .small-down-span6, .small-down-span6.small-down-fluid {
+    max-width: 74.39024%;
+    margin-right: 2.43902%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .small-down-span6.small-down-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .small-down-span7 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 572px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .small-down-span7.small-down-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .small-down-static .small-down-span7, .small-down-span7.small-down-static {
+    max-width: 572px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .small-down-fluid .small-down-span7, .small-down-span7.small-down-fluid {
+    max-width: 87.19512%;
+    margin-right: 2.43902%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .small-down-span7.small-down-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .small-down-span8 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 656px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .small-down-span8.small-down-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .small-down-static .small-down-span8, .small-down-span8.small-down-static {
+    max-width: 656px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .small-down-fluid .small-down-span8, .small-down-span8.small-down-fluid {
+    max-width: 100%;
+    margin-right: 2.43902%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .small-down-span8.small-down-collapse {
+    margin: 0;
+  }
+
+  /* line 66, ../sass/grid-semantics.scss */
+  #container {
+    overflow: hidden;
+    *zoom: 1;
+    width: 100%;
+    clear: both;
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+    min-width: -16px;
+    max-width: 656px;
+    width: 100%;
+  }
+
+  /* line 76, ../sass/grid-semantics.scss */
+  .small-down-hidden {
+    display: none;
+  }
+}
+@media all and (min-width: 673px) {
+  /* ==== ("medium" 8) ======================== 
+  		 Display from 8 columns
+     ======================================== */
+  /* line 50, ../sass/grid-semantics.scss */
+  body {
+    min-width: 672px;
+  }
+
+  /* line 13, ../sass/grid/_semantics.scss */
+  .medium-container {
+    overflow: hidden;
+    *zoom: 1;
+    width: 100%;
+    clear: both;
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 672px;
+  }
+
+  /* line 21, ../sass/grid/_semantics.scss */
+  .medium-row {
+    clear: both;
+    float: left;
+    width: 100%;
+    margin: 0;
+  }
+  /* line 26, ../sass/grid/_semantics.scss */
+  .medium-row > .col:last-child, .medium-row > .col[class*="span"]:last-child {
+    float: right;
+    margin-right: 0;
+  }
+
+  /* line 39, ../sass/grid/_semantics.scss */
+  .medium-omega, .fluid .medium-omega, .static .medium-omega {
+    float: right;
+    margin-right: 0;
+  }
+
+  /* line 48, ../sass/grid/_semantics.scss */
+  .medium-col {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 68px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .medium-col.medium-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .medium-static .medium-col, .medium-col.medium-static {
+    max-width: 68px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .medium-fluid .medium-col, .medium-col.medium-fluid {
+    max-width: 10.36585%;
+    margin-right: 2.43902%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .medium-col.medium-collapse {
+    margin: 0;
+  }
+  /* line 51, ../sass/grid/_semantics.scss */
+  .medium-col:last-child, .medium-col[class*="span"]:last-child {
+    float: right;
+    margin-right: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .medium-span1 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 68px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .medium-span1.medium-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .medium-static .medium-span1, .medium-span1.medium-static {
+    max-width: 68px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .medium-fluid .medium-span1, .medium-span1.medium-fluid {
+    max-width: 10.36585%;
+    margin-right: 2.43902%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .medium-span1.medium-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .medium-span2 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 152px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .medium-span2.medium-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .medium-static .medium-span2, .medium-span2.medium-static {
+    max-width: 152px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .medium-fluid .medium-span2, .medium-span2.medium-fluid {
+    max-width: 23.17073%;
+    margin-right: 2.43902%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .medium-span2.medium-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .medium-span3 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 236px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .medium-span3.medium-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .medium-static .medium-span3, .medium-span3.medium-static {
+    max-width: 236px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .medium-fluid .medium-span3, .medium-span3.medium-fluid {
+    max-width: 35.97561%;
+    margin-right: 2.43902%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .medium-span3.medium-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .medium-span4 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 320px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .medium-span4.medium-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .medium-static .medium-span4, .medium-span4.medium-static {
+    max-width: 320px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .medium-fluid .medium-span4, .medium-span4.medium-fluid {
+    max-width: 48.78049%;
+    margin-right: 2.43902%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .medium-span4.medium-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .medium-span5 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 404px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .medium-span5.medium-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .medium-static .medium-span5, .medium-span5.medium-static {
+    max-width: 404px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .medium-fluid .medium-span5, .medium-span5.medium-fluid {
+    max-width: 61.58537%;
+    margin-right: 2.43902%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .medium-span5.medium-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .medium-span6 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 488px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .medium-span6.medium-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .medium-static .medium-span6, .medium-span6.medium-static {
+    max-width: 488px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .medium-fluid .medium-span6, .medium-span6.medium-fluid {
+    max-width: 74.39024%;
+    margin-right: 2.43902%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .medium-span6.medium-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .medium-span7 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 572px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .medium-span7.medium-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .medium-static .medium-span7, .medium-span7.medium-static {
+    max-width: 572px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .medium-fluid .medium-span7, .medium-span7.medium-fluid {
+    max-width: 87.19512%;
+    margin-right: 2.43902%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .medium-span7.medium-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .medium-span8 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 656px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .medium-span8.medium-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .medium-static .medium-span8, .medium-span8.medium-static {
+    max-width: 656px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .medium-fluid .medium-span8, .medium-span8.medium-fluid {
+    max-width: 100%;
+    margin-right: 2.43902%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .medium-span8.medium-collapse {
+    margin: 0;
+  }
+
+  /* line 66, ../sass/grid-semantics.scss */
+  #container {
+    overflow: hidden;
+    *zoom: 1;
+    width: 100%;
+    clear: both;
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 656px;
+    max-width: none;
+  }
+
+  /* line 76, ../sass/grid-semantics.scss */
+  .medium-hidden {
+    display: none;
+  }
+}
+@media all and (min-width: 673px) and (max-width: 672px) {
+  /* ==== ("medium-only" 8 12) ======================== 
+  		 Display from 8 columns to 12 columns
+     ======================================== */
+  /* line 50, ../sass/grid-semantics.scss */
+  body {
+    max-width: 672px;
+    min-width: 672px;
+  }
+
+  /* line 13, ../sass/grid/_semantics.scss */
+  .medium-only-container {
+    overflow: hidden;
+    *zoom: 1;
+    width: 100%;
+    clear: both;
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 672px;
+  }
+
+  /* line 21, ../sass/grid/_semantics.scss */
+  .medium-only-row {
+    clear: both;
+    float: left;
+    width: 100%;
+    margin: 0;
+  }
+  /* line 26, ../sass/grid/_semantics.scss */
+  .medium-only-row > .col:last-child, .medium-only-row > .col[class*="span"]:last-child {
+    float: right;
+    margin-right: 0;
+  }
+
+  /* line 39, ../sass/grid/_semantics.scss */
+  .medium-only-omega, .fluid .medium-only-omega, .static .medium-only-omega {
+    float: right;
+    margin-right: 0;
+  }
+
+  /* line 48, ../sass/grid/_semantics.scss */
+  .medium-only-col {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 68px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .medium-only-col.medium-only-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .medium-only-static .medium-only-col, .medium-only-col.medium-only-static {
+    max-width: 68px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .medium-only-fluid .medium-only-col, .medium-only-col.medium-only-fluid {
+    max-width: 10.36585%;
+    margin-right: 2.43902%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .medium-only-col.medium-only-collapse {
+    margin: 0;
+  }
+  /* line 51, ../sass/grid/_semantics.scss */
+  .medium-only-col:last-child, .medium-only-col[class*="span"]:last-child {
+    float: right;
+    margin-right: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .medium-only-span1 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 68px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .medium-only-span1.medium-only-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .medium-only-static .medium-only-span1, .medium-only-span1.medium-only-static {
+    max-width: 68px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .medium-only-fluid .medium-only-span1, .medium-only-span1.medium-only-fluid {
+    max-width: 10.36585%;
+    margin-right: 2.43902%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .medium-only-span1.medium-only-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .medium-only-span2 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 152px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .medium-only-span2.medium-only-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .medium-only-static .medium-only-span2, .medium-only-span2.medium-only-static {
+    max-width: 152px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .medium-only-fluid .medium-only-span2, .medium-only-span2.medium-only-fluid {
+    max-width: 23.17073%;
+    margin-right: 2.43902%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .medium-only-span2.medium-only-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .medium-only-span3 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 236px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .medium-only-span3.medium-only-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .medium-only-static .medium-only-span3, .medium-only-span3.medium-only-static {
+    max-width: 236px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .medium-only-fluid .medium-only-span3, .medium-only-span3.medium-only-fluid {
+    max-width: 35.97561%;
+    margin-right: 2.43902%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .medium-only-span3.medium-only-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .medium-only-span4 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 320px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .medium-only-span4.medium-only-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .medium-only-static .medium-only-span4, .medium-only-span4.medium-only-static {
+    max-width: 320px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .medium-only-fluid .medium-only-span4, .medium-only-span4.medium-only-fluid {
+    max-width: 48.78049%;
+    margin-right: 2.43902%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .medium-only-span4.medium-only-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .medium-only-span5 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 404px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .medium-only-span5.medium-only-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .medium-only-static .medium-only-span5, .medium-only-span5.medium-only-static {
+    max-width: 404px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .medium-only-fluid .medium-only-span5, .medium-only-span5.medium-only-fluid {
+    max-width: 61.58537%;
+    margin-right: 2.43902%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .medium-only-span5.medium-only-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .medium-only-span6 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 488px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .medium-only-span6.medium-only-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .medium-only-static .medium-only-span6, .medium-only-span6.medium-only-static {
+    max-width: 488px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .medium-only-fluid .medium-only-span6, .medium-only-span6.medium-only-fluid {
+    max-width: 74.39024%;
+    margin-right: 2.43902%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .medium-only-span6.medium-only-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .medium-only-span7 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 572px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .medium-only-span7.medium-only-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .medium-only-static .medium-only-span7, .medium-only-span7.medium-only-static {
+    max-width: 572px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .medium-only-fluid .medium-only-span7, .medium-only-span7.medium-only-fluid {
+    max-width: 87.19512%;
+    margin-right: 2.43902%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .medium-only-span7.medium-only-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .medium-only-span8 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 656px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .medium-only-span8.medium-only-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .medium-only-static .medium-only-span8, .medium-only-span8.medium-only-static {
+    max-width: 656px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .medium-only-fluid .medium-only-span8, .medium-only-span8.medium-only-fluid {
+    max-width: 100%;
+    margin-right: 2.43902%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .medium-only-span8.medium-only-collapse {
+    margin: 0;
+  }
+
+  /* line 66, ../sass/grid-semantics.scss */
+  #container {
+    overflow: hidden;
+    *zoom: 1;
+    width: 100%;
+    clear: both;
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 656px;
+    max-width: 992px;
+    width: 100%;
+  }
+
+  /* line 76, ../sass/grid-semantics.scss */
+  .medium-only-hidden {
+    display: none;
+  }
+}
+@media all and (max-width: 1008px) {
+  /* ==== ("medium-down" 0 12) ======================== 
+  		 Display to 12 columns
+     ======================================== */
+  /* line 50, ../sass/grid-semantics.scss */
+  body {
+    max-width: 1008px;
+  }
+
+  /* line 13, ../sass/grid/_semantics.scss */
+  .medium-down-container {
+    overflow: hidden;
+    *zoom: 1;
+    width: 100%;
+    clear: both;
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1008px;
+  }
+
+  /* line 21, ../sass/grid/_semantics.scss */
+  .medium-down-row {
+    clear: both;
+    float: left;
+    width: 100%;
+    margin: 0;
+  }
+  /* line 26, ../sass/grid/_semantics.scss */
+  .medium-down-row > .col:last-child, .medium-down-row > .col[class*="span"]:last-child {
+    float: right;
+    margin-right: 0;
+  }
+
+  /* line 39, ../sass/grid/_semantics.scss */
+  .medium-down-omega, .fluid .medium-down-omega, .static .medium-down-omega {
+    float: right;
+    margin-right: 0;
+  }
+
+  /* line 48, ../sass/grid/_semantics.scss */
+  .medium-down-col {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 68px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .medium-down-col.medium-down-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .medium-down-static .medium-down-col, .medium-down-col.medium-down-static {
+    max-width: 68px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .medium-down-fluid .medium-down-col, .medium-down-col.medium-down-fluid {
+    max-width: 6.85484%;
+    margin-right: 1.6129%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .medium-down-col.medium-down-collapse {
+    margin: 0;
+  }
+  /* line 51, ../sass/grid/_semantics.scss */
+  .medium-down-col:last-child, .medium-down-col[class*="span"]:last-child {
+    float: right;
+    margin-right: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .medium-down-span1 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 68px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .medium-down-span1.medium-down-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .medium-down-static .medium-down-span1, .medium-down-span1.medium-down-static {
+    max-width: 68px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .medium-down-fluid .medium-down-span1, .medium-down-span1.medium-down-fluid {
+    max-width: 6.85484%;
+    margin-right: 1.6129%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .medium-down-span1.medium-down-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .medium-down-span2 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 152px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .medium-down-span2.medium-down-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .medium-down-static .medium-down-span2, .medium-down-span2.medium-down-static {
+    max-width: 152px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .medium-down-fluid .medium-down-span2, .medium-down-span2.medium-down-fluid {
+    max-width: 15.32258%;
+    margin-right: 1.6129%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .medium-down-span2.medium-down-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .medium-down-span3 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 236px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .medium-down-span3.medium-down-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .medium-down-static .medium-down-span3, .medium-down-span3.medium-down-static {
+    max-width: 236px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .medium-down-fluid .medium-down-span3, .medium-down-span3.medium-down-fluid {
+    max-width: 23.79032%;
+    margin-right: 1.6129%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .medium-down-span3.medium-down-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .medium-down-span4 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 320px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .medium-down-span4.medium-down-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .medium-down-static .medium-down-span4, .medium-down-span4.medium-down-static {
+    max-width: 320px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .medium-down-fluid .medium-down-span4, .medium-down-span4.medium-down-fluid {
+    max-width: 32.25806%;
+    margin-right: 1.6129%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .medium-down-span4.medium-down-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .medium-down-span5 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 404px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .medium-down-span5.medium-down-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .medium-down-static .medium-down-span5, .medium-down-span5.medium-down-static {
+    max-width: 404px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .medium-down-fluid .medium-down-span5, .medium-down-span5.medium-down-fluid {
+    max-width: 40.72581%;
+    margin-right: 1.6129%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .medium-down-span5.medium-down-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .medium-down-span6 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 488px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .medium-down-span6.medium-down-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .medium-down-static .medium-down-span6, .medium-down-span6.medium-down-static {
+    max-width: 488px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .medium-down-fluid .medium-down-span6, .medium-down-span6.medium-down-fluid {
+    max-width: 49.19355%;
+    margin-right: 1.6129%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .medium-down-span6.medium-down-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .medium-down-span7 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 572px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .medium-down-span7.medium-down-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .medium-down-static .medium-down-span7, .medium-down-span7.medium-down-static {
+    max-width: 572px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .medium-down-fluid .medium-down-span7, .medium-down-span7.medium-down-fluid {
+    max-width: 57.66129%;
+    margin-right: 1.6129%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .medium-down-span7.medium-down-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .medium-down-span8 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 656px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .medium-down-span8.medium-down-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .medium-down-static .medium-down-span8, .medium-down-span8.medium-down-static {
+    max-width: 656px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .medium-down-fluid .medium-down-span8, .medium-down-span8.medium-down-fluid {
+    max-width: 66.12903%;
+    margin-right: 1.6129%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .medium-down-span8.medium-down-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .medium-down-span9 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 740px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .medium-down-span9.medium-down-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .medium-down-static .medium-down-span9, .medium-down-span9.medium-down-static {
+    max-width: 740px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .medium-down-fluid .medium-down-span9, .medium-down-span9.medium-down-fluid {
+    max-width: 74.59677%;
+    margin-right: 1.6129%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .medium-down-span9.medium-down-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .medium-down-span10 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 824px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .medium-down-span10.medium-down-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .medium-down-static .medium-down-span10, .medium-down-span10.medium-down-static {
+    max-width: 824px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .medium-down-fluid .medium-down-span10, .medium-down-span10.medium-down-fluid {
+    max-width: 83.06452%;
+    margin-right: 1.6129%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .medium-down-span10.medium-down-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .medium-down-span11 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 908px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .medium-down-span11.medium-down-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .medium-down-static .medium-down-span11, .medium-down-span11.medium-down-static {
+    max-width: 908px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .medium-down-fluid .medium-down-span11, .medium-down-span11.medium-down-fluid {
+    max-width: 91.53226%;
+    margin-right: 1.6129%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .medium-down-span11.medium-down-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .medium-down-span12 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 992px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .medium-down-span12.medium-down-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .medium-down-static .medium-down-span12, .medium-down-span12.medium-down-static {
+    max-width: 992px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .medium-down-fluid .medium-down-span12, .medium-down-span12.medium-down-fluid {
+    max-width: 100%;
+    margin-right: 1.6129%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .medium-down-span12.medium-down-collapse {
+    margin: 0;
+  }
+
+  /* line 66, ../sass/grid-semantics.scss */
+  #container {
+    overflow: hidden;
+    *zoom: 1;
+    width: 100%;
+    clear: both;
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+    min-width: -16px;
+    max-width: 992px;
+    width: 100%;
+  }
+
+  /* line 76, ../sass/grid-semantics.scss */
+  .medium-down-hidden {
+    display: none;
+  }
+}
+@media all and (min-width: 1009px) {
+  /* ==== ("large" 12) ======================== 
+  		 Display from 12 columns
+     ======================================== */
+  /* line 50, ../sass/grid-semantics.scss */
+  body {
+    min-width: 1008px;
+  }
+
+  /* line 13, ../sass/grid/_semantics.scss */
+  .large-container {
+    overflow: hidden;
+    *zoom: 1;
+    width: 100%;
+    clear: both;
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1008px;
+  }
+
+  /* line 21, ../sass/grid/_semantics.scss */
+  .large-row {
+    clear: both;
+    float: left;
+    width: 100%;
+    margin: 0;
+  }
+  /* line 26, ../sass/grid/_semantics.scss */
+  .large-row > .col:last-child, .large-row > .col[class*="span"]:last-child {
+    float: right;
+    margin-right: 0;
+  }
+
+  /* line 39, ../sass/grid/_semantics.scss */
+  .large-omega, .fluid .large-omega, .static .large-omega {
+    float: right;
+    margin-right: 0;
+  }
+
+  /* line 48, ../sass/grid/_semantics.scss */
+  .large-col {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 68px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .large-col.large-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .large-static .large-col, .large-col.large-static {
+    max-width: 68px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .large-fluid .large-col, .large-col.large-fluid {
+    max-width: 6.85484%;
+    margin-right: 1.6129%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .large-col.large-collapse {
+    margin: 0;
+  }
+  /* line 51, ../sass/grid/_semantics.scss */
+  .large-col:last-child, .large-col[class*="span"]:last-child {
+    float: right;
+    margin-right: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .large-span1 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 68px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .large-span1.large-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .large-static .large-span1, .large-span1.large-static {
+    max-width: 68px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .large-fluid .large-span1, .large-span1.large-fluid {
+    max-width: 6.85484%;
+    margin-right: 1.6129%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .large-span1.large-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .large-span2 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 152px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .large-span2.large-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .large-static .large-span2, .large-span2.large-static {
+    max-width: 152px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .large-fluid .large-span2, .large-span2.large-fluid {
+    max-width: 15.32258%;
+    margin-right: 1.6129%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .large-span2.large-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .large-span3 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 236px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .large-span3.large-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .large-static .large-span3, .large-span3.large-static {
+    max-width: 236px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .large-fluid .large-span3, .large-span3.large-fluid {
+    max-width: 23.79032%;
+    margin-right: 1.6129%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .large-span3.large-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .large-span4 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 320px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .large-span4.large-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .large-static .large-span4, .large-span4.large-static {
+    max-width: 320px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .large-fluid .large-span4, .large-span4.large-fluid {
+    max-width: 32.25806%;
+    margin-right: 1.6129%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .large-span4.large-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .large-span5 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 404px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .large-span5.large-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .large-static .large-span5, .large-span5.large-static {
+    max-width: 404px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .large-fluid .large-span5, .large-span5.large-fluid {
+    max-width: 40.72581%;
+    margin-right: 1.6129%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .large-span5.large-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .large-span6 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 488px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .large-span6.large-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .large-static .large-span6, .large-span6.large-static {
+    max-width: 488px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .large-fluid .large-span6, .large-span6.large-fluid {
+    max-width: 49.19355%;
+    margin-right: 1.6129%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .large-span6.large-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .large-span7 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 572px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .large-span7.large-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .large-static .large-span7, .large-span7.large-static {
+    max-width: 572px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .large-fluid .large-span7, .large-span7.large-fluid {
+    max-width: 57.66129%;
+    margin-right: 1.6129%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .large-span7.large-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .large-span8 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 656px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .large-span8.large-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .large-static .large-span8, .large-span8.large-static {
+    max-width: 656px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .large-fluid .large-span8, .large-span8.large-fluid {
+    max-width: 66.12903%;
+    margin-right: 1.6129%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .large-span8.large-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .large-span9 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 740px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .large-span9.large-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .large-static .large-span9, .large-span9.large-static {
+    max-width: 740px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .large-fluid .large-span9, .large-span9.large-fluid {
+    max-width: 74.59677%;
+    margin-right: 1.6129%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .large-span9.large-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .large-span10 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 824px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .large-span10.large-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .large-static .large-span10, .large-span10.large-static {
+    max-width: 824px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .large-fluid .large-span10, .large-span10.large-fluid {
+    max-width: 83.06452%;
+    margin-right: 1.6129%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .large-span10.large-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .large-span11 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 908px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .large-span11.large-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .large-static .large-span11, .large-span11.large-static {
+    max-width: 908px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .large-fluid .large-span11, .large-span11.large-fluid {
+    max-width: 91.53226%;
+    margin-right: 1.6129%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .large-span11.large-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .large-span12 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 992px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .large-span12.large-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .large-static .large-span12, .large-span12.large-static {
+    max-width: 992px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .large-fluid .large-span12, .large-span12.large-fluid {
+    max-width: 100%;
+    margin-right: 1.6129%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .large-span12.large-collapse {
+    margin: 0;
+  }
+
+  /* line 66, ../sass/grid-semantics.scss */
+  #container {
+    overflow: hidden;
+    *zoom: 1;
+    width: 100%;
+    clear: both;
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 992px;
+    max-width: none;
+  }
+
+  /* line 76, ../sass/grid-semantics.scss */
+  .large-hidden {
+    display: none;
+  }
+}
+@media all and (min-width: 1009px) and (max-width: 1008px) {
+  /* ==== ("large-only" 12 16) ======================== 
+  		 Display from 12 columns to 16 columns
+     ======================================== */
+  /* line 50, ../sass/grid-semantics.scss */
+  body {
+    max-width: 1008px;
+    min-width: 1008px;
+  }
+
+  /* line 13, ../sass/grid/_semantics.scss */
+  .large-only-container {
+    overflow: hidden;
+    *zoom: 1;
+    width: 100%;
+    clear: both;
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1008px;
+  }
+
+  /* line 21, ../sass/grid/_semantics.scss */
+  .large-only-row {
+    clear: both;
+    float: left;
+    width: 100%;
+    margin: 0;
+  }
+  /* line 26, ../sass/grid/_semantics.scss */
+  .large-only-row > .col:last-child, .large-only-row > .col[class*="span"]:last-child {
+    float: right;
+    margin-right: 0;
+  }
+
+  /* line 39, ../sass/grid/_semantics.scss */
+  .large-only-omega, .fluid .large-only-omega, .static .large-only-omega {
+    float: right;
+    margin-right: 0;
+  }
+
+  /* line 48, ../sass/grid/_semantics.scss */
+  .large-only-col {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 68px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .large-only-col.large-only-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .large-only-static .large-only-col, .large-only-col.large-only-static {
+    max-width: 68px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .large-only-fluid .large-only-col, .large-only-col.large-only-fluid {
+    max-width: 6.85484%;
+    margin-right: 1.6129%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .large-only-col.large-only-collapse {
+    margin: 0;
+  }
+  /* line 51, ../sass/grid/_semantics.scss */
+  .large-only-col:last-child, .large-only-col[class*="span"]:last-child {
+    float: right;
+    margin-right: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .large-only-span1 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 68px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .large-only-span1.large-only-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .large-only-static .large-only-span1, .large-only-span1.large-only-static {
+    max-width: 68px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .large-only-fluid .large-only-span1, .large-only-span1.large-only-fluid {
+    max-width: 6.85484%;
+    margin-right: 1.6129%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .large-only-span1.large-only-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .large-only-span2 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 152px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .large-only-span2.large-only-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .large-only-static .large-only-span2, .large-only-span2.large-only-static {
+    max-width: 152px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .large-only-fluid .large-only-span2, .large-only-span2.large-only-fluid {
+    max-width: 15.32258%;
+    margin-right: 1.6129%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .large-only-span2.large-only-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .large-only-span3 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 236px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .large-only-span3.large-only-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .large-only-static .large-only-span3, .large-only-span3.large-only-static {
+    max-width: 236px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .large-only-fluid .large-only-span3, .large-only-span3.large-only-fluid {
+    max-width: 23.79032%;
+    margin-right: 1.6129%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .large-only-span3.large-only-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .large-only-span4 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 320px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .large-only-span4.large-only-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .large-only-static .large-only-span4, .large-only-span4.large-only-static {
+    max-width: 320px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .large-only-fluid .large-only-span4, .large-only-span4.large-only-fluid {
+    max-width: 32.25806%;
+    margin-right: 1.6129%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .large-only-span4.large-only-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .large-only-span5 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 404px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .large-only-span5.large-only-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .large-only-static .large-only-span5, .large-only-span5.large-only-static {
+    max-width: 404px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .large-only-fluid .large-only-span5, .large-only-span5.large-only-fluid {
+    max-width: 40.72581%;
+    margin-right: 1.6129%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .large-only-span5.large-only-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .large-only-span6 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 488px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .large-only-span6.large-only-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .large-only-static .large-only-span6, .large-only-span6.large-only-static {
+    max-width: 488px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .large-only-fluid .large-only-span6, .large-only-span6.large-only-fluid {
+    max-width: 49.19355%;
+    margin-right: 1.6129%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .large-only-span6.large-only-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .large-only-span7 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 572px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .large-only-span7.large-only-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .large-only-static .large-only-span7, .large-only-span7.large-only-static {
+    max-width: 572px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .large-only-fluid .large-only-span7, .large-only-span7.large-only-fluid {
+    max-width: 57.66129%;
+    margin-right: 1.6129%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .large-only-span7.large-only-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .large-only-span8 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 656px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .large-only-span8.large-only-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .large-only-static .large-only-span8, .large-only-span8.large-only-static {
+    max-width: 656px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .large-only-fluid .large-only-span8, .large-only-span8.large-only-fluid {
+    max-width: 66.12903%;
+    margin-right: 1.6129%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .large-only-span8.large-only-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .large-only-span9 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 740px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .large-only-span9.large-only-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .large-only-static .large-only-span9, .large-only-span9.large-only-static {
+    max-width: 740px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .large-only-fluid .large-only-span9, .large-only-span9.large-only-fluid {
+    max-width: 74.59677%;
+    margin-right: 1.6129%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .large-only-span9.large-only-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .large-only-span10 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 824px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .large-only-span10.large-only-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .large-only-static .large-only-span10, .large-only-span10.large-only-static {
+    max-width: 824px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .large-only-fluid .large-only-span10, .large-only-span10.large-only-fluid {
+    max-width: 83.06452%;
+    margin-right: 1.6129%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .large-only-span10.large-only-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .large-only-span11 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 908px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .large-only-span11.large-only-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .large-only-static .large-only-span11, .large-only-span11.large-only-static {
+    max-width: 908px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .large-only-fluid .large-only-span11, .large-only-span11.large-only-fluid {
+    max-width: 91.53226%;
+    margin-right: 1.6129%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .large-only-span11.large-only-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .large-only-span12 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 992px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .large-only-span12.large-only-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .large-only-static .large-only-span12, .large-only-span12.large-only-static {
+    max-width: 992px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .large-only-fluid .large-only-span12, .large-only-span12.large-only-fluid {
+    max-width: 100%;
+    margin-right: 1.6129%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .large-only-span12.large-only-collapse {
+    margin: 0;
+  }
+
+  /* line 66, ../sass/grid-semantics.scss */
+  #container {
+    overflow: hidden;
+    *zoom: 1;
+    width: 100%;
+    clear: both;
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 992px;
+    max-width: 1328px;
+    width: 100%;
+  }
+
+  /* line 76, ../sass/grid-semantics.scss */
+  .large-only-hidden {
+    display: none;
+  }
+}
+@media all and (max-width: 1008px) {
+  /* ==== ("large-down" 0 12) ======================== 
+  		 Display to 12 columns
+     ======================================== */
+  /* line 50, ../sass/grid-semantics.scss */
+  body {
+    max-width: 1008px;
+  }
+
+  /* line 13, ../sass/grid/_semantics.scss */
+  .large-down-container {
+    overflow: hidden;
+    *zoom: 1;
+    width: 100%;
+    clear: both;
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1008px;
+  }
+
+  /* line 21, ../sass/grid/_semantics.scss */
+  .large-down-row {
+    clear: both;
+    float: left;
+    width: 100%;
+    margin: 0;
+  }
+  /* line 26, ../sass/grid/_semantics.scss */
+  .large-down-row > .col:last-child, .large-down-row > .col[class*="span"]:last-child {
+    float: right;
+    margin-right: 0;
+  }
+
+  /* line 39, ../sass/grid/_semantics.scss */
+  .large-down-omega, .fluid .large-down-omega, .static .large-down-omega {
+    float: right;
+    margin-right: 0;
+  }
+
+  /* line 48, ../sass/grid/_semantics.scss */
+  .large-down-col {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 68px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .large-down-col.large-down-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .large-down-static .large-down-col, .large-down-col.large-down-static {
+    max-width: 68px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .large-down-fluid .large-down-col, .large-down-col.large-down-fluid {
+    max-width: 6.85484%;
+    margin-right: 1.6129%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .large-down-col.large-down-collapse {
+    margin: 0;
+  }
+  /* line 51, ../sass/grid/_semantics.scss */
+  .large-down-col:last-child, .large-down-col[class*="span"]:last-child {
+    float: right;
+    margin-right: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .large-down-span1 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 68px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .large-down-span1.large-down-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .large-down-static .large-down-span1, .large-down-span1.large-down-static {
+    max-width: 68px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .large-down-fluid .large-down-span1, .large-down-span1.large-down-fluid {
+    max-width: 6.85484%;
+    margin-right: 1.6129%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .large-down-span1.large-down-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .large-down-span2 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 152px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .large-down-span2.large-down-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .large-down-static .large-down-span2, .large-down-span2.large-down-static {
+    max-width: 152px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .large-down-fluid .large-down-span2, .large-down-span2.large-down-fluid {
+    max-width: 15.32258%;
+    margin-right: 1.6129%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .large-down-span2.large-down-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .large-down-span3 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 236px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .large-down-span3.large-down-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .large-down-static .large-down-span3, .large-down-span3.large-down-static {
+    max-width: 236px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .large-down-fluid .large-down-span3, .large-down-span3.large-down-fluid {
+    max-width: 23.79032%;
+    margin-right: 1.6129%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .large-down-span3.large-down-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .large-down-span4 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 320px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .large-down-span4.large-down-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .large-down-static .large-down-span4, .large-down-span4.large-down-static {
+    max-width: 320px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .large-down-fluid .large-down-span4, .large-down-span4.large-down-fluid {
+    max-width: 32.25806%;
+    margin-right: 1.6129%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .large-down-span4.large-down-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .large-down-span5 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 404px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .large-down-span5.large-down-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .large-down-static .large-down-span5, .large-down-span5.large-down-static {
+    max-width: 404px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .large-down-fluid .large-down-span5, .large-down-span5.large-down-fluid {
+    max-width: 40.72581%;
+    margin-right: 1.6129%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .large-down-span5.large-down-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .large-down-span6 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 488px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .large-down-span6.large-down-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .large-down-static .large-down-span6, .large-down-span6.large-down-static {
+    max-width: 488px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .large-down-fluid .large-down-span6, .large-down-span6.large-down-fluid {
+    max-width: 49.19355%;
+    margin-right: 1.6129%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .large-down-span6.large-down-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .large-down-span7 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 572px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .large-down-span7.large-down-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .large-down-static .large-down-span7, .large-down-span7.large-down-static {
+    max-width: 572px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .large-down-fluid .large-down-span7, .large-down-span7.large-down-fluid {
+    max-width: 57.66129%;
+    margin-right: 1.6129%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .large-down-span7.large-down-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .large-down-span8 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 656px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .large-down-span8.large-down-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .large-down-static .large-down-span8, .large-down-span8.large-down-static {
+    max-width: 656px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .large-down-fluid .large-down-span8, .large-down-span8.large-down-fluid {
+    max-width: 66.12903%;
+    margin-right: 1.6129%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .large-down-span8.large-down-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .large-down-span9 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 740px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .large-down-span9.large-down-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .large-down-static .large-down-span9, .large-down-span9.large-down-static {
+    max-width: 740px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .large-down-fluid .large-down-span9, .large-down-span9.large-down-fluid {
+    max-width: 74.59677%;
+    margin-right: 1.6129%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .large-down-span9.large-down-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .large-down-span10 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 824px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .large-down-span10.large-down-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .large-down-static .large-down-span10, .large-down-span10.large-down-static {
+    max-width: 824px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .large-down-fluid .large-down-span10, .large-down-span10.large-down-fluid {
+    max-width: 83.06452%;
+    margin-right: 1.6129%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .large-down-span10.large-down-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .large-down-span11 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 908px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .large-down-span11.large-down-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .large-down-static .large-down-span11, .large-down-span11.large-down-static {
+    max-width: 908px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .large-down-fluid .large-down-span11, .large-down-span11.large-down-fluid {
+    max-width: 91.53226%;
+    margin-right: 1.6129%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .large-down-span11.large-down-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .large-down-span12 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 992px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .large-down-span12.large-down-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .large-down-static .large-down-span12, .large-down-span12.large-down-static {
+    max-width: 992px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .large-down-fluid .large-down-span12, .large-down-span12.large-down-fluid {
+    max-width: 100%;
+    margin-right: 1.6129%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .large-down-span12.large-down-collapse {
+    margin: 0;
+  }
+
+  /* line 66, ../sass/grid-semantics.scss */
+  #container {
+    overflow: hidden;
+    *zoom: 1;
+    width: 100%;
+    clear: both;
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+    min-width: -16px;
+    max-width: 992px;
+    width: 100%;
+  }
+
+  /* line 76, ../sass/grid-semantics.scss */
+  .large-down-hidden {
+    display: none;
+  }
+}
+@media all and (min-width: 1345px) {
+  /* ==== ("xlarge" 16) ======================== 
+  		 Display from 16 columns
+     ======================================== */
+  /* line 50, ../sass/grid-semantics.scss */
+  body {
+    min-width: 1344px;
+  }
+
+  /* line 13, ../sass/grid/_semantics.scss */
+  .xlarge-container {
+    overflow: hidden;
+    *zoom: 1;
+    width: 100%;
+    clear: both;
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1344px;
+  }
+
+  /* line 21, ../sass/grid/_semantics.scss */
+  .xlarge-row {
+    clear: both;
+    float: left;
+    width: 100%;
+    margin: 0;
+  }
+  /* line 26, ../sass/grid/_semantics.scss */
+  .xlarge-row > .col:last-child, .xlarge-row > .col[class*="span"]:last-child {
+    float: right;
+    margin-right: 0;
+  }
+
+  /* line 39, ../sass/grid/_semantics.scss */
+  .xlarge-omega, .fluid .xlarge-omega, .static .xlarge-omega {
+    float: right;
+    margin-right: 0;
+  }
+
+  /* line 48, ../sass/grid/_semantics.scss */
+  .xlarge-col {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 68px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .xlarge-col.xlarge-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .xlarge-static .xlarge-col, .xlarge-col.xlarge-static {
+    max-width: 68px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .xlarge-fluid .xlarge-col, .xlarge-col.xlarge-fluid {
+    max-width: 5.12048%;
+    margin-right: 1.20482%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .xlarge-col.xlarge-collapse {
+    margin: 0;
+  }
+  /* line 51, ../sass/grid/_semantics.scss */
+  .xlarge-col:last-child, .xlarge-col[class*="span"]:last-child {
+    float: right;
+    margin-right: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .xlarge-span1 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 68px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .xlarge-span1.xlarge-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .xlarge-static .xlarge-span1, .xlarge-span1.xlarge-static {
+    max-width: 68px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .xlarge-fluid .xlarge-span1, .xlarge-span1.xlarge-fluid {
+    max-width: 5.12048%;
+    margin-right: 1.20482%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .xlarge-span1.xlarge-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .xlarge-span2 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 152px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .xlarge-span2.xlarge-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .xlarge-static .xlarge-span2, .xlarge-span2.xlarge-static {
+    max-width: 152px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .xlarge-fluid .xlarge-span2, .xlarge-span2.xlarge-fluid {
+    max-width: 11.44578%;
+    margin-right: 1.20482%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .xlarge-span2.xlarge-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .xlarge-span3 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 236px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .xlarge-span3.xlarge-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .xlarge-static .xlarge-span3, .xlarge-span3.xlarge-static {
+    max-width: 236px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .xlarge-fluid .xlarge-span3, .xlarge-span3.xlarge-fluid {
+    max-width: 17.77108%;
+    margin-right: 1.20482%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .xlarge-span3.xlarge-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .xlarge-span4 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 320px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .xlarge-span4.xlarge-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .xlarge-static .xlarge-span4, .xlarge-span4.xlarge-static {
+    max-width: 320px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .xlarge-fluid .xlarge-span4, .xlarge-span4.xlarge-fluid {
+    max-width: 24.09639%;
+    margin-right: 1.20482%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .xlarge-span4.xlarge-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .xlarge-span5 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 404px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .xlarge-span5.xlarge-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .xlarge-static .xlarge-span5, .xlarge-span5.xlarge-static {
+    max-width: 404px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .xlarge-fluid .xlarge-span5, .xlarge-span5.xlarge-fluid {
+    max-width: 30.42169%;
+    margin-right: 1.20482%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .xlarge-span5.xlarge-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .xlarge-span6 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 488px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .xlarge-span6.xlarge-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .xlarge-static .xlarge-span6, .xlarge-span6.xlarge-static {
+    max-width: 488px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .xlarge-fluid .xlarge-span6, .xlarge-span6.xlarge-fluid {
+    max-width: 36.74699%;
+    margin-right: 1.20482%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .xlarge-span6.xlarge-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .xlarge-span7 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 572px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .xlarge-span7.xlarge-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .xlarge-static .xlarge-span7, .xlarge-span7.xlarge-static {
+    max-width: 572px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .xlarge-fluid .xlarge-span7, .xlarge-span7.xlarge-fluid {
+    max-width: 43.07229%;
+    margin-right: 1.20482%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .xlarge-span7.xlarge-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .xlarge-span8 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 656px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .xlarge-span8.xlarge-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .xlarge-static .xlarge-span8, .xlarge-span8.xlarge-static {
+    max-width: 656px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .xlarge-fluid .xlarge-span8, .xlarge-span8.xlarge-fluid {
+    max-width: 49.39759%;
+    margin-right: 1.20482%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .xlarge-span8.xlarge-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .xlarge-span9 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 740px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .xlarge-span9.xlarge-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .xlarge-static .xlarge-span9, .xlarge-span9.xlarge-static {
+    max-width: 740px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .xlarge-fluid .xlarge-span9, .xlarge-span9.xlarge-fluid {
+    max-width: 55.72289%;
+    margin-right: 1.20482%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .xlarge-span9.xlarge-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .xlarge-span10 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 824px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .xlarge-span10.xlarge-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .xlarge-static .xlarge-span10, .xlarge-span10.xlarge-static {
+    max-width: 824px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .xlarge-fluid .xlarge-span10, .xlarge-span10.xlarge-fluid {
+    max-width: 62.04819%;
+    margin-right: 1.20482%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .xlarge-span10.xlarge-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .xlarge-span11 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 908px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .xlarge-span11.xlarge-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .xlarge-static .xlarge-span11, .xlarge-span11.xlarge-static {
+    max-width: 908px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .xlarge-fluid .xlarge-span11, .xlarge-span11.xlarge-fluid {
+    max-width: 68.37349%;
+    margin-right: 1.20482%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .xlarge-span11.xlarge-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .xlarge-span12 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 992px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .xlarge-span12.xlarge-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .xlarge-static .xlarge-span12, .xlarge-span12.xlarge-static {
+    max-width: 992px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .xlarge-fluid .xlarge-span12, .xlarge-span12.xlarge-fluid {
+    max-width: 74.6988%;
+    margin-right: 1.20482%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .xlarge-span12.xlarge-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .xlarge-span13 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 1076px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .xlarge-span13.xlarge-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .xlarge-static .xlarge-span13, .xlarge-span13.xlarge-static {
+    max-width: 1076px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .xlarge-fluid .xlarge-span13, .xlarge-span13.xlarge-fluid {
+    max-width: 81.0241%;
+    margin-right: 1.20482%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .xlarge-span13.xlarge-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .xlarge-span14 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 1160px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .xlarge-span14.xlarge-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .xlarge-static .xlarge-span14, .xlarge-span14.xlarge-static {
+    max-width: 1160px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .xlarge-fluid .xlarge-span14, .xlarge-span14.xlarge-fluid {
+    max-width: 87.3494%;
+    margin-right: 1.20482%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .xlarge-span14.xlarge-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .xlarge-span15 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 1244px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .xlarge-span15.xlarge-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .xlarge-static .xlarge-span15, .xlarge-span15.xlarge-static {
+    max-width: 1244px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .xlarge-fluid .xlarge-span15, .xlarge-span15.xlarge-fluid {
+    max-width: 93.6747%;
+    margin-right: 1.20482%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .xlarge-span15.xlarge-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .xlarge-span16 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 1328px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .xlarge-span16.xlarge-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .xlarge-static .xlarge-span16, .xlarge-span16.xlarge-static {
+    max-width: 1328px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .xlarge-fluid .xlarge-span16, .xlarge-span16.xlarge-fluid {
+    max-width: 100%;
+    margin-right: 1.20482%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .xlarge-span16.xlarge-collapse {
+    margin: 0;
+  }
+
+  /* line 66, ../sass/grid-semantics.scss */
+  #container {
+    overflow: hidden;
+    *zoom: 1;
+    width: 100%;
+    clear: both;
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 1328px;
+    max-width: none;
+  }
+
+  /* line 76, ../sass/grid-semantics.scss */
+  .xlarge-hidden {
+    display: none;
+  }
+}
+@media all and (min-width: 1009px) and (max-width: 1008px) {
+  /* ==== ("xlarge-only" 12 16) ======================== 
+  		 Display from 12 columns to 16 columns
+     ======================================== */
+  /* line 50, ../sass/grid-semantics.scss */
+  body {
+    max-width: 1008px;
+    min-width: 1008px;
+  }
+
+  /* line 13, ../sass/grid/_semantics.scss */
+  .xlarge-only-container {
+    overflow: hidden;
+    *zoom: 1;
+    width: 100%;
+    clear: both;
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1008px;
+  }
+
+  /* line 21, ../sass/grid/_semantics.scss */
+  .xlarge-only-row {
+    clear: both;
+    float: left;
+    width: 100%;
+    margin: 0;
+  }
+  /* line 26, ../sass/grid/_semantics.scss */
+  .xlarge-only-row > .col:last-child, .xlarge-only-row > .col[class*="span"]:last-child {
+    float: right;
+    margin-right: 0;
+  }
+
+  /* line 39, ../sass/grid/_semantics.scss */
+  .xlarge-only-omega, .fluid .xlarge-only-omega, .static .xlarge-only-omega {
+    float: right;
+    margin-right: 0;
+  }
+
+  /* line 48, ../sass/grid/_semantics.scss */
+  .xlarge-only-col {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 68px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .xlarge-only-col.xlarge-only-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .xlarge-only-static .xlarge-only-col, .xlarge-only-col.xlarge-only-static {
+    max-width: 68px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .xlarge-only-fluid .xlarge-only-col, .xlarge-only-col.xlarge-only-fluid {
+    max-width: 6.85484%;
+    margin-right: 1.6129%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .xlarge-only-col.xlarge-only-collapse {
+    margin: 0;
+  }
+  /* line 51, ../sass/grid/_semantics.scss */
+  .xlarge-only-col:last-child, .xlarge-only-col[class*="span"]:last-child {
+    float: right;
+    margin-right: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .xlarge-only-span1 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 68px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .xlarge-only-span1.xlarge-only-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .xlarge-only-static .xlarge-only-span1, .xlarge-only-span1.xlarge-only-static {
+    max-width: 68px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .xlarge-only-fluid .xlarge-only-span1, .xlarge-only-span1.xlarge-only-fluid {
+    max-width: 6.85484%;
+    margin-right: 1.6129%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .xlarge-only-span1.xlarge-only-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .xlarge-only-span2 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 152px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .xlarge-only-span2.xlarge-only-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .xlarge-only-static .xlarge-only-span2, .xlarge-only-span2.xlarge-only-static {
+    max-width: 152px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .xlarge-only-fluid .xlarge-only-span2, .xlarge-only-span2.xlarge-only-fluid {
+    max-width: 15.32258%;
+    margin-right: 1.6129%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .xlarge-only-span2.xlarge-only-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .xlarge-only-span3 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 236px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .xlarge-only-span3.xlarge-only-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .xlarge-only-static .xlarge-only-span3, .xlarge-only-span3.xlarge-only-static {
+    max-width: 236px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .xlarge-only-fluid .xlarge-only-span3, .xlarge-only-span3.xlarge-only-fluid {
+    max-width: 23.79032%;
+    margin-right: 1.6129%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .xlarge-only-span3.xlarge-only-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .xlarge-only-span4 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 320px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .xlarge-only-span4.xlarge-only-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .xlarge-only-static .xlarge-only-span4, .xlarge-only-span4.xlarge-only-static {
+    max-width: 320px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .xlarge-only-fluid .xlarge-only-span4, .xlarge-only-span4.xlarge-only-fluid {
+    max-width: 32.25806%;
+    margin-right: 1.6129%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .xlarge-only-span4.xlarge-only-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .xlarge-only-span5 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 404px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .xlarge-only-span5.xlarge-only-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .xlarge-only-static .xlarge-only-span5, .xlarge-only-span5.xlarge-only-static {
+    max-width: 404px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .xlarge-only-fluid .xlarge-only-span5, .xlarge-only-span5.xlarge-only-fluid {
+    max-width: 40.72581%;
+    margin-right: 1.6129%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .xlarge-only-span5.xlarge-only-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .xlarge-only-span6 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 488px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .xlarge-only-span6.xlarge-only-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .xlarge-only-static .xlarge-only-span6, .xlarge-only-span6.xlarge-only-static {
+    max-width: 488px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .xlarge-only-fluid .xlarge-only-span6, .xlarge-only-span6.xlarge-only-fluid {
+    max-width: 49.19355%;
+    margin-right: 1.6129%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .xlarge-only-span6.xlarge-only-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .xlarge-only-span7 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 572px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .xlarge-only-span7.xlarge-only-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .xlarge-only-static .xlarge-only-span7, .xlarge-only-span7.xlarge-only-static {
+    max-width: 572px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .xlarge-only-fluid .xlarge-only-span7, .xlarge-only-span7.xlarge-only-fluid {
+    max-width: 57.66129%;
+    margin-right: 1.6129%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .xlarge-only-span7.xlarge-only-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .xlarge-only-span8 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 656px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .xlarge-only-span8.xlarge-only-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .xlarge-only-static .xlarge-only-span8, .xlarge-only-span8.xlarge-only-static {
+    max-width: 656px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .xlarge-only-fluid .xlarge-only-span8, .xlarge-only-span8.xlarge-only-fluid {
+    max-width: 66.12903%;
+    margin-right: 1.6129%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .xlarge-only-span8.xlarge-only-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .xlarge-only-span9 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 740px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .xlarge-only-span9.xlarge-only-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .xlarge-only-static .xlarge-only-span9, .xlarge-only-span9.xlarge-only-static {
+    max-width: 740px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .xlarge-only-fluid .xlarge-only-span9, .xlarge-only-span9.xlarge-only-fluid {
+    max-width: 74.59677%;
+    margin-right: 1.6129%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .xlarge-only-span9.xlarge-only-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .xlarge-only-span10 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 824px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .xlarge-only-span10.xlarge-only-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .xlarge-only-static .xlarge-only-span10, .xlarge-only-span10.xlarge-only-static {
+    max-width: 824px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .xlarge-only-fluid .xlarge-only-span10, .xlarge-only-span10.xlarge-only-fluid {
+    max-width: 83.06452%;
+    margin-right: 1.6129%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .xlarge-only-span10.xlarge-only-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .xlarge-only-span11 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 908px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .xlarge-only-span11.xlarge-only-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .xlarge-only-static .xlarge-only-span11, .xlarge-only-span11.xlarge-only-static {
+    max-width: 908px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .xlarge-only-fluid .xlarge-only-span11, .xlarge-only-span11.xlarge-only-fluid {
+    max-width: 91.53226%;
+    margin-right: 1.6129%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .xlarge-only-span11.xlarge-only-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .xlarge-only-span12 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 992px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .xlarge-only-span12.xlarge-only-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .xlarge-only-static .xlarge-only-span12, .xlarge-only-span12.xlarge-only-static {
+    max-width: 992px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .xlarge-only-fluid .xlarge-only-span12, .xlarge-only-span12.xlarge-only-fluid {
+    max-width: 100%;
+    margin-right: 1.6129%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .xlarge-only-span12.xlarge-only-collapse {
+    margin: 0;
+  }
+
+  /* line 66, ../sass/grid-semantics.scss */
+  #container {
+    overflow: hidden;
+    *zoom: 1;
+    width: 100%;
+    clear: both;
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 992px;
+    max-width: 1328px;
+    width: 100%;
+  }
+
+  /* line 76, ../sass/grid-semantics.scss */
+  .xlarge-only-hidden {
+    display: none;
+  }
+}
+@media all and (max-width: 1344px) {
+  /* ==== ("xlarge-down" 0 16) ======================== 
+  		 Display to 16 columns
+     ======================================== */
+  /* line 50, ../sass/grid-semantics.scss */
+  body {
+    max-width: 1344px;
+  }
+
+  /* line 13, ../sass/grid/_semantics.scss */
+  .xlarge-down-container {
+    overflow: hidden;
+    *zoom: 1;
+    width: 100%;
+    clear: both;
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1344px;
+  }
+
+  /* line 21, ../sass/grid/_semantics.scss */
+  .xlarge-down-row {
+    clear: both;
+    float: left;
+    width: 100%;
+    margin: 0;
+  }
+  /* line 26, ../sass/grid/_semantics.scss */
+  .xlarge-down-row > .col:last-child, .xlarge-down-row > .col[class*="span"]:last-child {
+    float: right;
+    margin-right: 0;
+  }
+
+  /* line 39, ../sass/grid/_semantics.scss */
+  .xlarge-down-omega, .fluid .xlarge-down-omega, .static .xlarge-down-omega {
+    float: right;
+    margin-right: 0;
+  }
+
+  /* line 48, ../sass/grid/_semantics.scss */
+  .xlarge-down-col {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 68px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .xlarge-down-col.xlarge-down-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .xlarge-down-static .xlarge-down-col, .xlarge-down-col.xlarge-down-static {
+    max-width: 68px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .xlarge-down-fluid .xlarge-down-col, .xlarge-down-col.xlarge-down-fluid {
+    max-width: 5.12048%;
+    margin-right: 1.20482%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .xlarge-down-col.xlarge-down-collapse {
+    margin: 0;
+  }
+  /* line 51, ../sass/grid/_semantics.scss */
+  .xlarge-down-col:last-child, .xlarge-down-col[class*="span"]:last-child {
+    float: right;
+    margin-right: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .xlarge-down-span1 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 68px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .xlarge-down-span1.xlarge-down-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .xlarge-down-static .xlarge-down-span1, .xlarge-down-span1.xlarge-down-static {
+    max-width: 68px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .xlarge-down-fluid .xlarge-down-span1, .xlarge-down-span1.xlarge-down-fluid {
+    max-width: 5.12048%;
+    margin-right: 1.20482%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .xlarge-down-span1.xlarge-down-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .xlarge-down-span2 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 152px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .xlarge-down-span2.xlarge-down-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .xlarge-down-static .xlarge-down-span2, .xlarge-down-span2.xlarge-down-static {
+    max-width: 152px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .xlarge-down-fluid .xlarge-down-span2, .xlarge-down-span2.xlarge-down-fluid {
+    max-width: 11.44578%;
+    margin-right: 1.20482%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .xlarge-down-span2.xlarge-down-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .xlarge-down-span3 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 236px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .xlarge-down-span3.xlarge-down-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .xlarge-down-static .xlarge-down-span3, .xlarge-down-span3.xlarge-down-static {
+    max-width: 236px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .xlarge-down-fluid .xlarge-down-span3, .xlarge-down-span3.xlarge-down-fluid {
+    max-width: 17.77108%;
+    margin-right: 1.20482%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .xlarge-down-span3.xlarge-down-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .xlarge-down-span4 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 320px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .xlarge-down-span4.xlarge-down-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .xlarge-down-static .xlarge-down-span4, .xlarge-down-span4.xlarge-down-static {
+    max-width: 320px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .xlarge-down-fluid .xlarge-down-span4, .xlarge-down-span4.xlarge-down-fluid {
+    max-width: 24.09639%;
+    margin-right: 1.20482%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .xlarge-down-span4.xlarge-down-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .xlarge-down-span5 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 404px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .xlarge-down-span5.xlarge-down-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .xlarge-down-static .xlarge-down-span5, .xlarge-down-span5.xlarge-down-static {
+    max-width: 404px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .xlarge-down-fluid .xlarge-down-span5, .xlarge-down-span5.xlarge-down-fluid {
+    max-width: 30.42169%;
+    margin-right: 1.20482%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .xlarge-down-span5.xlarge-down-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .xlarge-down-span6 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 488px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .xlarge-down-span6.xlarge-down-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .xlarge-down-static .xlarge-down-span6, .xlarge-down-span6.xlarge-down-static {
+    max-width: 488px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .xlarge-down-fluid .xlarge-down-span6, .xlarge-down-span6.xlarge-down-fluid {
+    max-width: 36.74699%;
+    margin-right: 1.20482%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .xlarge-down-span6.xlarge-down-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .xlarge-down-span7 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 572px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .xlarge-down-span7.xlarge-down-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .xlarge-down-static .xlarge-down-span7, .xlarge-down-span7.xlarge-down-static {
+    max-width: 572px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .xlarge-down-fluid .xlarge-down-span7, .xlarge-down-span7.xlarge-down-fluid {
+    max-width: 43.07229%;
+    margin-right: 1.20482%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .xlarge-down-span7.xlarge-down-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .xlarge-down-span8 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 656px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .xlarge-down-span8.xlarge-down-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .xlarge-down-static .xlarge-down-span8, .xlarge-down-span8.xlarge-down-static {
+    max-width: 656px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .xlarge-down-fluid .xlarge-down-span8, .xlarge-down-span8.xlarge-down-fluid {
+    max-width: 49.39759%;
+    margin-right: 1.20482%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .xlarge-down-span8.xlarge-down-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .xlarge-down-span9 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 740px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .xlarge-down-span9.xlarge-down-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .xlarge-down-static .xlarge-down-span9, .xlarge-down-span9.xlarge-down-static {
+    max-width: 740px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .xlarge-down-fluid .xlarge-down-span9, .xlarge-down-span9.xlarge-down-fluid {
+    max-width: 55.72289%;
+    margin-right: 1.20482%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .xlarge-down-span9.xlarge-down-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .xlarge-down-span10 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 824px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .xlarge-down-span10.xlarge-down-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .xlarge-down-static .xlarge-down-span10, .xlarge-down-span10.xlarge-down-static {
+    max-width: 824px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .xlarge-down-fluid .xlarge-down-span10, .xlarge-down-span10.xlarge-down-fluid {
+    max-width: 62.04819%;
+    margin-right: 1.20482%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .xlarge-down-span10.xlarge-down-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .xlarge-down-span11 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 908px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .xlarge-down-span11.xlarge-down-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .xlarge-down-static .xlarge-down-span11, .xlarge-down-span11.xlarge-down-static {
+    max-width: 908px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .xlarge-down-fluid .xlarge-down-span11, .xlarge-down-span11.xlarge-down-fluid {
+    max-width: 68.37349%;
+    margin-right: 1.20482%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .xlarge-down-span11.xlarge-down-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .xlarge-down-span12 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 992px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .xlarge-down-span12.xlarge-down-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .xlarge-down-static .xlarge-down-span12, .xlarge-down-span12.xlarge-down-static {
+    max-width: 992px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .xlarge-down-fluid .xlarge-down-span12, .xlarge-down-span12.xlarge-down-fluid {
+    max-width: 74.6988%;
+    margin-right: 1.20482%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .xlarge-down-span12.xlarge-down-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .xlarge-down-span13 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 1076px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .xlarge-down-span13.xlarge-down-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .xlarge-down-static .xlarge-down-span13, .xlarge-down-span13.xlarge-down-static {
+    max-width: 1076px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .xlarge-down-fluid .xlarge-down-span13, .xlarge-down-span13.xlarge-down-fluid {
+    max-width: 81.0241%;
+    margin-right: 1.20482%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .xlarge-down-span13.xlarge-down-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .xlarge-down-span14 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 1160px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .xlarge-down-span14.xlarge-down-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .xlarge-down-static .xlarge-down-span14, .xlarge-down-span14.xlarge-down-static {
+    max-width: 1160px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .xlarge-down-fluid .xlarge-down-span14, .xlarge-down-span14.xlarge-down-fluid {
+    max-width: 87.3494%;
+    margin-right: 1.20482%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .xlarge-down-span14.xlarge-down-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .xlarge-down-span15 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 1244px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .xlarge-down-span15.xlarge-down-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .xlarge-down-static .xlarge-down-span15, .xlarge-down-span15.xlarge-down-static {
+    max-width: 1244px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .xlarge-down-fluid .xlarge-down-span15, .xlarge-down-span15.xlarge-down-fluid {
+    max-width: 93.6747%;
+    margin-right: 1.20482%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .xlarge-down-span15.xlarge-down-collapse {
+    margin: 0;
+  }
+
+  /* line 60, ../sass/grid/_semantics.scss */
+  .xlarge-down-span16 {
+    float: left;
+    width: 100%;
+    margin-right: 16px;
+    margin-bottom: 16px;
+    max-width: 1328px;
+  }
+  /* line 84, ../sass/grid/_semantics.scss */
+  .xlarge-down-span16.xlarge-down-omega {
+    float: right;
+    margin-right: 0;
+  }
+  /* line 93, ../sass/grid/_semantics.scss */
+  .xlarge-down-static .xlarge-down-span16, .xlarge-down-span16.xlarge-down-static {
+    max-width: 1328px;
+    margin-right: 16px;
+  }
+  /* line 108, ../sass/grid/_semantics.scss */
+  .xlarge-down-fluid .xlarge-down-span16, .xlarge-down-span16.xlarge-down-fluid {
+    max-width: 100%;
+    margin-right: 1.20482%;
+  }
+  /* line 122, ../sass/grid/_semantics.scss */
+  .xlarge-down-span16.xlarge-down-collapse {
+    margin: 0;
+  }
+
+  /* line 66, ../sass/grid-semantics.scss */
+  #container {
+    overflow: hidden;
+    *zoom: 1;
+    width: 100%;
+    clear: both;
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+    min-width: -16px;
+    max-width: 1328px;
+    width: 100%;
+  }
+
+  /* line 76, ../sass/grid-semantics.scss */
+  .xlarge-down-hidden {
+    display: none;
+  }
+}
+/* line 8, ../sass/grid-examples.scss */
+body {
+  padding: 0px 16px;
+  /* px fallback for rem */
+  padding: 0rem 1rem;
+  font: 0.8125em sans-serif;
+}
+
+/* line 13, ../sass/grid-examples.scss */
+#container {
+  overflow: hidden;
+  *zoom: 1;
+  width: 100%;
+  clear: both;
+  float: none;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 336px;
+  text-align: left;
+}
+
+/* line 18, ../sass/grid-examples.scss */
+.row {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin: 0;
+}
+
+/* line 22, ../sass/grid-examples.scss */
+.col {
+  border: 1px dotted #eee;
+  padding: 0.75rem;
+}
+/* line 26, ../sass/grid-examples.scss */
+.col:nth-of-type(2n) {
+  background: #eee;
+}
+
+@media all and (max-width: 672px) {
+  /* ==== ("small" 0 8) ======================== 
+  		 Display to 8 columns
+     ======================================== */
+  /* line 32, ../sass/grid-examples.scss */
+  body {
+    breakpoint: '"small" 0 8';
+    grid-width: 672px;
+    gutter-width: 16px;
+    column-width: 68px;
+    columns: 8;
+    grid-width: 656px;
+  }
+}
+@media all and (max-width: 672px) {
+  /* ==== ("small-only" 0 8) ======================== 
+  		 Display to 8 columns
+     ======================================== */
+  /* line 32, ../sass/grid-examples.scss */
+  body {
+    breakpoint: '"small-only" 0 8';
+    grid-width: 672px;
+    gutter-width: 16px;
+    column-width: 68px;
+    columns: 8;
+    grid-width: 656px;
+  }
+}
+@media all and (max-width: 672px) {
+  /* ==== ("small-down" 0 8) ======================== 
+  		 Display to 8 columns
+     ======================================== */
+  /* line 32, ../sass/grid-examples.scss */
+  body {
+    breakpoint: '"small-down" 0 8';
+    grid-width: 672px;
+    gutter-width: 16px;
+    column-width: 68px;
+    columns: 8;
+    grid-width: 656px;
+  }
+}
+@media all and (min-width: 673px) {
+  /* ==== ("medium" 8) ======================== 
+  		 Display from 8 columns
+     ======================================== */
+  /* line 32, ../sass/grid-examples.scss */
+  body {
+    breakpoint: '"medium" 8';
+    grid-width: 672px;
+    gutter-width: 16px;
+    column-width: 68px;
+    columns: 8;
+    grid-width: 656px;
+  }
+  /* line 41, ../sass/grid-examples.scss */
+  body:before {
+    content: "8 columns (min 672px)";
+  }
+}
+@media all and (min-width: 673px) and (max-width: 672px) {
+  /* ==== ("medium-only" 8 12) ======================== 
+  		 Display from 8 columns to 12 columns
+     ======================================== */
+  /* line 32, ../sass/grid-examples.scss */
+  body {
+    breakpoint: '"medium-only" 8 12';
+    grid-width: 672px;
+    gutter-width: 16px;
+    column-width: 68px;
+    columns: 8;
+    grid-width: 656px;
+  }
+  /* line 41, ../sass/grid-examples.scss */
+  body:before {
+    content: "8 columns (min 672px)";
+  }
+}
+@media all and (max-width: 1008px) {
+  /* ==== ("medium-down" 0 12) ======================== 
+  		 Display to 12 columns
+     ======================================== */
+  /* line 32, ../sass/grid-examples.scss */
+  body {
+    breakpoint: '"medium-down" 0 12';
+    grid-width: 1008px;
+    gutter-width: 16px;
+    column-width: 68px;
+    columns: 12;
+    grid-width: 992px;
+  }
+}
+@media all and (min-width: 1009px) {
+  /* ==== ("large" 12) ======================== 
+  		 Display from 12 columns
+     ======================================== */
+  /* line 32, ../sass/grid-examples.scss */
+  body {
+    breakpoint: '"large" 12';
+    grid-width: 1008px;
+    gutter-width: 16px;
+    column-width: 68px;
+    columns: 12;
+    grid-width: 992px;
+  }
+  /* line 41, ../sass/grid-examples.scss */
+  body:before {
+    content: "12 columns (min 1008px)";
+  }
+}
+@media all and (min-width: 1009px) and (max-width: 1008px) {
+  /* ==== ("large-only" 12 16) ======================== 
+  		 Display from 12 columns to 16 columns
+     ======================================== */
+  /* line 32, ../sass/grid-examples.scss */
+  body {
+    breakpoint: '"large-only" 12 16';
+    grid-width: 1008px;
+    gutter-width: 16px;
+    column-width: 68px;
+    columns: 12;
+    grid-width: 992px;
+  }
+  /* line 41, ../sass/grid-examples.scss */
+  body:before {
+    content: "12 columns (min 1008px)";
+  }
+}
+@media all and (max-width: 1008px) {
+  /* ==== ("large-down" 0 12) ======================== 
+  		 Display to 12 columns
+     ======================================== */
+  /* line 32, ../sass/grid-examples.scss */
+  body {
+    breakpoint: '"large-down" 0 12';
+    grid-width: 1008px;
+    gutter-width: 16px;
+    column-width: 68px;
+    columns: 12;
+    grid-width: 992px;
+  }
+}
+@media all and (min-width: 1345px) {
+  /* ==== ("xlarge" 16) ======================== 
+  		 Display from 16 columns
+     ======================================== */
+  /* line 32, ../sass/grid-examples.scss */
+  body {
+    breakpoint: '"xlarge" 16';
+    grid-width: 1344px;
+    gutter-width: 16px;
+    column-width: 68px;
+    columns: 16;
+    grid-width: 1328px;
+  }
+  /* line 41, ../sass/grid-examples.scss */
+  body:before {
+    content: "16 columns (min 1344px)";
+  }
+}
+@media all and (min-width: 1009px) and (max-width: 1008px) {
+  /* ==== ("xlarge-only" 12 16) ======================== 
+  		 Display from 12 columns to 16 columns
+     ======================================== */
+  /* line 32, ../sass/grid-examples.scss */
+  body {
+    breakpoint: '"xlarge-only" 12 16';
+    grid-width: 1008px;
+    gutter-width: 16px;
+    column-width: 68px;
+    columns: 12;
+    grid-width: 992px;
+  }
+  /* line 41, ../sass/grid-examples.scss */
+  body:before {
+    content: "12 columns (min 1008px)";
+  }
+}
+@media all and (max-width: 1344px) {
+  /* ==== ("xlarge-down" 0 16) ======================== 
+  		 Display to 16 columns
+     ======================================== */
+  /* line 32, ../sass/grid-examples.scss */
+  body {
+    breakpoint: '"xlarge-down" 0 16';
+    grid-width: 1344px;
+    gutter-width: 16px;
+    column-width: 68px;
+    columns: 16;
+    grid-width: 1328px;
+  }
+}
+@media all and (max-width: 672px) {
+  /* ==== ("small" 0 8) ======================== 
+  		 Display to 8 columns
+     ======================================== */
+  /* line 51, ../sass/grid-examples.scss */
+  body {
+    color: blue;
+  }
+
+  /* line 52, ../sass/grid-examples.scss */
+  #container {
+    overflow: hidden;
+    *zoom: 1;
+    width: 100%;
+    clear: both;
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 672px;
+  }
+}
+@media all and (min-width: 673px) {
+  /* ==== ("medium" 8) ======================== 
+  		 Display from 8 columns
+     ======================================== */
+  /* line 56, ../sass/grid-examples.scss */
+  body {
+    color: green;
+  }
+
+  /* line 57, ../sass/grid-examples.scss */
+  #container {
+    overflow: hidden;
+    *zoom: 1;
+    width: 100%;
+    clear: both;
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 672px;
+  }
+}
+@media all and (min-width: 1009px) {
+  /* ==== ("large" 12) ======================== 
+  		 Display from 12 columns
+     ======================================== */
+  /* line 61, ../sass/grid-examples.scss */
+  body {
+    color: purple;
+  }
+
+  /* line 62, ../sass/grid-examples.scss */
+  #container {
+    overflow: hidden;
+    *zoom: 1;
+    width: 100%;
+    clear: both;
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1008px;
+  }
+}
+@media all and (min-width: 1345px) {
+  /* ==== ("xlarge" 16) ======================== 
+  		 Display from 16 columns
+     ======================================== */
+  /* line 66, ../sass/grid-examples.scss */
+  body {
+    color: black;
+  }
+
+  /* line 67, ../sass/grid-examples.scss */
+  #container {
+    overflow: hidden;
+    *zoom: 1;
+    width: 100%;
+    clear: both;
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1344px;
+  }
+}

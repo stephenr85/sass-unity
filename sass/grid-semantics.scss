@@ -1,0 +1,81 @@
+
+@import "grid";
+
+$baseline: 16px;
+$em-baseline: 13px;
+
+$small-columns:4;
+$medium-columns:8;
+$large-columns:12;
+$xlarge-columns:16;
+
+$grid-padding: 1rem;
+$grid-columns: $small-columns; //Mobile first
+
+@include grid-semantics($grid-columns); 
+
+
+* {
+	@include box-sizing(border-box);
+}
+
+html {text-align:center; font-size: $baseline;}
+
+//Add a bunch of breakpoints
+$grid-breakpoints: grid-breakpoints(
+	("small" 0 $medium-columns),
+	("small-only" 0 $medium-columns), //The same as "small" breakpoint, but provided for consistency.
+	("small-down" 0 $medium-columns),
+	
+	("medium" $medium-columns), 
+	("medium-only" $medium-columns $large-columns),
+	("medium-down" 0 $large-columns),
+	
+	("large" $large-columns), 
+	("large-only" $large-columns $xlarge-columns),
+	("large-down" 0 $large-columns),
+	
+	("xlarge" $xlarge-columns),
+	("xlarge-only" $large-columns $xlarge-columns),
+	("xlarge-down" 0 $xlarge-columns)
+);
+
+//Create the semantics for each breakpoint
+@each $breakpoint in $grid-breakpoints {
+
+	@include grid-breakpoint($breakpoint){
+		$-handle: grid-breakpoint-handle($breakpoint);
+		$-limit-columns: grid-breakpoint-limit($breakpoint);
+		
+		body {
+			
+			@if($-limit-columns != null){
+				max-width: grid-width($-limit-columns); //Set max-width to the next breakpoint
+			}
+			@if($-limit-columns != $grid-columns){
+				min-width: grid-width();
+			}
+		}
+		
+		// Include semantics classes for testing
+		//---------------------------------------------------------------------------------
+		@include grid-semantics($prefix: $-handle);
+		
+		// Setup our main containers.
+		//---------------------------------------------------------------------------------
+		#container {
+			@if($-limit-columns != $grid-columns){
+				@include flux-container($grid-columns, $-limit-columns);
+			}@else{
+				@include flux-container(0, $grid-columns);
+			}
+		}
+		
+		// Add some helper classes for this breakpoint
+		//---------------------------------------------------------------------------------
+		#{"."+ $-handle +"-hidden"} {
+			display:none;
+		}
+	}
+		
+}

@@ -1,0 +1,160 @@
+
+
+$grid-breakpoints:null !default;
+
+// @function grid-breakpoints
+@function grid-breakpoints($breakpoints...){
+	$grid-breakpoints: compact(join($breakpoints, $grid-breakpoints));
+	@return $grid-breakpoints;
+}
+
+// @function grid-breakpoint-handle
+// @param {String} The breakpoint handle. A list is assumed to be an actualy breakpoint.
+@function grid-breakpoint($handle){
+	//Just in case a breakpoint was directly passed...
+	@if(type-of($handle) == "list"){
+		@return $handle;
+	}
+	//Find it by alias
+	@each $breakpoint in grid-breakpoints() {
+		@if($handle == nth($breakpoint, 1)){
+			@return $breakpoint;
+		}
+	}
+	@return null;
+}
+
+// @function grid-breakpoint-handle
+// @param {List|String} The breakpoint or breakpoint handle.
+@function grid-breakpoint-handle($breakpoint){
+	$breakpoint: grid-breakpoint($breakpoint);
+	$handle: nth($breakpoint, 1);
+	@if(type-of($handle) == "string"){
+		@return $handle;
+	}
+	@return null;
+}
+
+// Returns the columns for a breakpoint.
+// @function grid-breakpoint-columns
+// @param {List|String} The breakpoint or breakpoint handle.
+@function grid-breakpoint-columns($breakpoint){
+	$breakpoint: grid-breakpoint($breakpoint);
+	@if(type-of($breakpoint) == "list"){
+		@for $i from 1 through 3 {
+			$nth: nth($breakpoint, $i);
+			@if(type-of($nth) == "number" and $nth > 0){
+				@return $nth;
+			}
+		}
+	}
+	@return null;
+}
+
+// Returns the columns that a breakpoint is limited to.
+// @function grid-breakpoint-limit
+// @param {List|String} The breakpoint or breakpoint handle.
+@function grid-breakpoint-limit($breakpoint){
+	$breakpoint: grid-breakpoint($breakpoint);
+	$offset: 0;
+	@if(type-of(nth($breakpoint, 1)) == "string"){
+		//Skip handle index, if present
+		$offset: $offset + 1;
+	}
+	@if(length($breakpoint) >= ($offset + 2) and type-of(nth($breakpoint, ($offset + 2))) == "number"){
+		//Limit specified
+		@return nth($breakpoint, $offset + 2);
+	}
+	@return null;
+}
+
+
+
+// Returns the base selector scope for the breakpoint.
+// @function grid-breakpoint-scope
+// @param {List|String} The breakpoint or breakpoint handle.
+@function grid-breakpoint-scope($breakpoint){
+	$breakpoint: grid-breakpoint($breakpoint);
+	$last: nth($breakpoint, length($breakpoint));
+	@if(type-of($last) == "string"){
+		@return $last;
+	}
+	@return null;
+}
+
+
+
+// @mixin grid-breakpoint
+// @param $breakpoint {List}
+// @param $media-query {Selector}
+// @param $semantics {Boolean}
+@mixin grid-breakpoint($breakpoint, $media-query:"all", $semantics: false){
+	$-orig: $breakpoint;
+	$-breakpoint-handle: null;
+	@if(type-of($breakpoint) == "string"){
+		$-breakpoint-handle: $breakpoint;
+		$breakpoint: grid-breakpoint($-breakpoint-handle);
+	}@else {
+		$-breakpoint-handle: grid-breakpoint-handle($breakpoint);
+	}
+	
+	@if(type-of($breakpoint) != "list"){
+		@warn "The following breakpoint is not valid: " + $orig;
+	}@else{
+		
+		$-breakpoint-columns: grid-breakpoint-columns($breakpoint);
+		$-breakpoint-limit: grid-breakpoint-limit($breakpoint);
+		$-breakpoint-scope: grid-breakpoint-scope($breakpoint);
+		$-breakpoint-comment: "Display";
+		
+		@include grid($-breakpoint-columns){
+	
+			@if(type-of($-breakpoint-columns) == "number" and $-breakpoint-columns > 0 and $-breakpoint-columns != $-breakpoint-limit){
+				$-min-width: plus(grid-width(), 1px);
+				$media-query: $media-query + " and (min-width:"+ $-min-width +")";
+				$-breakpoint-comment: $-breakpoint-comment + " from " + $-breakpoint-columns + " columns";
+			}
+	
+			@if(type-of($-breakpoint-limit) == "number"){
+				$-max-width: grid-width($-breakpoint-limit);
+				$media-query: $media-query + " and (max-width:"+ $-max-width +")";
+				$-breakpoint-comment: $-breakpoint-comment + " to " + $-breakpoint-limit + " columns";
+			}
+	
+			@media #{$media-query} {
+				/* ==== (#{$breakpoint}) ======================== 
+						 #{$-breakpoint-comment}
+				   ======================================== */
+				//Add the semantics classes, if requested
+				@if($semantics == true){
+					@include grid-semantics();
+				}@else if(type-of($semantics) == "string"){
+					@include grid-semantics($prefix: $semantics);
+				}
+				
+				@content;
+				
+			}
+	
+	
+			@if($-breakpoint-scope != null){
+				@warn "Breakpoint scopes do not work until this is resolved: https://github.com/nex3/sass/issues/286";
+				#{$-breakpoint-scope} & {
+					//Add the semantics classes, if requested
+					@if($semantics == true){
+						@include grid-semantics();
+					}@else if(type-of($semantics) == "string"){
+						@include grid-semantics($prefix: $semantics);
+					}
+
+					@content;
+								
+				}
+		
+		
+			}
+		
+		}
+	}
+	
+}

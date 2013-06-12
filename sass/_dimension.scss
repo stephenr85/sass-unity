@@ -10,6 +10,7 @@ $px-per-inch: 96px !default;
 // Removes the unit from a number.
 // @function strip-unit
 // @param $num {Number}
+// =strip-unit(16px) = 16
 @function strip-unit($num){
 	@return $num / ($num * 0 + 1);
 }
@@ -18,6 +19,7 @@ $px-per-inch: 96px !default;
 // Find the first unit in a list of dimensions.
 // @function first-unit
 // @param $dims...
+// =first-unit(0 12% 10% 1px) = px
 @function first-unit($dims...){
 	$unit: null;
 	@each $dim in $dims {
@@ -42,71 +44,39 @@ $px-per-inch: 96px !default;
 }
 
 
-//Convert a rem/em to a px, or ensure an rem value.
-//If $dim is an rem or em value, it will be returned as-is, with an rem unit.
-//If $dim is a px value, it will be converted to an rem.
-//If $dim is a percentage, it is ignored and passed back.
-// @function rem
-// @param $dim {Number} An rem value.
-@function rem($dim){
-	@if(type-of($dim) == "arglist" or type-of($dim) == "list" and length($dim) > 1){
-		$rems: ();
-		@each $value in $dim {
-			$rems: append($rems, rem($value), space);
-		}
-		@return $rems;
-		
-	}@else if(unit($dim) == "rem" or unit($dim) == "em"){
-		//Ensure rem unit
-		@return strip-unit($dim) + 0rem;
-	}@else if(unit($dim) == "%"){
-		//Retain percentages
-		@return $dim;
-	}@else{				
-		//Convert px to rem
-		@return strip-unit($dim) / strip-unit($baseline) + 0rem;
-	}	
-}
 
-// Prefer rem units, or use percentages for relative values. Sometimes em values are still viable, obviously, but you have to know the context.
-// @function em
-// @param $dim {Number}
-// @param $baseline {Number} However many px = 1em, or the relative em of the current context. Defaults to global $baseline.
-@function em($dim, $baseline: $baseline){	
-	@if(type-of($dim) == "arglist" or type-of($dim) == "list" and length($dim) > 1){
-		$ems: ();
-		@each $value in $dim {
-			$ems: append($ems, em($value), space);
-		}
-		@return $ems;		
-	}@else{
-		$dim: px($dim);
-		$baseline: px($baseline);
-		@return strip-unit($dim / $baseline) + 0em;
-	}
-}
-
-
-
-
-// Convert rem/em to px, or ensure a px value.
+// Convert any number to a px, or ensure a px value.
+// Percentages are retained. Use percent() to calculate static values.
 // @function px
 // @param $dim
 // @return {Number} A px value.
+// =px(1rem) = 16px
+// =px(1 4rem 2em 10%) = 1px 64px 26px 10%
 @function px($dim){	
-	@if(type-of($dim) == "arglist" or type-of($dim) == "list" and length($dim) > 1){
+	@if(type-of($dim) == "arglist" or type-of($dim) == "list"){
 		$pxs: ();
 		@each $value in $dim {
 			$pxs: append($pxs, px($value));
 		}
-		@return $pxs;
-		
+		@if(length($pxs) == 1){
+			@return nth($pxs, 1);
+		}@else{
+			@return $pxs;
+		}		
+	}
+	$dim: $dim * 1;
+	@if(type-of($dim) != "number"){
+		@warn $dim + " cannot be converted to px.";
+		@return null;
 	}@else if(unit($dim) == "rem"){
 		//Convert rem to px
 		@return strip-unit($dim) * px($baseline);	
 	}@else if(unit($dim) == "em"){
 		//Convert em to px
 		@return strip-unit($dim) * px($em-baseline);
+	}@else if(unit($dim) == "pt"){
+		//Convert pt to px
+		@return strip-unit($dim) / px($px-per-inch);
 	}@else if(unit($dim) == "%"){
 		//Retain percentages
 		@return $dim;
@@ -116,31 +86,111 @@ $px-per-inch: 96px !default;
 	}	
 }
 
-// Convert arbitrary units to percentages. $dim and $context can be em, rem, or px values.
-// @function percent
-// @param $dim
-// @param $context {Number} The total width for the calculation of the percentages.
-// @return {Number} A % value.
-// =percent(1.5em, 240px)
-@function percent($dim, $context){
-	@if(type-of($dim) == "arglist" or type-of($dim) == "list" and length($dim) > 1){
-		$percents: ();
+
+// Convert a number to an rem, or ensure an rem value.
+// Percentages are retained. Use percent() to calculate static values.
+// @function rem
+// @param $dim {Number} An rem value.
+@function rem($dim){
+	@if(type-of($dim) == "arglist" or type-of($dim) == "list"){
+		$rems: ();
 		@each $value in $dim {
-			$percents: append($percents, percent($value), space);
+			$rems: append($rems, rem($value), space);
 		}
-		@return $percents;
-		
-	}@else if(unit($dim) == "rem" or unit($dim) == "em"){
-		@return strip-unit(rem($dim) / rem($context)) * 100%;	
-	}@else if(unit($dim) == "px"){
-		@return strip-unit($dim / px($context)) * 100%;	
+		@if(length($rems) == 1){
+			@return nth($rems, 1);
+		}@else{
+			@return $rems;
+		}
+	}
+	$dim: $dim * 1;
+	@if(type-of($dim) != "number"){
+		@warn $dim + " cannot be converted to rem.";
+		@return null;
+	}@else if(unit($dim) == "rem" or unitless($dim)){
+		//Ensure rem unit
+		@return strip-unit($dim) + 0rem;
+	}@else if(unit($dim) == "%"){
+		//Retain percentages
+		@return $dim;
+	}@else{				
+		//Convert to px, then to rem
+		$dim: px($dim);		
+		@return strip-unit($dim) / strip-unit($baseline) + 0rem;
+	}	
+}
+
+// Sometimes em values are still viable, obviously, but you have to know the context for calculations. The baseline is stored, so each subsequent call will use the previous $baseline parameter, if none is passed.
+// @function em
+// @param $dim {Number}
+// @param $baseline {Number} However many px = 1em, or the relative em of the current context. Defaults to global $em-baseline.
+@function em($dim, $baseline: $em-baseline){	
+	@if(type-of($dim) == "arglist" or type-of($dim) == "list"){
+		$ems: ();
+		@each $value in $dim {
+			$ems: append($ems, em($value), space);
+		}
+		@if(length($ems) == 1){
+			@return nth($ems, 1);
+		}@else{
+			@return $ems;
+		}		
+	}
+	$dim: $dim * 1;
+	@if(type-of($dim) != "number"){
+		@warn $dim + " cannot be converted to em.";
+		@return null;
+	}@else if(unit($dim) == "em" or unitless($dim)){
+		//Ensure em unit
+		@return strip-unit($dim) + 0em;
 	}@else{
-		//Ensure percent unit
-		@return strip-unit($dim) + 0%;	
+		//Convert to px, then em
+		$dim: px($dim);
+		$em-baseline: px($baseline); //Update global $em-baseline
+		@return strip-unit($dim / $em-baseline) + 0em;
 	}
 }
 
-//Relative to the pixels per inch, but provides a consistent mathmatical formula for converting other units to pts for print. 
+
+
+
+
+// Convert arbitrary units to or from percentages. This works a little differently than the other unit functions, because it does not retain units of its own type. In other words, a % value will be converted, rather than returned entact.
+// @function percent
+// @param $dim {Number} If a %
+// @param $context {Number} The total width for the calculation of the percentages.
+// @return {Number} If $dim is a % value, returns the percent calculation in the same unit as $context. If $dim is another unit, a % will be returned.
+// =percent(24px, 240px) = 10%
+// =percent(1.5rem, 240px) = 10%
+// =percent(10%, 240px) = 24px
+// =percent(10%, rem(240px)) = 1.5rem
+@function percent($dim, $context){
+	@if(type-of($dim) == "arglist" or type-of($dim) == "list"){
+		$percents: ();
+		@each $value in $dim {
+			$percents: append($percents, percent($value, $context), space);
+		}
+		@if(length($percents) == 1){
+			@return nth($percents, 1);
+		}@else{
+			@return $percents;
+		}
+		
+	}	
+	$dim: $dim * 1;
+	@if(type-of($dim) != "number"){
+		@warn $dim + " cannot be converted to percent.";
+		@return null;
+	}@else if(unit($dim) == "%" or unitless($dim)){
+		//Calculate percentage		
+		@return strip-unit($dim / 100) * $context;
+	}@else {
+		//Convert to px then percentage		
+		@return strip-unit(px($dim) / px($context)) * 100%;
+	}
+}
+
+//Visually relative to the pixels per inch of a device, but provides a consistent mathmatical formula for converting units to pts for print. 
 //Totally untested with actual print at this point.
 // @function pt
 // @param $dim
@@ -148,20 +198,106 @@ $px-per-inch: 96px !default;
 // @return {Number} A pt value.
 // =pt(20px)
 @function pt($dim, $px-per-inch:$px-per-inch){
-	@if(type-of($dim) == "arglist" or type-of($dim) == "list" and length($dim) > 1){
+	@if(type-of($dim) == "arglist" or type-of($dim) == "list"){
 		$pts: ();
 		@each $value in $dim {
 			$pts: append($pts, pts($value), space);
 		}
-		@return $pts;
+		@if(length($pts) == 1){
+			@return nth($pts, 1);
+		}@else{
+			@return $pts;
+		}
 		
-	}@else if(unit($dim) == "pt"){
-		@return $dim;
+	}
+	
+	$dim: $dim * 1;
+	@if(type-of($dim) != "number"){
+		@warn $dim + " cannot be converted to px.";
+		@return null;
+	}@else if(unit($dim) == "pt" or unitless($dim)){
+		@return strip-unit($dim) + 0pt;
 	}@else{
 		//Convert to px, then pt
-		$value: px($dim);
-		@return strip-unit($value / px($px-per-inch)) + 0pt;	
+		$dim: px($dim);
+		@return strip-unit($dim / px($px-per-inch)) + 0pt;	
 	}
+}
+
+
+// @function cast-unit
+// @param $unit {String} [em,pt,px,rem]
+// @param $dims
+//= cast-unit(px, 3em, 4em, (5))
+@function cast-unit($unit, $dims...){
+	@if($unit == "em"){
+		@return em(($dims));
+	}@else if($unit == "rem"){
+		@return rem(($dims));
+	}@else if($unit == "pt"){
+		@return pt(($dims));
+	}@else if($unit == "px"){
+		@return px(($dims));
+	}@else{
+		@warn "Cannot cast unit "+ $dims;
+	}
+	@return null;
+}
+
+
+// Convert all dimensions to the same unit type. Percentages are ignored. Convert them first with percent(), if necessary.
+// @mixin unity
+// @param $dims...
+//= unity(12px, 1em) = #{unity(12px, 1em)}
+//= unity(1em, 14px, 1.2rem, (16, 8%)) = 1em .25em 1.45em 16em 8%
+@function unity($dims...){	
+	$unified:();
+	$unit: first-unit($dims);	
+	@each $dim in $dims {
+		@if(type-of($dim) != "list" and type-of($dim) != "arglist"){
+			$dim: ($dim);
+		}
+		@each $val in $dim {
+			$val: cast-unit($unit, $val);
+			$unified: append($unified, $val);
+		}		
+	}
+	@return $unified;
+}
+
+
+
+
+
+// Add dimensions together, normalizing them first. Percentages are ignored. Convert them first with percent(), if necessary.
+// @mixin plus
+// @param $dims...
+//= plus(1rem, 4px, 7em, 5) 
+@function plus($dims...){
+	$dims: unity($dims);
+	$total: 0;
+	@each $dim in $dims {
+		@if(unit($dim) != "%"){
+			$total: $total + $dim;
+		}
+	}
+	@return $total;
+}
+
+
+// Subtract dimensions, normalizing them first. Percentages are ignored. Convert them first with percent(), if necessary.
+// @mixin minus
+// @param $dims...
+//= minus(20rem, 4px, 7em, 5)
+@function minus($dims...){
+	$dims: unity($dims);
+	$total: 0;
+	@each $dim in $dims {
+		@if(unit($dim) != "%"){
+			$total: $total - $dim;
+		}
+	}
+	@return $total;
 }
 
 
@@ -190,62 +326,4 @@ $px-per-inch: 96px !default;
 		#{$prop-name}: $pxs; /* px fallback for rem */
 		#{$prop-name}: $rems;
 	}
-}
-
-
-
-// Convert all dimensions to the same unit type. Percentages are ignored. Convert them first with percent(), if necessary.
-// @mixin unity
-// @param $dims...
-@function unity($dims...){	
-	$unified:();
-	$unit: first-unit($dims);	
-	@each $dim in $dims {
-		@if(type-of($dim) != "list" and type-of($dim) != "arglist"){
-			$dim: ($dim);
-		}
-		@each $val in $dim {
-			@if($unit == "em"){
-				$val: em($val);
-			}@else if($unit == "rem"){
-				$val: rem($val);
-			}@else if($unit == "pt"){
-				$val: pt($val);
-			}@else if($unit == "px"){
-				$val: px(($val));
-			}
-			
-			$unified: append($unified, $val);
-		}		
-	}
-	@return $unified;
-}
-
-// Add dimensions together, normalizing them first. Percentages are ignored. Convert them first with percent(), if necessary.
-// @mixin plus
-// @param $dims...
-@function plus($dims...){
-	$dims: unity($dims);
-	$total: 0;
-	@each $dim in $dims {
-		@if(unit($dim) != "%"){
-			$total: $total + $dim;
-		}
-	}
-	@return $total;
-}
-
-
-// Subtract dimensions, normalizing them first. Percentages are ignored. Convert them first with percent(), if necessary.
-// @mixin minus
-// @param $dims...
-@function minus($dims...){
-	$dims: unity($dims);
-	$total: 0;
-	@each $dim in $dims {
-		@if(unit($dim) != "%"){
-			$total: $total - $dim;
-		}
-	}
-	@return $total;
 }
