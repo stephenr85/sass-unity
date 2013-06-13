@@ -4,56 +4,105 @@
 	<title>SASS Dimension example</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">	
 	<link rel="stylesheet" href="stylesheets/grid-examples.css" type="text/css" />
+	<script src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
+	
 </head>
 <body>
 
-	<div id="container" class="span12 medium-span8 small-span4">
+	<div id="container" class="container">
 		<h1>Welcome To The Greatest Show On Earth.</h1>
-		
-		<div class="row fluid">
-			<div class="col span2 medium-span3 large-span3">fluid</div>
-			<div class="col span2 medium-span5 large-span9 omega">fluid</div>
-		</div>
-		<div class="row">
-			<div class="col span2 medium-span5 large-span9">static</div>
-			<div class="col span2 medium-span3 large-span3 omega">static</div>
-		</div>
-		
-		<div class="row">
-			<div class="col span2">static</div>
-			<div class="col span2">static</div>
-			<div class="col span2">static</div>
-			<div class="col span2">static</div>
-			<div class="col span2">static</div>
-			<div class="col span2">static</div>
-		</div>
-		
-		<div class="row fluid">
-			<div class="col span2">fluid</div>
-			<div class="col span2">fluid</div>
-			<div class="col span2 medium-omega">fluid</div>
-			<div class="col span2">fluid</div>
-			<div class="col span2">fluid</div>
-			<div class="col span2">fluid</div>
-		</div>
-		
-		<div class="row">
-			<div class="col span2">static</div>
-			<div class="col span3">static</div>
-			<div class="col span4">static</div>
-			<div class="col span1">static</div>
-			<div class="col span2">static</div>
-		</div>
+		<p>The columns are dynamically generated with random column spans for each breakpoint.</p>
+		<div class="col">
+			<img src="http://lorempixel.com/nature/500/250" />
+			<h3>Then Toto came up, and immediately began to bark</h3>
+			<div>
+				<p>The Lion climbed the ladder next, and the Tin Woodman came last; but both of them cried, "Oh, my!" as soon as they looked over the wall. When they were all sitting in a row on the top of the wall, they looked down and saw a strange sight.</p>
+
+				<p>Before them was a great stretch of country having a floor as smooth and shining and white as the bottom of a big platter.  Scattered around were many houses made entirely of china and painted in the brightest colors.  These houses were quite small, the biggest of them reaching only as high as Dorothy's waist.  There were also pretty little barns, with china fences around them; and many cows and sheep and horses and pigs and chickens, all made of china, were standing about in groups.</p>
+			</div>
+		</div><!-- .col -->
 		
 		
-		<div class="row fluid">
-			<div class="col large-span2">fluid</div>
-			<div class="col large-span3">fluid</div>
-			<div class="col large-span4">fluid</div>
-			<div class="col large-span1">fluid</div>
-			<div class="col large-span2">fluid</div>
-		</div>
-	</div>
+		<div class="row"></div>
+		
+		<div class="row"></div>
+		
+		<div class="row"></div>
+		
+		<div class="row"></div>
+		
+		<div class="row"></div>		
+		
+		<div class="row"></div>
+	
+	</div><!-- #container -->
+	
+	
+	
+	
+	
+	<script>
+		//DUPLICATE THE DUMMY CONTENT
+		$(document).ready(function(){
+			var $col = $('.col:first').remove(),
+				$rows = $('.row'),
+				grids = {
+					four:4,
+					six:6,
+					eight:8,
+					ten:10,
+					twelve:12,
+					fourteen:14,
+					sixteen:16
+				},
+				maxCols = 16,
+				minSpan = 2;
+			
+			$rows.each(function(r, row){
+				var $row = $(row);
+				//Duplicate the column in each row a random amount, within the max columns range
+				for(var col=0; col < maxCols ; col++){
+					var $dupe = $col.clone(),
+						span = _.random(minSpan, maxCols - col);
+					col += span;
+					//$dupe.addClass("span"+span);
+					$row.append($dupe);
+				}
+				
+			});
+			
+			$rows.each(function(r, row){
+				var $cols = $(row).children('.col');
+				//Distribute columns randomly
+				_.each(grids, function(columns, handle){
+					for(var col=0; col < columns; col){
+						var span = _.random(minSpan, columns - col - minSpan),
+							$col = $cols.not('[class*='+handle+'-span]').first(),
+							index = $.inArray($col.get(0), $cols);
+						
+						//Make sure we don't get anything less than 2 columns.
+						if(span < minSpan || columns - col + span < minSpan || index == $cols.length - 1 || $cols.length === 1){
+							span = columns - col;
+							//$col.addClass('hadto')
+						}
+						
+						$col.addClass(handle+'-span'+span);
+						
+						col += span;
+						
+						//If we have more columns in the row, add an omega and reset the col count.
+						if(col >= columns){
+							$col.addClass(handle+'-only-omega');
+							if($cols.length > columns) col = 0;
+						}
+						
+					}					
+				});
+			});
+			
+		});
+	</script>
 	
 </body>
 </html>

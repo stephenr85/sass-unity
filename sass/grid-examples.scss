@@ -1,9 +1,14 @@
 //@import "grid";
+
+
+//$grid-width: 960px;
+$grid-width: 320px;
+$grid-style: fluid;
+$column-width: 60px;
+$gutter-width: auto;
+
 @import "grid-semantics";
 
-$grid-width: 972px;
-$column-width: 68px;
-$gutter-width: auto;
 
 body {
 	@include rem(padding 0 1rem);
@@ -21,48 +26,57 @@ body {
 
 .col {
 	border: 1px dotted #eee; 
-	padding: rem(.75em);
+	box-shadow: 0 0 12px rgba(0,0,0,.15);
+	
+	@include rem(padding 1rem, border-radius .75rem);
 	
 	&:nth-of-type(2n) {background:#eee;};
+	
+	> img {width:100%;}
 }
 
 
 @each $breakpoint in $grid-breakpoints {
 	@include grid-breakpoint($breakpoint){
 		body {
+			/*
 			breakpoint:"#{$breakpoint}";
 			grid-width: grid-width();
 			gutter-width: gutter-width();
 			column-width: column-width();
 			columns: $grid-columns;
-			grid-width: (column-width() * $grid-columns) + (gutter-width() * ($grid-columns - 1));
-		
-			@if(grid-breakpoint-limit($breakpoint) != $grid-columns){
+			span-columns: span($grid-columns);
+			*/
+			
+			@if(grid-breakpoint-limit() != $grid-columns){
 				&:before {
 					content:($grid-columns + " columns (min "+grid-width()+")");
 				}
 			}
 		}
+		
+		.container {
+			@if(grid-breakpoint-limit() > 0){
+				max-width: grid-width();
+			}
+		}
+		
+		
 	}
 }
 
-
-@include grid-breakpoint(small){
+@include grid-breakpoint(four){
 	body {color: blue;}
-	#container {@include container;}
 }
 
-@include grid-breakpoint(medium){
+@include grid-breakpoint(eight){
 	body {color: green;}
-	#container {@include container;}
 }
 
-@include grid-breakpoint(large){
+@include grid-breakpoint(twelve){
 	body {color: purple;}
-	#container {@include container;}
 }
 
-@include grid-breakpoint(xlarge){
+@include grid-breakpoint(sixteen){
 	body {color: black;}
-	#container {@include container;}
 }

@@ -20,36 +20,41 @@ $grid-padding:1rem; //Use shorthand syntax for left/right, ie. $grid-padding: 0 
 // Unlike column-width() and gutter-width(), the global $grid-width is overridden if we have values for both $column-width and $gutter-width, to ensure a calculated value.
 // @function grid-width
 // @param {Number} $grid-columns Defaults to global $grid-columns.
-@function grid-width($columns: $grid-columns, $column-width: $grid-column-width, $gutter-width: $grid-gutter-width, $padding: $grid-padding, $width: $grid-width, $unit: $grid-unit){
-	$padding-width:0px;
-	@if(type-of($padding) == "list"){
-		$padding-width: plus($padding-width, nth($padding, 2));
-
-		//Right padding
-		@if(length($padding) >= 4){
-			$padding-width: plus($padding-width, nth($padding, 4));
-		}@else{
-			$padding-width: plus($padding-width, nth($padding, 2));
-		}
-	}@else if(type-of($padding) == "number"){
-		$padding-width: plus($padding-width, $padding);
-	}
+@function grid-width($columns: $grid-columns, $column-width: $grid-column-width, $gutter-width: $grid-gutter-width, $width: $grid-width, $unit: $grid-unit){	
 	
 	@if($column-width != null and $column-width != auto and $column-width != null and $gutter-width != auto){
 		//Calculate the width based on column and gutter widths.
 		$cols-width: px($grid-columns * $column-width);
 		$guts-width: px(($grid-columns - 1) * $gutter-width);
-		$width: $cols-width + $guts-width;	
-		$width: plus($width, $padding-width);		
+		$width: $cols-width + $guts-width;				
 		@return cast-unit($unit, $width);
 			
 	}@else if($grid-width != null and $grid-width != auto){
-		//Use static grid-width value.
-		$width: plus($grid-width, $padding-width);
+		//Use static grid-width value.		
 		@return cast-unit($unit, $grid-width);
 	}
 	@return null;
 		
+}
+
+
+// @function container-width
+@function container-width($columns: $grid-columns, $column-width: $grid-column-width, $gutter-width: $grid-gutter-width, $padding: $grid-padding, $width: $grid-width, $unit: $grid-unit){
+	$-padding-width:0px;
+	@if(type-of($padding) == "list"){
+		$-padding-width: plus($-padding-width, nth($padding, 2));
+
+		//Right padding
+		@if(length($padding) >= 4){
+			$-padding-width: plus($-padding-width, nth($padding, 4));
+		}@else{
+			$-padding-width: plus($-padding-width, nth($padding, 2));
+		}
+	}@else if(type-of($padding) == "number"){
+		$-padding-width: plus($-padding-width, $padding);
+	}
+	$-grid-width: grid-width($columns: $columns, $column-width: $column-width, $gutter-width: $gutter-width, $width: $width, $unit: $unit);
+	@return plus($-grid-width, $-padding-width);
 }
 
 // Calculate the static width of a single column with a given grid-width and gutter-width.
@@ -97,7 +102,7 @@ $grid-padding:1rem; //Use shorthand syntax for left/right, ie. $grid-padding: 0 
 		$column-width: column-width($grid-width: $grid-width, $grid-columns: $grid-columns, $gutter-width: $gutter-width, $unit: $unit);
 	}
 	@if($style == "fluid"){
-		@return percent($column-width, grid-width($columns: $grid-columns, $column-width: $column-width, $padding: 0, $unit: $unit)) * $count;
+		@return percent($column-width, grid-width($columns: $grid-columns, $column-width: $column-width, $unit: $unit)) * $count;
 	}@else{
 		$cols: $count * $column-width; 
 		@return cast-unit($unit, $cols);
@@ -130,7 +135,7 @@ $grid-padding:1rem; //Use shorthand syntax for left/right, ie. $grid-padding: 0 
 		$gutter-width: gutter-width($grid-width: $grid-width, $grid-columns: $grid-columns, $column-width: $column-width, $unit: $unit);
 	}
 	@if($style == "fluid"){
-		@return percent($gutter-width, grid-width($columns: $grid-columns, $column-width: $column-width, $gutter-width: $gutter-width, $padding: 0, $unit: $unit)) * $count;
+		@return percent($gutter-width, grid-width($columns: $grid-columns, $column-width: $column-width, $gutter-width: $gutter-width, $unit: $unit)) * $count;
 	}@else{
 		$gut: $count * $gutter-width;
 		@return cast-unit($grid-unit, $gut);
@@ -172,9 +177,10 @@ $grid-padding:1rem; //Use shorthand syntax for left/right, ie. $grid-padding: 0 
 // @param $style {String} [fluid|static]
 // @param $column-width {Number} 
 // @param $gutter-width {Number}
-// @param $grid-unit {String} [rem|px] Defaults to global $grid-unit.
+// @param $padding {Number} Defaults to global $grid-padding.
+// @param $unit {String} [rem|px] Defaults to global $grid-unit.
 // @param $semantics {Boolean|String} Calls grid-semantics(), using parameters as $prefix, if it is a string.
-@mixin container($grid-columns: $grid-columns, $style:static, $column-width: $grid-column-width, $gutter-width: $grid-gutter-width, $unit: $grid-unit, $semantics: false){
+@mixin container($grid-columns: $grid-columns, $style: $grid-style, $column-width: $grid-column-width, $gutter-width: $grid-gutter-width, $width: $grid-width, $padding: $grid-padding, $unit: $grid-unit, $semantics: false){
 	@include clearfix();
 	width:100%;
 	clear:both;
@@ -182,18 +188,27 @@ $grid-padding:1rem; //Use shorthand syntax for left/right, ie. $grid-padding: 0 
 	margin-left:auto; 
 	margin-right:auto;
 	
-	@if($style == "fluid"){
-		//do nothing?
-	}@else if($grid-unit == "rem"){		
-		@include rem(max-width grid-width($grid-columns, $unit: $unit));
-	}@else{
-		max-width: px(grid-width($grid-columns, $unit: $unit));
-	}
-	//Add the semantics classes, if requested
-	@if($semantics == true){
-		@include grid-semantics($grid-columns: $grid-columns, $unit: $unit);
-	}@else if(type-of($semantics) == "string"){
-		@include grid-semantics($grid-columns: $grid-columns, $unit: $unit, $prefix: $semantics);
+	@include grid($columns: $grid-columns, $style: $style, $column-width: $column-width, $gutter-width: $gutter-width, $width: $width, $padding: $padding, $unit: $unit){	
+		@if($style == "fluid"){
+			//do nothing?
+		}@else if($unit == "rem"){		
+			@include rem(max-width container-width($unit: $unit));
+		}@else{
+			max-width: px(container-width($unit: $unit));
+		}
+		
+		@if(type-of($padding) == "list"){
+			padding: grid-unit($padding);
+		}@else if(type-of($padding == "number")){
+			padding: 0 grid-unit($padding);
+		}
+		
+		//Add the semantics classes, if requested
+		@if($semantics == true){
+			@include grid-semantics();
+		}@else if(type-of($semantics) == "string"){
+			@include grid-semantics($prefix: $semantics);
+		}
 	}
 }
 
