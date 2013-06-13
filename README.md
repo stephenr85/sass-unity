@@ -1,8 +1,8 @@
-sass-dimension
+sass-unity 
 ============================
-Some functions and mixins for SASS dimensions.
-
-Considering renaming to sass-unity...
+(formerly sass-dimension)
+A framework for working with numbers and units.
+But wait, there's more -- a grid that ties it all together.
 
 
 Usage for dimension functions

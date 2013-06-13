@@ -1,10 +1,11 @@
-// http://github.com/stephenr85/sass-dimension
-// @category dimension
+// http://github.com/stephenr85/sass-unity
+// @category units
 // @author Stephen Rushing, eSiteful 
 
 $baseline: 16px !default;
 $em-baseline: $baseline !default;
 $px-per-inch: 96px !default;
+$pt-per-inch: 72pt !default;
 
 
 // Removes the unit from a number.
@@ -16,7 +17,7 @@ $px-per-inch: 96px !default;
 }
 
 
-// Find the first unit in a list of dimensions.
+// Find the first unit in a list of numbers.
 // @function first-unit
 // @param $dims...
 // =first-unit(0 12% 10% 1px) = px
@@ -65,7 +66,9 @@ $px-per-inch: 96px !default;
 		}		
 	}
 	$dim: $dim * 1;
-	@if(type-of($dim) != "number"){
+	@if(type-of($dim) == "string" and $dim == "auto"){
+		@return $dim;
+	}@else if(type-of($dim) != "number"){
 		@warn $dim + " cannot be converted to px.";
 		@return null;
 	}@else if(unit($dim) == "rem"){
@@ -102,6 +105,8 @@ $px-per-inch: 96px !default;
 		}@else{
 			@return $rems;
 		}
+	}@else if($dim == "auto"){
+		@return "auto";
 	}
 	$dim: $dim * 1;
 	@if(type-of($dim) != "number"){
@@ -135,7 +140,10 @@ $px-per-inch: 96px !default;
 		}@else{
 			@return $ems;
 		}		
+	}@else if($dim == "auto"){
+		@return "auto";
 	}
+	
 	$dim: $dim * 1;
 	@if(type-of($dim) != "number"){
 		@warn $dim + " cannot be converted to em.";
@@ -176,7 +184,10 @@ $px-per-inch: 96px !default;
 			@return $percents;
 		}
 		
-	}	
+	}@else if($dim == "auto"){
+		@return "auto";
+	}
+		
 	$dim: $dim * 1;
 	@if(type-of($dim) != "number"){
 		@warn $dim + " cannot be converted to percent.";
@@ -194,10 +205,11 @@ $px-per-inch: 96px !default;
 //Totally untested with actual print at this point.
 // @function pt
 // @param $dim
-// @param $px-per-inch Defaults to global $px-per-inch. 
+// @param $px-per-inch Defaults to global $px-per-inch (96).
+// @param $pt-per-inch Defaults to global $pt-per-inch (72). 
 // @return {Number} A pt value.
-// =pt(20px)
-@function pt($dim, $px-per-inch:$px-per-inch){
+// =pt(16px) = 12pt
+@function pt($dim, $px-per-inch: $px-per-inch, $pt-per-inch: $pt-per-inch){
 	@if(type-of($dim) == "arglist" or type-of($dim) == "list"){
 		$pts: ();
 		@each $value in $dim {
@@ -209,6 +221,8 @@ $px-per-inch: 96px !default;
 			@return $pts;
 		}
 		
+	}@else if($dim == "auto"){
+		@return "auto";
 	}
 	
 	$dim: $dim * 1;
@@ -219,8 +233,8 @@ $px-per-inch: 96px !default;
 		@return strip-unit($dim) + 0pt;
 	}@else{
 		//Convert to px, then pt
-		$dim: px($dim);
-		@return strip-unit($dim / px($px-per-inch)) + 0pt;	
+		$dim: strip-unit(px($dim));
+		@return $dim * strip-unit($pt-per-inch) / strip-unit($px-per-inch) + 0pt;	
 	}
 }
 
@@ -245,7 +259,7 @@ $px-per-inch: 96px !default;
 }
 
 
-// Convert all dimensions to the same unit type. Percentages are ignored. Convert them first with percent(), if necessary.
+// Convert all numbers to the same unit type. Percentages are ignored. Convert them first with percent(), if necessary.
 // @mixin unity
 // @param $dims...
 //= unity(12px, 1em) = #{unity(12px, 1em)}
@@ -269,7 +283,7 @@ $px-per-inch: 96px !default;
 
 
 
-// Add dimensions together, normalizing them first. Percentages are ignored. Convert them first with percent(), if necessary.
+// Add numbers, normalizing them first. Percentages are ignored. Convert them first with percent(), if necessary.
 // @mixin plus
 // @param $dims...
 //= plus(1rem, 4px, 7em, 5) 
@@ -277,7 +291,7 @@ $px-per-inch: 96px !default;
 	$dims: unity($dims);
 	$total: 0;
 	@each $dim in $dims {
-		@if(unit($dim) != "%"){
+		@if(unit($dim) != "%" and $dim != "auto"){
 			$total: $total + $dim;
 		}
 	}
@@ -285,7 +299,7 @@ $px-per-inch: 96px !default;
 }
 
 
-// Subtract dimensions, normalizing them first. Percentages are ignored. Convert them first with percent(), if necessary.
+// Subtract numbers, normalizing them first. Percentages are ignored. Convert them first with percent(), if necessary.
 // @mixin minus
 // @param $dims...
 //= minus(20rem, 4px, 7em, 5)
@@ -293,7 +307,7 @@ $px-per-inch: 96px !default;
 	$dims: unity($dims);
 	$total: 0;
 	@each $dim in $dims {
-		@if(unit($dim) != "%"){
+		@if(unit($dim) != "%" and $dim != "auto"){
 			$total: $total - $dim;
 		}
 	}

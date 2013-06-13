@@ -78,6 +78,7 @@ $grid-breakpoints:null !default;
 // Returns the base selector scope for the breakpoint.
 // @function grid-breakpoint-scope
 // @param {List|String} The breakpoint or breakpoint handle.
+// @return {Selector} The selector scope for a certain breakpoint.
 @function grid-breakpoint-scope($breakpoint: null){
 	$breakpoint: grid-breakpoint($breakpoint);
 	$-last: nth($breakpoint, length($breakpoint));
@@ -88,9 +89,9 @@ $grid-breakpoints:null !default;
 }
 
 
-
+// Add rules to a breakpoint. Changes to the global grid variables effective only in this context.
 // @mixin grid-breakpoint
-// @param $breakpoint {List}
+// @param $breakpoint {String|List} If a string, looks for a breakpoint in $grid-breakpoints with the same handle. If a list, it's considered a breakpoint.
 // @param $media-query {Selector}
 // @param $semantics {Boolean}
 @mixin grid-breakpoint($breakpoint, $media-query:"all", $semantics: false){

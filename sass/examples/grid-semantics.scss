@@ -1,13 +1,10 @@
-//@import "grid";
+@import "../unity-grid";
 
 
-//$grid-width: 960px;
 $grid-width: 320px;
 $grid-style: fluid;
 $column-width: 60px;
 $gutter-width: auto;
-
-@import "grid-semantics";
 
 
 body {
@@ -18,19 +15,18 @@ body {
 #container {
 	@include container;
 	text-align:left;
-}
-
-.row {
-	@include row;
+	max-width: container-width(18);
 }
 
 .col {
-	border: 1px dotted #eee; 
-	box-shadow: 0 0 12px rgba(0,0,0,.15);
+	//border: 1px solid rgba(0,0,0,.1);
+	box-shadow: 0 5px 12px rgba(0,0,0,.1);
 	
-	@include rem(padding 1rem, border-radius .75rem);
+	@include rem(padding 1rem);
 	
-	&:nth-of-type(2n) {background:#eee;};
+	&:nth-of-type(2n) {
+		background:rgba(0,0,0,.05);
+	};
 	
 	> img {width:100%;}
 }

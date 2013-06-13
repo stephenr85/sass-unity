@@ -1,0 +1,51 @@
+@import "../unity/units";
+
+$baseline: 16px; //set baseline for rems
+$em-baseline: 14px; //set baseline for ems
+
+html {
+	font-size: $baseline; //make doc aware of baseline
+}
+
+body {
+	text-align: center;
+	font-size: em($em-baseline);
+	font-family: sans-serif;
+	line-height:1.5em;
+}
+
+#container {
+	@include rem(width 30rem);
+	margin: 0 auto;	
+	text-align: left;
+}
+
+h1 {
+	font-size: 1.5em;
+	line-height: 1.3em;
+	text-transform: capitalize;
+}
+
+$-px: $baseline;
+$-rem: 1rem;
+$-em: 1.14286em;
+$-pt: 12pt;
+
+.px-test:before {
+	content: "#{$-px} converts to #{rem($-px)} to #{em($-px)} to #{pt($-px)}\A";
+}
+.rem-test:before {
+	content: "#{$-rem} converts to #{px($-rem)} to #{em($-rem)} to #{pt($-rem)}\A";
+}
+
+.em-test:before {
+	content: "#{$-em} converts to #{px($-em)} to #{rem($-em)} to #{pt($-em)}";
+}
+
+.pt-test:before {
+	//content: $-content + "#{$-pt} converts to #{px($-pt)} to #{rem($-pt)} to #{em($-pt)}";
+}
+
+#content {
+	
+}

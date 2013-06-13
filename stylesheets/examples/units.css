@@ -1,0 +1,43 @@
+/* line 6, ../../sass/examples/units.scss */
+html {
+  font-size: 16px;
+}
+
+/* line 10, ../../sass/examples/units.scss */
+body {
+  text-align: center;
+  font-size: 1em;
+  font-family: sans-serif;
+  line-height: 1.5em;
+}
+
+/* line 17, ../../sass/examples/units.scss */
+#container {
+  width: 480px;
+  /* px fallback for rem */
+  width: 30rem;
+  margin: 0 auto;
+  text-align: left;
+}
+
+/* line 23, ../../sass/examples/units.scss */
+h1 {
+  font-size: 1.5em;
+  line-height: 1.3em;
+  text-transform: capitalize;
+}
+
+/* line 34, ../../sass/examples/units.scss */
+.px-test:before {
+  content: "16px converts to 1rem to 1.14286em to 12pt\A";
+}
+
+/* line 37, ../../sass/examples/units.scss */
+.rem-test:before {
+  content: "1rem converts to 16px to 1.14286em to 12pt\A";
+}
+
+/* line 41, ../../sass/examples/units.scss */
+.em-test:before {
+  content: "1.14286em converts to 16.00004px to 1.0rem to 12.00003pt";
+}

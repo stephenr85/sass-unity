@@ -1,5 +1,5 @@
+@import "unity";
 
-@import "grid";
 
 $baseline: 16px !default;
 $em-baseline: 13px !default;
@@ -51,7 +51,15 @@ $grid-breakpoints: grid-breakpoints(
 	
 	("sixteen" 16), 
 	("sixteen-only" 16 17),
-	("sixteen-down" 0 16)
+	("sixteen-down" 0 16),
+	
+	("eighteen" 18), 
+	("eighteen-only" 18 20),
+	("eighteen-down" 0 18),
+	
+	("twenty" 20), 
+	("twenty-only" 20 21),
+	("twenty-down" 0 20)
 );
 
 //Create the semantics for each breakpoint
@@ -63,26 +71,25 @@ $grid-breakpoints: grid-breakpoints(
 		
 		body {
 			
-			@if($-limit-columns != null){
-				max-width: grid-width($-limit-columns); //Set max-width to the next breakpoint
+			@if($grid-style != "fluid"){
+				@if($-limit-columns != null){
+					max-width: grid-width($-limit-columns); //Set max-width to the next breakpoint
+				}
+				@if($-limit-columns != $grid-columns){
+					min-width: grid-width();
+				}
 			}
-			@if($-limit-columns != $grid-columns){
-				min-width: grid-width();
-			}
+			
 		}
 		
-		// Include semantics classes for testing
+		// Include semantics classes
 		//---------------------------------------------------------------------------------
 		@include grid-semantics($prefix: $-handle);
 		
-		// Setup our main containers.
+		// Update the main containers.
 		//---------------------------------------------------------------------------------
-		#container {
-			@if($-limit-columns != null and $-limit-columns != $grid-columns){
-				@include flux-container($grid-columns, $-limit-columns);
-			}@else{
-				@include flux-container(0, $grid-columns);
-			}
+		.container {
+			@include container($grid-columns);
 		}
 		
 		// Add some helper classes for this breakpoint
