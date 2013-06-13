@@ -37,10 +37,16 @@ $grid-padding:1rem; //Use shorthand syntax for left/right, ie. $grid-padding: 0 
 		
 }
 
-
+// Get the width of the grid container, which includes the padding (global $grid-padding).
 // @function container-width
+// @param $columns {Number}
+// @param $column-width {Number}
+// @param $gutter-width {Number}
+// @param $padding {Number|List} A padding value for the grid matte.
+// @param $width {Number} The total width for the grid, if the column or gutter are null/auto.
+// @param $unit {String} [rem|px]
 @function container-width($columns: $grid-columns, $column-width: $grid-column-width, $gutter-width: $grid-gutter-width, $padding: $grid-padding, $width: $grid-width, $unit: $grid-unit){
-	$-padding-width:0px;
+	$-padding-width: 0px;
 	@if(type-of($padding) == "list"){
 		$-padding-width: plus($-padding-width, nth($padding, 2));
 
@@ -51,7 +57,7 @@ $grid-padding:1rem; //Use shorthand syntax for left/right, ie. $grid-padding: 0 
 			$-padding-width: plus($-padding-width, nth($padding, 2));
 		}
 	}@else if(type-of($padding) == "number"){
-		$-padding-width: plus($-padding-width, $padding);
+		$-padding-width: grid-unit($padding * 2);
 	}
 	$-grid-width: grid-width($columns: $columns, $column-width: $column-width, $gutter-width: $gutter-width, $width: $width, $unit: $unit);
 	@return plus($-grid-width, $-padding-width);

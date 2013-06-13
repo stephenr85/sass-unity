@@ -1,62 +1,44 @@
-@import "../unity-grid";
+@import "../unity-grid-semantics";
 
 
-$grid-width: 320px;
-$grid-style: fluid;
+$grid-style: static;
 $column-width: 60px;
-$gutter-width: auto;
+$gutter-width: 12px;
 
 
 body {
-	@include rem(padding 0 1rem);
+	padding:0; margin:0;
 	font: em(13px, 1rem) sans-serif;
 }
 
 #container {
-	@include container;
-	text-align:left;
-	max-width: container-width(18);
+	text-align: left;
 }
 
 .col {
-	//border: 1px solid rgba(0,0,0,.1);
-	box-shadow: 0 5px 12px rgba(0,0,0,.1);
+	//border: 1px solid rgba(0, 0, 0, .1);
+	box-shadow: 0 5px 12px rgba(0, 0, 0, .1);
 	
 	@include rem(padding 1rem);
 	
 	&:nth-of-type(2n) {
-		background:rgba(0,0,0,.05);
+		background: rgba(0, 0, 0, .05);
 	};
 	
-	> img {width:100%;}
+	> img {width: 100%;}
 }
 
 
 @each $breakpoint in $grid-breakpoints {
 	@include grid-breakpoint($breakpoint){
-		body {
-			/*
-			breakpoint:"#{$breakpoint}";
-			grid-width: grid-width();
-			gutter-width: gutter-width();
-			column-width: column-width();
-			columns: $grid-columns;
-			span-columns: span($grid-columns);
-			*/
+		body {			
 			
-			@if(grid-breakpoint-limit() != $grid-columns){
+			@if(grid-breakpoint-max() == 0){
 				&:before {
-					content:($grid-columns + " columns (min "+grid-width()+")");
+					content: (grid-breakpoint-columns() + " columns (min "+grid-width()+")");
 				}
 			}
 		}
-		
-		.container {
-			@if(grid-breakpoint-limit() > 0){
-				max-width: grid-width();
-			}
-		}
-		
 		
 	}
 }

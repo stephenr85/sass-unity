@@ -4,99 +4,68 @@
 $baseline: 16px !default;
 $em-baseline: 13px !default;
 
-$small-columns:4 !default;
-$medium-columns:8 !default;
-$large-columns:12 !default;
-$xlarge-columns:16 !default;
-
-$grid-padding: 1rem !default;
-$grid-columns: $small-columns !default; //Mobile first
-
-@include grid-semantics($grid-columns); 
+$grid-columns: 4; //Mobile first
+$grid-column-width: 68px !default;
+$grid-gutter-width: 14px !default;
+$grid-unit: rem !default; //Only relevant for static dimensions
+$grid-style: static !default;
+$grid-padding: 1rem;
 
 
 * {
 	@include box-sizing(border-box);
 }
 
-img {max-width:100%;}
+img {
+	max-width:100%;
+}
 
-html {text-align:center; font-size: $baseline;}
+html {
+	text-align: center;
+	font-size: $baseline;
+}
+
+body {
+	font-size: em($em-baseline, 16px);
+	padding: 0;
+	margin: 0;
+}
 
 //Add a bunch of breakpoints
 $grid-breakpoints: grid-breakpoints(
 	("four" 4),
-	("four-only" 0 6),
-	("four-down" 0 6),
+  	("four-only" 4 0 6),
+  	("four-down" 4 0 6),
 	
 	("six" 6), 
-	("six-only" 6 8),
-	("six-down" 0 8),
+  	("six-only" 6 6 8),
+  	("six-down" 6 0 8),
 	
 	("eight" 8), 
-	("eight-only" 8 10),
-	("eight-down" 0 8),
+  	("eight-only" 8 8 10),
+  	("eight-down" 8 0 10),
 	
 	("ten" 10), 
-	("eight-only" 10 12),
-	("eight-down" 0 10),
+  	("ten-only" 10 10 12),
+  	("ten-down" 10 0 12),
 	
 	("twelve" 12), 
-	("twelve-only" 12 14),
-	("twelve-down" 0 12),
+  	("twelve-only" 12 12 14),
+  	("twelve-down" 12 0 14),
 	
 	("fourteen" 14), 
-	("fourteen-only" 14 16),
-	("fourteen-down" 0 14),
+  	("fourteen-only" 14 14 16),
+  	("fourteen-down" 14 0 16),
 	
 	("sixteen" 16), 
-	("sixteen-only" 16 17),
-	("sixteen-down" 0 16),
+  	("sixteen-only" 16 16 18),
+  	("sixteen-down" 0 16),
 	
 	("eighteen" 18), 
-	("eighteen-only" 18 20),
-	("eighteen-down" 0 18),
+  	("eighteen-only" 18 20),
+  	("eighteen-down" 0 18),
 	
-	("twenty" 20), 
-	("twenty-only" 20 21),
-	("twenty-down" 0 20)
+	("twenty" 20),
+  	("twenty-only" 20 20 21),
+  	("twenty-down" 20 0 21)
 );
-
-//Create the semantics for each breakpoint
-@each $breakpoint in $grid-breakpoints {
-
-	@include grid-breakpoint($breakpoint){
-		$-handle: grid-breakpoint-handle($breakpoint);
-		$-limit-columns: grid-breakpoint-limit($breakpoint);
-		
-		body {
-			
-			@if($grid-style != "fluid"){
-				@if($-limit-columns != null){
-					max-width: grid-width($-limit-columns); //Set max-width to the next breakpoint
-				}
-				@if($-limit-columns != $grid-columns){
-					min-width: grid-width();
-				}
-			}
-			
-		}
-		
-		// Include semantics classes
-		//---------------------------------------------------------------------------------
-		@include grid-semantics($prefix: $-handle);
-		
-		// Update the main containers.
-		//---------------------------------------------------------------------------------
-		.container {
-			@include container($grid-columns);
-		}
-		
-		// Add some helper classes for this breakpoint
-		//---------------------------------------------------------------------------------
-		#{"."+ $-handle +"-hidden"} {
-			display:none;
-		}
-	}
-		
-}

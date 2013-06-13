@@ -1,7 +1,9 @@
 sass-unity 
 ============================
-(formerly sass-dimension)
+Got units? Find unity.
+
 A framework for working with numbers and units.
+
 But wait, there's more -- a grid that ties it all together.
 
 

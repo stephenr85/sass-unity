@@ -39,5 +39,5 @@ h1 {
 
 /* line 41, ../../sass/examples/units.scss */
 .em-test:before {
-  content: "1.14286em converts to 16.00004px to 1.0rem to 12.00003pt";
+  content: "1.14286em converts to 16px to 1rem to 12pt";
 }

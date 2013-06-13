@@ -1,0 +1,57 @@
+@import "unity-grid";
+
+//Set grid globals for the base grid.
+
+
+//Create the base semantics
+@include grid-semantics($grid-columns); 
+
+
+
+//Create the semantics for each breakpoint
+@each $breakpoint in $grid-breakpoints {
+
+	@include grid-breakpoint($breakpoint){
+		$-handle: grid-breakpoint-handle();
+		$-breakpoint-max: grid-breakpoint-max();
+		
+		body {
+			
+			@if(grid-breakpoint-max() > 0 and grid-breakpoint-min() == grid-breakpoint-columns()){
+				@include span-limit(grid-breakpoint-columns(), $-breakpoint-max);
+			}
+			
+		}
+		
+		// Include semantics classes
+		//---------------------------------------------------------------------------------
+		@include grid-semantics($prefix: $-handle);
+		
+		// Update the main containers.
+		//---------------------------------------------------------------------------------
+		@if($-breakpoint-max == 0){
+			.container {			
+				@include container;
+			}
+		}
+		
+		// Add some helper classes for this breakpoint
+		//---------------------------------------------------------------------------------
+		#{"."+ $-handle +"-block"} {
+			display: block;
+		}
+		
+		#{"."+ $-handle +"-inline-block"} {
+			display: inline-block;
+		}
+		
+		#{"."+ $-handle +"-inline"} {
+			display: inline;
+		}
+		
+		#{"."+ $-handle +"-hidden"} {
+			display:none;
+		}
+	}
+		
+}

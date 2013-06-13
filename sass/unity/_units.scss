@@ -8,6 +8,20 @@ $px-per-inch: 96px !default;
 $pt-per-inch: 72pt !default;
 
 
+
+
+// If a number has a .00001 decimal, it's probably a rounding issue and needs to be dropped.
+// @function sub-pixel
+// @param $dim
+@function sub-pixel($dim){
+	$dim: $dim * 1;
+	$-diff: $dim - floor($dim);
+	@if($-diff >= .00001 and $-diff > 0){
+		@return floor($dim);
+	}
+	@return $dim;
+}
+
 // Removes the unit from a number.
 // @function strip-unit
 // @param $num {Number}
@@ -46,6 +60,9 @@ $pt-per-inch: 72pt !default;
 
 
 
+
+
+
 // Convert any number to a px, or ensure a px value.
 // Percentages are retained. Use percent() to calculate static values.
 // @function px
@@ -73,19 +90,19 @@ $pt-per-inch: 72pt !default;
 		@return null;
 	}@else if(unit($dim) == "rem"){
 		//Convert rem to px
-		@return strip-unit($dim) * px($baseline);	
+		@return sub-pixel(strip-unit($dim) * px($baseline));	
 	}@else if(unit($dim) == "em"){
 		//Convert em to px
-		@return strip-unit($dim) * px($em-baseline);
+		@return sub-pixel(strip-unit($dim) * px($em-baseline));
 	}@else if(unit($dim) == "pt"){
 		//Convert pt to px
-		@return strip-unit($dim) / px($px-per-inch);
+		@return sub-pixel(strip-unit($dim) / px($px-per-inch));
 	}@else if(unit($dim) == "%"){
 		//Retain percentages
-		@return $dim;
+		@return sub-pixel($dim);
 	}@else{
 		//Ensure px unit
-		@return strip-unit($dim) + 0px;
+		@return sub-pixel(strip-unit($dim)) + 0px;
 	}	
 }
 
