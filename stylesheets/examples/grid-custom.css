@@ -23,13 +23,23 @@ body {
   margin: 0;
 }
 
-/* line 11, ../../sass/examples/grid-custom.scss */
+/* line 13, ../../sass/examples/grid-custom.scss */
 body {
   padding: 0;
   font: 0.8125em sans-serif;
 }
 
-/* line 16, ../../sass/examples/grid-custom.scss */
+/* line 18, ../../sass/examples/grid-custom.scss */
+a {
+  color: navy;
+}
+
+/* line 21, ../../sass/examples/grid-custom.scss */
+h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child, h6:first-child, p:first-child, ul:first-child {
+  margin-top: 0;
+}
+
+/* line 24, ../../sass/examples/grid-custom.scss */
 #container {
   overflow: hidden;
   *zoom: 1;
@@ -38,30 +48,222 @@ body {
   float: none;
   margin-left: auto;
   margin-right: auto;
+  max-width: 1024px;
   padding: 0 16px;
-  text-align: left;
-}
-
-/* line 21, ../../sass/examples/grid-custom.scss */
-.row {
-  clear: both;
-  float: left;
+  min-width: 352px;
+  max-width: 1024px;
   width: 100%;
-  margin: 0;
+  text-align: left;
+  padding: 1rem;
 }
 
-/* line 25, ../../sass/examples/grid-custom.scss */
-.col {
-  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1);
+/* line 38, ../../sass/examples/grid-custom.scss */
+#header {
   padding: 16px;
   /* px fallback for rem */
   padding: 1rem;
-}
-/* line 31, ../../sass/examples/grid-custom.scss */
-.col:nth-of-type(2n) {
-  background: #eee;
-}
-/* line 33, ../../sass/examples/grid-custom.scss */
-.col > img {
+  -webkit-box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.15);
+  float: left;
   width: 100%;
+}
+@media all and (min-width: 689px) {
+  /* line 38, ../../sass/examples/grid-custom.scss */
+  #header {
+    /* ==== ("eight" 8) ======================== 
+    		 Display from 8 columns
+       ======================================== */
+  }
+}
+@media all and (min-width: 1025px) {
+  /* line 38, ../../sass/examples/grid-custom.scss */
+  #header {
+    /* ==== ("twelve" 12) ======================== 
+    		 Display from 12 columns
+       ======================================== */
+  }
+}
+
+/* line 57, ../../sass/examples/grid-custom.scss */
+#nav {
+  float: left;
+  width: 100%;
+  margin: 1em 0;
+  padding: 0;
+}
+/* line 60, ../../sass/examples/grid-custom.scss */
+#nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+/* line 61, ../../sass/examples/grid-custom.scss */
+#nav li {
+  float: left;
+  width: 100%;
+  list-style: none;
+  margin: 0;
+}
+/* line 62, ../../sass/examples/grid-custom.scss */
+#nav a {
+  -webkit-box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.15);
+  display: block;
+  line-height: 3em;
+  background: navy;
+  padding: 0 1em;
+  color: #fff;
+  text-decoration: none;
+}
+/* line 66, ../../sass/examples/grid-custom.scss */
+#nav a:hover {
+  background-color: #00004d;
+}
+@media all and (min-width: 353px) {
+  /* line 57, ../../sass/examples/grid-custom.scss */
+  #nav {
+    /* ==== ("four" 4) ======================== 
+    		 Display from 4 columns
+       ======================================== */
+  }
+  /* line 71, ../../sass/examples/grid-custom.scss */
+  #nav li {
+    margin-bottom: .15em;
+  }
+}
+@media all and (min-width: 689px) {
+  /* line 57, ../../sass/examples/grid-custom.scss */
+  #nav {
+    /* ==== ("eight" 8) ======================== 
+    		 Display from 8 columns
+       ======================================== */
+  }
+  /* line 77, ../../sass/examples/grid-custom.scss */
+  #nav li:first-child {
+    margin-left: 0;
+  }
+  /* line 78, ../../sass/examples/grid-custom.scss */
+  #nav li {
+    width: auto;
+    margin: 0 0 0 .25em;
+  }
+}
+@media all and (min-width: 1025px) {
+  /* line 57, ../../sass/examples/grid-custom.scss */
+  #nav {
+    /* ==== ("twelve" 12) ======================== 
+    		 Display from 12 columns
+       ======================================== */
+  }
+}
+
+/* line 90, ../../sass/examples/grid-custom.scss */
+#footer {
+  padding: 16px;
+  /* px fallback for rem */
+  padding: 1rem;
+  -webkit-box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.15);
+  float: left;
+  width: 100%;
+  clear: both;
+}
+@media all and (min-width: 689px) {
+  /* line 90, ../../sass/examples/grid-custom.scss */
+  #footer {
+    /* ==== ("eight" 8) ======================== 
+    		 Display from 8 columns
+       ======================================== */
+  }
+}
+@media all and (min-width: 1025px) {
+  /* line 90, ../../sass/examples/grid-custom.scss */
+  #footer {
+    /* ==== ("twelve" 12) ======================== 
+    		 Display from 12 columns
+       ======================================== */
+  }
+}
+
+/* line 108, ../../sass/examples/grid-custom.scss */
+#page {
+  float: left;
+  width: 100%;
+  clear: both;
+}
+/* line 111, ../../sass/examples/grid-custom.scss */
+#page > .main {
+  padding: 16px;
+  /* px fallback for rem */
+  padding: 1rem;
+  -webkit-box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.15);
+}
+/* line 114, ../../sass/examples/grid-custom.scss */
+#page > .sidebar {
+  padding: 16px;
+  /* px fallback for rem */
+  padding: 1rem;
+  -webkit-box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.15);
+  background: white;
+}
+@media all and (min-width: 689px) {
+  /* line 108, ../../sass/examples/grid-custom.scss */
+  #page {
+    /* ==== ("eight" 8) ======================== 
+    		 Display from 8 columns
+       ======================================== */
+  }
+  /* line 123, ../../sass/examples/grid-custom.scss */
+  #page > .main {
+    float: left;
+    width: 100%;
+    margin-right: 2.43902%;
+    margin-bottom: 16px;
+    max-width: 74.39024%;
+  }
+  /* line 127, ../../sass/examples/grid-custom.scss */
+  #page > .sidebar {
+    float: left;
+    width: 100%;
+    margin-right: 2.43902%;
+    margin-bottom: 16px;
+    max-width: 23.17073%;
+    float: right;
+    margin-right: 0;
+    min-height: 15em;
+  }
+}
+@media all and (min-width: 1025px) {
+  /* line 108, ../../sass/examples/grid-custom.scss */
+  #page {
+    /* ==== ("twelve" 12) ======================== 
+    		 Display from 12 columns
+       ======================================== */
+  }
+  /* line 139, ../../sass/examples/grid-custom.scss */
+  #page > .main {
+    float: left;
+    width: 100%;
+    margin-right: 1.6129%;
+    margin-bottom: 16px;
+    max-width: 74.59677%;
+    min-height: 25em;
+  }
+  /* line 144, ../../sass/examples/grid-custom.scss */
+  #page > .sidebar {
+    float: left;
+    width: 100%;
+    margin-right: 1.6129%;
+    margin-bottom: 16px;
+    max-width: 23.79032%;
+    float: right;
+    margin-right: 0;
+  }
 }

@@ -1,34 +1,149 @@
-//@import "grid";
 
 
-$grid-width: 320px;
+$grid-width: 320px; //Mobile first.
 $grid-style: fluid;
 $column-width: 60px;
 $gutter-width: auto;
-
 @import "../unity-grid";
+
+$primary-color: navy;
+$shadow-color: rgba(0,0,0,.15);
+
 
 body {
 	padding:0;
 	font: em(13px, 1rem) sans-serif;
 }
 
+a {color:$primary-color;}
+
+h1, h2, h3, h4, h5, h6, p, ul {
+	&:first-child {margin-top:0;};
+}
+
 #container {
-	@include container;
-	text-align:left;
+	@include flux-container(4, 12);
+	text-align:left; padding: grid-padding-width() / 2;
 }
 
-.row {
-	@include row;
-}
-
-.col {
-	//border: 1px solid rgba(0,0,0,.1);
-	box-shadow: 0 5px 12px rgba(0,0,0,.1);
-	
+@mixin pretty-box(){
 	@include rem(padding 1rem);
+	@include box-shadow(0 0 .5em $shadow-color);	
+}
+
+
+// ------------------------------------------------------------------
+// HEADER
+// ==================================================================
+#header {
+	@include pretty-box;
+	float:left; width:100%; 
 	
-	&:nth-of-type(2n) {background:#eee;};
+	// EIGHT COLUMNS
+	// ------------------------------------------------------------------
+	@include grid-breakpoint(eight){}
 	
-	> img {width:100%;}
+	// TWELVE COLUMNS
+	// ------------------------------------------------------------------
+	@include grid-breakpoint(twelve){}
+}
+
+
+
+
+// ------------------------------------------------------------------
+// NAV
+// ==================================================================
+#nav {
+	float:left; width:100%; margin:1em 0; padding:0;
+	
+	ul {list-style:none; margin:0; padding:0;}
+	li {float:left; width:100%; list-style:none; margin:0;}
+	a {
+		@include box-shadow(0 0 .5em $shadow-color);
+		display:block; line-height:3em; background: $primary-color; padding:0 1em; color:#fff; text-decoration:none;
+	}
+	a:hover {background-color:darken($primary-color, 10%); }
+	
+	// FOUR COLUMNS
+	// ------------------------------------------------------------------
+	@include grid-breakpoint(four){
+		li {margin-bottom:.15em;}
+	}
+	
+	// EIGHT COLUMNS
+	// ------------------------------------------------------------------
+	@include grid-breakpoint(eight){
+		li:first-child {margin-left:0;};
+		li {width:auto; margin:0 0 0 .25em;}
+	}
+	
+	// TWELVE COLUMNS
+	// ------------------------------------------------------------------
+	@include grid-breakpoint(twelve){}
+}
+
+
+// ------------------------------------------------------------------
+// FOOTER
+// ==================================================================
+#footer {
+	@include pretty-box;
+	float:left; width:100%; clear:both;
+	
+	// EIGHT COLUMNS
+	// ------------------------------------------------------------------
+	@include grid-breakpoint(eight){}
+	
+	// TWELVE COLUMNS
+	// ------------------------------------------------------------------
+	@include grid-breakpoint(twelve){}
+}
+
+
+
+// ------------------------------------------------------------------
+// PAGE
+// ==================================================================
+#page {
+	float:left; width:100%; clear:both;
+	
+	> .main {
+		@include pretty-box;
+	}
+	> .sidebar {	
+		@include pretty-box;	
+		background: lighten($primary-color, 75%);
+	}
+	
+	// EIGHT COLUMNS
+	// ------------------------------------------------------------------
+	@include grid-breakpoint(eight){
+		
+		> .main {
+			@include columns(grid-breakpoint-columns() - 2);
+		}
+		
+		> .sidebar {
+			@include columns(2);
+			@include omega;
+			min-height:15em;
+		}
+		
+	}
+	
+	// TWELVE COLUMNS
+	// ------------------------------------------------------------------
+	@include grid-breakpoint(twelve){
+			
+		> .main {
+			@include columns(grid-breakpoint-columns() - 3);
+			min-height:25em;
+		}
+		
+		> .sidebar {
+			@include columns(3);
+			@include omega;
+		}
+	}
 }

@@ -45,10 +45,10 @@ $pt-per-inch: 72pt !default;
 				@each $val in $dim {
 					//repeat logic
 					@if($unit == null){
-						@if(type-of($val) == "number" and unitless($val) == false){
+						@if(type-of($val) == "number" and unitless($val) == false and unit($val) != "%"){
 							@return unit($val);
 						}@else if(type-of($val) == "list" or type-of($val) == "arglist"){
-							$unit: first-unit($val);
+							@return first-unit($val);
 						}
 					}
 				}
@@ -57,9 +57,6 @@ $pt-per-inch: 72pt !default;
 	}
 	@return $unit;
 }
-
-
-
 
 
 
@@ -270,7 +267,7 @@ $pt-per-inch: 72pt !default;
 	}@else if($unit == "px"){
 		@return px(($dims));
 	}@else{
-		@warn "Cannot cast unit "+ $dims;
+		@warn "Cannot cast \"#{$unit}\" unit for "+ $dims;
 	}
 	@return null;
 }

@@ -38,12 +38,14 @@ Usage for unit functions
 	
 ####Add or subtract
 	
-	$baseline: 16px; //Define the baseline for our rem unit.
-	$grid-width: 1120px;
-	$grid-padding: 0 1rem;
+	$total-width: plus(1120px, 1rem); 
 	
 	div.container {
-		width: plus($total-width);
+		width: $total-width;
+	}
+	
+	div.sidebar {
+		width: minus($total-width, 20rem);		
 	}
 	
 	
@@ -97,13 +99,15 @@ These helpers accept a breakpoint list or a breakpoint handle. If neither is pas
 	
 ####Easy breakpoints:
 
+	//Setup our breakpoints globally
 	$grid-breakpoints: grid-breakpoints(
 		(four 4 0 4), //This is a small-down breakpoint. The base global breakpoint is already four columns.
 		(eight 8), //format is ("handle" "columns" "min" "max") -- without quotes, where "min" and "max" are the visible ranges. If neither are entered, "min" is set to "columns".
 		(twelve 12),
 		(sixteen 16)
 	);
-
+	
+	//Reference the breakpoints by handle
 	@include grid-breakpoint(four){
 		body {color: blue;}
 		#container {@include container;}

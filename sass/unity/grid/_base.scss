@@ -37,6 +37,48 @@ $grid-padding:1rem; //Use shorthand syntax for left/right, ie. $grid-padding: 0 
 		
 }
 
+
+
+// @function grid-padding-left
+// @param $padding
+@function grid-padding-left($padding: $grid-padding){
+
+	@if(type-of($padding) == "list" and length($padding) >= 4){
+		@return nth($padding, 4); //Left padding specified
+	
+	}@else if(type-of($padding) == "list" and length($padding) >= 2){
+		@return nth($padding, 2); //Use right padding
+		
+	}@else if(type-of($padding) == "number"){
+		
+		@return $padding; //Just a number
+	}
+	
+}
+
+// @function grid-padding-right
+// @param $padding
+@function grid-padding-right($padding: $grid-padding){
+
+	@if(type-of($padding) == "list" and length($padding) >= 2){
+		@return nth($padding, 2);
+	}@else if(type-of($padding) == "number"){
+		@return $padding;
+	}
+	
+}
+
+
+// @function grid-padding-width
+// @param $padding
+@function grid-padding-width($padding: $grid-padding){
+	
+	@return plus(grid-padding-left($padding), grid-padding-right($padding));
+	
+}
+
+
+
 // Get the width of the grid container, which includes the padding (global $grid-padding).
 // @function container-width
 // @param $columns {Number}
@@ -46,29 +88,19 @@ $grid-padding:1rem; //Use shorthand syntax for left/right, ie. $grid-padding: 0 
 // @param $width {Number} The total width for the grid, if the column or gutter are null/auto.
 // @param $unit {String} [rem|px]
 @function container-width($columns: $grid-columns, $column-width: $grid-column-width, $gutter-width: $grid-gutter-width, $padding: $grid-padding, $width: $grid-width, $unit: $grid-unit){
-	$-padding-width: 0px;
-	@if(type-of($padding) == "list"){
-		$-padding-width: plus($-padding-width, nth($padding, 2));
-
-		//Right padding
-		@if(length($padding) >= 4){
-			$-padding-width: plus($-padding-width, nth($padding, 4));
-		}@else{
-			$-padding-width: plus($-padding-width, nth($padding, 2));
-		}
-	}@else if(type-of($padding) == "number"){
-		$-padding-width: grid-unit($padding * 2);
-	}
-	$-grid-width: grid-width($columns: $columns, $column-width: $column-width, $gutter-width: $gutter-width, $width: $width, $unit: $unit);
-	@return plus($-grid-width, $-padding-width);
+		$-padding-width: grid-padding-width($padding);	
+		$-grid-width: grid-width($columns: $columns, $column-width: $column-width, $gutter-width: $gutter-width, $width: $width, $unit: $unit);
+		@return plus($-grid-width, $-padding-width);
 }
+
+
 
 // Calculate the static width of a single column with a given grid-width and gutter-width.
 // @function column-width
 // @param $grid-width
 // @param $grid-columns
 // @param $gutter-width
-// @param $column-width {String} Defaults to global $column-width.
+// @param $column-width {String} Defaults to global $grid-column-width.
 // @param $grid-unit
 // =column-width(960px, 16, 10px)
 @function column-width($grid-width: $grid-width, $grid-columns: $grid-columns, $gutter-width: $grid-gutter-width, $column-width: $grid-column-width, $unit: $grid-unit){
@@ -83,8 +115,8 @@ $grid-padding:1rem; //Use shorthand syntax for left/right, ie. $grid-padding: 0 
 // @function gutter-width
 // @param $grid-width {Number} Defaults to global $grid-width, if it exists.
 // @param $grid-columns {String} Defaults to global $grid-columns.
-// @param $column-width {String} Defaults to global $column-width.
-// @param $gutter-width {String} Defaults to global $gutter-width.
+// @param $column-width {String} Defaults to global $grid-column-width.
+// @param $gutter-width {String} Defaults to global $grid-gutter-width.
 // @param $unit {String} Defaults to global $grid-unit.
 @function gutter-width($grid-width: $grid-width, $grid-columns: $grid-columns, $column-width: $grid-column-width, $gutter-width: $grid-gutter-width, $unit: $grid-unit){
 	@if($gutter-width != null and $gutter-width != auto){
@@ -100,8 +132,8 @@ $grid-padding:1rem; //Use shorthand syntax for left/right, ie. $grid-padding: 0 
 // @param $count {Number}
 // @param $style {String} [fluid|static] Defaults to global $grid-style.
 // @param $grid-columns {Number} Total number of columns. Defaults to global $grid-columns.
-// @param $column-width {Number} Width of each column. Defaults to global $column-width.
-// @param $gutter-width {Number} Defaults to global $gutter-width.
+// @param $column-width {Number} Width of each column. Defaults to global $grid-column-width.
+// @param $gutter-width {Number} Defaults to global $grid-gutter-width.
 // @param $unit {String} The unit to use when calculating static dimensions. [px|rem] 
 @function columns($count, $style: $grid-style, $grid-columns: $grid-columns, $column-width: $grid-column-width, $gutter-width: $grid-gutter-width, $unit: $grid-unit){
 	@if($column-width == null or $column-width == "auto"){
@@ -133,8 +165,8 @@ $grid-padding:1rem; //Use shorthand syntax for left/right, ie. $grid-padding: 0 
 // @param $count {Number}
 // @param $style {String} [fluid|static]
 // @param $grid-columns {Number} The totla number of columns. Defaults to global $grid-columns.
-// @param $column-width {Number} The width of a single column in the grid. Defaults to global $column-width.
-// @param $gutter-width {Number} The width of a single gutter in the grid. Defaults to global $gutter-width.
+// @param $column-width {Number} The width of a single column in the grid. Defaults to global $grid-column-width.
+// @param $gutter-width {Number} The width of a single gutter in the grid. Defaults to global $grid-gutter-width.
 // @param $unit {String} The unit to use when calculating static dimensions. [px|em]
 @function gutters($count, $style: $grid-style, $grid-columns: $grid-columns, $column-width: $grid-column-width, $gutter-width: $grid-gutter-width, $grid-width: $grid-width, $unit: $grid-unit){
 	@if($gutter-width == null or $gutter-width == "auto"){
@@ -222,11 +254,12 @@ $grid-padding:1rem; //Use shorthand syntax for left/right, ie. $grid-padding: 0 
 // @mixin fluid-container
 // @param $span {Number} Defaults to $grid-columns
 // @param $column-width {Number} Defaults to $column-width
-// @param $gutter-width {Number} Defaults to global $gutter-width
+// @param $gutter-width {Number} Defaults to global $grid-gutter-width
+// @param $padding {Number} Defaults to global $grid-padding
 // @param $unit {String} [rem|px]
 // @param $semantics {Boolean|String} 
-@mixin fluid-container($span: $grid-columns, $column-width: $grid-column-width, $gutter-width: $grid-gutter-width, $unit: $grid-unit, $semantics: false){
-	@include container($grid-columns: $span, $style: fluid, $unit: $unit, $semantics: $semantics);
+@mixin fluid-container($span: $grid-columns, $column-width: $grid-column-width, $gutter-width: $grid-gutter-width, $padding: $grid-padding, $unit: $grid-unit, $semantics: false){
+	@include container($grid-columns: $span, $style: fluid, $column-width: $column-width, $gutter-width: $gutter-width, $padding: $padding, $unit: $unit, $semantics: $semantics);
 }
 
 // Create a container that spans a range of columns.
@@ -234,14 +267,15 @@ $grid-padding:1rem; //Use shorthand syntax for left/right, ie. $grid-padding: 0 
 // @param $min-span {Number} Defaults to 1.
 // @param $max-span {Number} Defaults to global $grid-columns.
 // @param $grid-columns {Number} Defaults to global $grid-columns.
-// @param $column-width {Number} Defaults to global $column-width.
-// @param $gutter-width {Number} Defaults to global $gutter-width.
+// @param $column-width {Number} Defaults to global $grid-column-width.
+// @param $gutter-width {Number} Defaults to global $grid-gutter-width.
 // @param $unit {String} [rem|px] Defaults to global $grid-unit.
 // @param $semantics {Boolean|String}
-@mixin flux-container($min-span: 1, $max-span: $grid-columns, $grid-columns: $grid-columns, $column-width: $grid-column-width, $gutter-width: $grid-gutter-width, $unit: $grid-unit, $semantics: false){
-	@include container($grid-columns: $max-span, $style: fluid, $unit: $unit, $semantics: $semantics);
-	@include span-limit($min-span, $max-span);
+@mixin flux-container($min-span: 1, $max-span: $grid-columns, $grid-columns: $grid-columns, $column-width: $grid-column-width, $gutter-width: $grid-gutter-width, $padding: $grid-padding, $unit: $grid-unit, $semantics: false){
+	@include container($grid-columns: $max-span, $style: static, $column-width: $column-width, $gutter-width: $gutter-width, $padding: $padding, $unit: $unit, $semantics: $semantics);
+	@include span-limit($min-span, $max-span, $adjust: grid-padding-width($padding));
 }
+
 
 
 // Basic mixin for a row.
@@ -254,8 +288,8 @@ $grid-padding:1rem; //Use shorthand syntax for left/right, ie. $grid-padding: 0 
 // @param $span {Number}
 // @param $grid-columns {Number} Defaults to global $grid-columns.
 // @param $style [static|fluid] Defaults to global $grid-style.
-// @param $column-width {Number} Defaults to global $column-width.
-// @param $gutter-width {Number} Defaults to global $gutter-width.
+// @param $column-width {Number} Defaults to global $grid-column-width.
+// @param $gutter-width {Number} Defaults to global $grid-gutter-width.
 // @param $unit [rem|px] Defaults to global $grid-unit.
 // @param $semantics {Boolean|String} Adds &.omega, &.fluid, &.static, &.collapse classes for semantic markup. Pass a string to prefix the semantic classes.
 @mixin columns($span: null, $grid-columns: $grid-columns, $style: $grid-style, $column-width: $grid-column-width, $gutter-width: $grid-gutter-width, $unit: $grid-unit, $semantics: false){
@@ -342,33 +376,51 @@ $grid-padding:1rem; //Use shorthand syntax for left/right, ie. $grid-padding: 0 
 // @mixin span-limit
 // @param $min-columns
 // @param $max-columns
+// @param $column-width
+// @param $gutter-width
+// @param $adjust {Number|List} Offset the left and right dimensions with a list or number, ie. "1rem 1.5rem" or "14px";
 // =#container {		
 //		@include span-limit	(4, 12);
 //		width:100%;
 //	}
-@mixin span-limit($min-columns:null, $max-columns:null, $column-width: $grid-column-width, $gutter-width: $grid-gutter-width){
+@mixin span-limit($min-columns:null, $max-columns:null, $column-width: $grid-column-width, $gutter-width: $grid-gutter-width, $adjust: 0){
+	$-min-width: 0;
+	$-max-width: 0;
+	$-adjust: $adjust;
+	
+	@if(type-of($adjust) == "list"){
+		@each $num in $adjust {
+			$-adjust: plus($-adjust, $num);
+		}
+	}@else if(type-of($adjust) != "number"){
+		$-adjust: 0;
+	}	
+	
 	@if($min-columns != null){
-		$min-width: span($min-columns, $column-width: $column-width, $gutter-width: $gutter-width);
-		@if(unit($min-width) == "rem"){
-			@include rem(min-width $min-width);
+		
+		$-min-width: span($min-columns, $style: static, $column-width: $column-width, $gutter-width: $gutter-width);
+		$-min-width: plus($-min-width, $-adjust);
+		@if(unit($-min-width) == "rem"){
+			@include rem(min-width $-min-width);
 		}@else{
-			min-width: $min-width;
+			min-width: $-min-width;
 		}
 	}@else{
 		min-width: 0;
 	}
 	
 	@if($max-columns != null){
-		$max-width: span($max-columns, $column-width: $column-width, $gutter-width: $gutter-width);
-		@if(unit($max-width) == "rem"){
-			@include rem(max-width $max-width);
+		$-max-width: span($max-columns, $style: static, $column-width: $column-width, $gutter-width: $gutter-width);
+		$-max-width: plus($-max-width, $-adjust);
+		@if(unit($-max-width) == "rem"){
+			@include rem(max-width $-max-width);
 		}@else{
-			max-width: $max-width;
+			max-width: $-max-width;
 		}
 		width:100%;
 	}@else{
 		max-width:none;
-	}
+	}	
 	
 	
 }
@@ -380,8 +432,8 @@ $grid-padding:1rem; //Use shorthand syntax for left/right, ie. $grid-padding: 0 
 // @mixin grid
 // @param $columns {Number} Defaults to global $grid-columns.
 // @param $style {String} [static|fluid] Defaults to global $grid-style.
-// @param $column-width {Number} Defaults to global $column-width.
-// @param $gutter-width {Number} Defaults to global $gutter-width.
+// @param $column-width {Number} Defaults to global $grid-column-width.
+// @param $gutter-width {Number} Defaults to global $grid-gutter-width.
 // @param $padding {Number} Defaults to global $grid-padding.
 // @param $width {Number} Defaults to global $grid-width, if column and gutter widths aren't set.
 // @param $unit {String} Defaults to global $grid-unit.
