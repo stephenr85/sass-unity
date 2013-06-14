@@ -6,7 +6,7 @@ A framework for working with numbers and units.
 
 But wait, there's more -- a grid that ties it all together.
 
-Feel free to join the community: https://plus.google.com/communities/116793333538502677615
+Feel free to start a conversation: https://groups.google.com/forum/#!forum/sass-unity
 
 
 Usage for unit functions
