@@ -10,7 +10,7 @@ But wait, there's more -- a grid that ties it all together.
 Usage for dimension functions
 --------------------------
 
-Easily normalize units:
+####Easily normalize units:
 
 	body {
 		font-size: rem(12px);
@@ -21,13 +21,13 @@ Easily normalize units:
 		border-radius: unity(1rem 12px 1em 1); //Convert all values to the same unit as the first value.
 	}
 
-Use the "rem" mixin to create px fallbacks for older browsers:
+####Use the "rem" mixin to create px fallbacks for older browsers:
 	
 	body {
 		@include rem(font-size 12px, padding 1rem);
 	}
 	
-Add or subtract:
+####Add or subtract:
 	
 	$baseline: 16px; //Define the baseline for our rem unit.
 	$grid-width: 1120px;
@@ -43,38 +43,66 @@ Add or subtract:
 Usage for grid
 --------------------------
 
-A few global defaults:
+####A few globals
 
-	$grid-width: 960px;
-	$grid-columns: 12;
-	$grid-column-width: 68px;
-	$grid-gutter-width: auto;
+	$grid-width: 320px; //The width of the grid, not including its padding
+	$grid-columns: 12; //The number of columns
+	$grid-column-width: 68px; //The width of a single column
+	$grid-gutter-width: auto; //The width of a single gutter
 
-Easy breakpoints:
+####Use multiple grids
+
+	@include grid(12, static, 62px, auto){
+		//All rules within this @include are subject to the grid settings.
+		#container {width: container-width(); }
+	}
+
+####Grid helpers
+
+These helpers have many parameters, but will use the current grid context if none are passed.
+
+	grid-width(); //The total width of your grid, not including its padding
+	column-width(); //The static width of a column
+	gutter-width(); //The static width of a gutter
+	container-width(); //The static total width of your container, which is the grid-width plus its padding.
+
+#####Breakpoint helpers
+
+These helpers accept a breakpoint list or a breakpoint handle. If neither is passed, it uses the current global $grid-breakpoint.
+	
+	grid-breakpoint($handle);
+	grid-breakpoint-columns(); //Get the current breakpoint's columns, or pass a handle, ie. grid-brea
+	grid-breakpoint-handle($breakpoint)
+	grid-breakpoint-min();
+	grid-breakpoint-max();
+	
+	
+####Easy breakpoints:
 
 	$grid-breakpoints: grid-breakpoints(
-		(small 1 4), //This is basically a small-down breakpoint
-		(medium 8),
-		(large 12),
-		(xlarge 16)
+		(four 4 0 4), //This is a small-down breakpoint. The base global breakpoint is already four columns.
+		(eight 8), //format is ("handle" "columns" "min" "max") -- without quotes, where "min" and "max" are the visible ranges. If neither are entered, "min" is set to "columns".
+		(twelve 12),
+		(sixteen 16)
 	);
 
-	@include grid-breakpoint(small){
+	@include grid-breakpoint(four){
 		body {color: blue;}
 		#container {@include container;}
 	}
 
-	@include grid-breakpoint(medium){
+	@include grid-breakpoint(eight){
 		body {color: green;}
 		#container {@include container;}
 	}
 
-	@include grid-breakpoint(large){
+	@include grid-breakpoint(twelve){
 		body {color: purple;}
 		#container {@include container;}
 	}
 
-	@include grid-breakpoint(xlarge){
+	@include grid-breakpoint(sixteen){
 		body {color: black;}
 		#container {@include container;}
 	}
+
