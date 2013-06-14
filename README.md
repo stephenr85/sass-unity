@@ -9,10 +9,17 @@ But wait, there's more -- a grid that ties it all together.
 Feel free to join the community: https://plus.google.com/communities/116793333538502677615
 
 
-Usage for dimension functions
+Usage for unit functions
 --------------------------
 
-####Easily normalize units:
+####Unit globals
+
+	$baseline: 16px //the px value for rem units, which are always relative to the document root (html element).
+	$em-baseline: $baseline; //a dynamic value used and manipulated by the "em" function.
+	$px-per-inch: 96px; //Used for point calculations
+	$pt-per-inch: 72pt; //Used for point calculations in combination with $px-per-inch.
+
+####Easily normalize units
 
 	body {
 		font-size: rem(12px);
@@ -23,13 +30,13 @@ Usage for dimension functions
 		border-radius: unity(1rem 12px 1em 1); //Convert all values to the same unit as the first value.
 	}
 
-####Use the "rem" mixin to create px fallbacks for older browsers:
+####Use the "rem" mixin to create px fallbacks for older browsers
 	
 	body {
 		@include rem(font-size 12px, padding 1rem);
 	}
 	
-####Add or subtract:
+####Add or subtract
 	
 	$baseline: 16px; //Define the baseline for our rem unit.
 	$grid-width: 1120px;
@@ -40,7 +47,16 @@ Usage for dimension functions
 	}
 	
 	
-
+####More...
+	
+	strip-unit(12px) = 12 //remove the unit from a number
+	sub-px(13.00005px) = 13px //round sub-pixel remainders
+	first-unit(13 0% 5em 12px) = em //find the first unit in a given list of numbers
+	
+	$my-unit: px;
+	cast-unit($my-unit, 1rem) = 16px;
+	
+	
 
 Usage for grid
 --------------------------
