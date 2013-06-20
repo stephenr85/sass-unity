@@ -68,7 +68,8 @@ $pt-per-inch: 72pt !default;
 // =px(1rem) = 16px
 // =px(1 4rem 2em 10%) = 1px 64px 26px 10%
 @function px($dim){	
-	@if(type-of($dim) == "arglist" or type-of($dim) == "list"){
+	$-is-list: type-of($dim) == "arglist" or type-of($dim) == "list";
+	@if($-is-list and length($dim) > 1){
 		$pxs: ();
 		@each $value in $dim {
 			$pxs: append($pxs, px($value));
@@ -78,7 +79,13 @@ $pt-per-inch: 72pt !default;
 		}@else{
 			@return $pxs;
 		}		
+	}@else if($-is-list){
+		$dim: nth($dim, 1);
 	}
+	@if($dim == "auto"){
+		@return "auto";
+	}
+	
 	$dim: $dim * 1;
 	@if(type-of($dim) == "string" and $dim == "auto"){
 		@return $dim;
@@ -109,7 +116,8 @@ $pt-per-inch: 72pt !default;
 // @function rem
 // @param $dim {Number} An rem value.
 @function rem($dim){
-	@if(type-of($dim) == "arglist" or type-of($dim) == "list"){
+	$-is-list: type-of($dim) == "arglist" or type-of($dim) == "list";
+	@if($-is-list and length($dim) > 1){
 		$rems: ();
 		@each $value in $dim {
 			$rems: append($rems, rem($value), space);
@@ -120,6 +128,11 @@ $pt-per-inch: 72pt !default;
 			@return $rems;
 		}
 	}@else if($dim == "auto"){
+		@return "auto";
+	}@else if($-is-list){
+		$dim: nth($dim, 1);
+	}
+	@if($dim == "auto"){
 		@return "auto";
 	}
 	$dim: $dim * 1;
@@ -145,7 +158,8 @@ $pt-per-inch: 72pt !default;
 // @param $baseline {Number} [global $em-baseline] However many px = 1em, or the relative em of the current context. 
 // @param $adjust {Boolean} [false] When true, adjusts the global $em-baseline to whatever the result is. this is useful if you want to set things font-size: em(12px)
 @function em($dim, $baseline: $em-baseline, $adjust: false){	
-	@if(type-of($dim) == "arglist" or type-of($dim) == "list"){
+	$-is-list: type-of($dim) == "arglist" or type-of($dim) == "list";
+	@if($-is-list and length($dim) > 1){
 		$ems: ();
 		@each $value in $dim {
 			$ems: append($ems, em($value), space);
@@ -155,7 +169,10 @@ $pt-per-inch: 72pt !default;
 		}@else{
 			@return $ems;
 		}		
-	}@else if($dim == "auto"){
+	}@else if($-is-list){
+		$dim: nth($dim, 1);
+	}
+	@if($dim == "auto"){
 		@return "auto";
 	}
 	
@@ -169,9 +186,9 @@ $pt-per-inch: 72pt !default;
 	}@else{		
 		//Make sure $dim is a px, then convert
 		$dim: px($dim);
-		$-em: strip-unit($dim / $baseline) + 0em;
+		$-em: strip-unit($dim / px($baseline)) + 0em;
 		@if($adjust){
-			$em-baseline: px($dim); //Update global $em-baseline
+			$em-baseline: $dim; //Update global $em-baseline
 		}		
 		@return $-em;
 	}
@@ -191,7 +208,8 @@ $pt-per-inch: 72pt !default;
 // =percent(10%, 240px) = 24px
 // =percent(10%, rem(240px)) = 1.5rem
 @function percent($dim, $context){
-	@if(type-of($dim) == "arglist" or type-of($dim) == "list"){
+	$-is-list: type-of($dim) == "arglist" or type-of($dim) == "list";
+	@if($-is-list and length($dim) > 1){
 		$percents: ();
 		@each $value in $dim {
 			$percents: append($percents, percent($value, $context), space);
@@ -228,7 +246,8 @@ $pt-per-inch: 72pt !default;
 // @return {Number} A pt value.
 // =pt(16px) = 12pt
 @function pt($dim, $px-per-inch: $px-per-inch, $pt-per-inch: $pt-per-inch){
-	@if(type-of($dim) == "arglist" or type-of($dim) == "list"){
+	$-is-list: type-of($dim) == "arglist" or type-of($dim) == "list";
+	@if($-is-list and length($dim) > 1){
 		$pts: ();
 		@each $value in $dim {
 			$pts: append($pts, pts($value), space);

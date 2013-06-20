@@ -437,17 +437,18 @@ $grid-padding:1rem; //Use shorthand syntax for left/right, ie. $grid-padding: 0 
 // @param $padding {Number} Defaults to global $grid-padding.
 // @param $width {Number} Defaults to global $grid-width, if column and gutter widths aren't set.
 // @param $unit {String} Defaults to global $grid-unit.
-// @param $scope {Selector} Scope these styles to a class rather than a media query.
+// @param $legacy {Number} Defaults to global $grid-legacy. 
 // @param $semantics {Boolean|String} If true, calls mixin grid-semantics() with the given grid parameters. A string is used as the $prefix parameter for grid-semantics().
-@mixin grid($columns, $style: $grid-style, $column-width: $grid-column-width, $gutter-width: $grid-gutter-width, $padding: $grid-padding, $width: $grid-width, $unit: $grid-unit, $scope:null, $semantics: false){
+@mixin grid($columns, $style: $grid-style, $column-width: $grid-column-width, $gutter-width: $grid-gutter-width, $padding: $grid-padding, $width: $grid-width, $unit: $grid-unit, $legacy: $grid-legacy, $semantics: false){
 	//Cache globals
-	$prev-grid-columns: $grid-columns;
-	$prev-grid-style: $grid-style;
-	$prev-column-width: $grid-column-width;
-	$prev-gutter-width: $grid-gutter-width;
-	$prev-grid-padding: $grid-padding;
-	$prev-grid-width: $grid-width;	
-	$prev-grid-unit: $grid-unit;
+	$-prev-grid-columns: $grid-columns;
+	$-prev-grid-style: $grid-style;
+	$-prev-column-width: $grid-column-width;
+	$-prev-gutter-width: $grid-gutter-width;
+	$-prev-grid-padding: $grid-padding;
+	$-prev-grid-width: $grid-width;	
+	$-prev-grid-unit: $grid-unit;
+	$-prev-grid-legacy: $grid-legacy;
 	
 	//Redefine globals
 	
@@ -469,17 +470,19 @@ $grid-padding:1rem; //Use shorthand syntax for left/right, ie. $grid-padding: 0 
 	
 	$grid-padding: $padding;	
 	$grid-unit: $unit;
+	$grid-legacy: $legacy;
 	
 	@content;
 	
 	//Revert globals
-	$grid-columns: $prev-grid-columns;
-	$grid-style: $prev-grid-style;
-	$grid-column-width: $prev-column-width;
-	$grid-gutter-width: $prev-gutter-width;
-	$grid-width: $prev-grid-width;
-	$grid-padding: $prev-grid-padding;	
-	$grid-unit: $prev-grid-unit;	
+	$grid-columns: $-prev-grid-columns;
+	$grid-style: $-prev-grid-style;
+	$grid-column-width: $-prev-column-width;
+	$grid-gutter-width: $-prev-gutter-width;
+	$grid-width: $-prev-grid-width;
+	$grid-padding: $-prev-grid-padding;	
+	$grid-unit: $-prev-grid-unit;	
+	$grid-legacy: $-prev-grid-legacy;
 }
 
 

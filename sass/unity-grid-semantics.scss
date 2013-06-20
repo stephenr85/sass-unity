@@ -11,7 +11,7 @@
 //Create the semantics for each breakpoint
 @each $breakpoint in $grid-breakpoints {
 
-	@include grid-breakpoint($breakpoint){
+	@include grid-breakpoint($breakpoint, $base-level: true){
 		$-handle: grid-breakpoint-handle();
 		$-breakpoint-max: grid-breakpoint-max();
 		

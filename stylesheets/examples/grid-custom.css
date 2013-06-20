@@ -1,22 +1,22 @@
-/* line 15, ../../sass/unity-grid.scss */
+/* line 16, ../../sass/unity-grid.scss */
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-/* line 19, ../../sass/unity-grid.scss */
+/* line 20, ../../sass/unity-grid.scss */
 img {
   max-width: 100%;
 }
 
-/* line 23, ../../sass/unity-grid.scss */
+/* line 24, ../../sass/unity-grid.scss */
 html {
   text-align: center;
   font-size: 16px;
 }
 
-/* line 28, ../../sass/unity-grid.scss */
+/* line 29, ../../sass/unity-grid.scss */
 body {
   font-size: 1em;
   padding: 0;
@@ -133,6 +133,10 @@ h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child, 
     margin-bottom: .15em;
   }
 }
+/* line 71, ../../sass/examples/grid-custom.scss */
+.legacy #nav li {
+  margin-bottom: .15em;
+}
 @media all and (min-width: 689px) {
   /* line 57, ../../sass/examples/grid-custom.scss */
   #nav {
@@ -149,6 +153,15 @@ h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child, 
     width: auto;
     margin: 0 0 0 .25em;
   }
+}
+/* line 77, ../../sass/examples/grid-custom.scss */
+.legacy #nav li:first-child {
+  margin-left: 0;
+}
+/* line 78, ../../sass/examples/grid-custom.scss */
+.legacy #nav li {
+  width: auto;
+  margin: 0 0 0 .25em;
 }
 @media all and (min-width: 1025px) {
   /* line 57, ../../sass/examples/grid-custom.scss */
@@ -240,6 +253,25 @@ h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child, 
     min-height: 15em;
   }
 }
+/* line 123, ../../sass/examples/grid-custom.scss */
+.legacy #page > .main {
+  float: left;
+  width: 100%;
+  margin-right: 2.43902%;
+  margin-bottom: 16px;
+  max-width: 74.39024%;
+}
+/* line 127, ../../sass/examples/grid-custom.scss */
+.legacy #page > .sidebar {
+  float: left;
+  width: 100%;
+  margin-right: 2.43902%;
+  margin-bottom: 16px;
+  max-width: 23.17073%;
+  float: right;
+  margin-right: 0;
+  min-height: 15em;
+}
 @media all and (min-width: 1025px) {
   /* line 108, ../../sass/examples/grid-custom.scss */
   #page {
@@ -266,4 +298,23 @@ h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child, 
     float: right;
     margin-right: 0;
   }
+}
+/* line 139, ../../sass/examples/grid-custom.scss */
+.legacy #page > .main {
+  float: left;
+  width: 100%;
+  margin-right: 1.6129%;
+  margin-bottom: 16px;
+  max-width: 74.59677%;
+  min-height: 25em;
+}
+/* line 144, ../../sass/examples/grid-custom.scss */
+.legacy #page > .sidebar {
+  float: left;
+  width: 100%;
+  margin-right: 1.6129%;
+  margin-bottom: 16px;
+  max-width: 23.79032%;
+  float: right;
+  margin-right: 0;
 }

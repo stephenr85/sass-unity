@@ -30,7 +30,7 @@ body {
 
 
 @each $breakpoint in $grid-breakpoints {
-	@include grid-breakpoint($breakpoint){
+	@include grid-breakpoint($breakpoint, $base-level: true){
 		body {			
 			
 			@if(grid-breakpoint-max() == 0){
@@ -43,18 +43,18 @@ body {
 	}
 }
 
-@include grid-breakpoint(four){
+@include grid-breakpoint(four, $base-level:true){
 	body {color: blue;}
 }
 
-@include grid-breakpoint(eight){
+@include grid-breakpoint(eight, $base-level:true){
 	body {color: green;}
 }
 
-@include grid-breakpoint(twelve){
+@include grid-breakpoint(twelve, $base-level:true){
 	body {color: purple;}
 }
 
-@include grid-breakpoint(sixteen){
+@include grid-breakpoint(sixteen, $base-level:true){
 	body {color: black;}
 }

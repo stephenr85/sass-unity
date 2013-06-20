@@ -1,4 +1,4 @@
-
+$grid-legacy: 12 !default; 
 $grid-breakpoint:null !default;
 $grid-breakpoints:null !default;
 
@@ -98,10 +98,6 @@ $grid-breakpoints:null !default;
 }
 
 
-
-
-
-
 // Returns the base selector scope for the breakpoint.
 // @function grid-breakpoint-scope
 // @param {List|String} The breakpoint or breakpoint handle.
@@ -117,11 +113,14 @@ $grid-breakpoints:null !default;
 
 
 // Add rules to a breakpoint. Changes to the global grid variables effective only in this context.
+// If a breakpoint's columns apply to the number of columns specified by $grid-legacy, the content of the mixin will be duplicated in the ".legacy" scope.
 // @mixin grid-breakpoint
 // @param $breakpoint {String|List} If a string, looks for a breakpoint in $grid-breakpoints with the same handle. If a list, it's considered a breakpoint.
-// @param $media-query {Selector}
-// @param $semantics {Boolean}
-@mixin grid-breakpoint($breakpoint, $media-query:"all", $semantics: false){
+// @param $media-query {Selector} ['all'] Base media query for this breakpoint.
+// @param $semantics {Boolean|String} [false] Output grid semantics for this breakpoint. A string will be used as the semantics prefix.
+// @param $scope {String} [null] The root selector to create the rules under.
+// @param $base-level {Boolean} [false] A temporary workaround for using parent selector at the base level. If your @include grid-breakpoint() call is at the base/root level (i.e. has not parent selectors), pass true.
+@mixin grid-breakpoint($breakpoint, $media-query:"all", $semantics: false, $scope:null, $base-level: false){
 	$-orig: $breakpoint;
 	$-prev-breakpoint: $grid-breakpoint;
 	$-breakpoint-handle: null;
@@ -142,6 +141,7 @@ $grid-breakpoints:null !default;
 		$-breakpoint-max: grid-breakpoint-max();
 		$-breakpoint-scope: grid-breakpoint-scope();
 		$-breakpoint-comment: "Display";
+		$-is-legacy: $grid-legacy > 0; 
 		
 		@include grid($-breakpoint-columns){
 	
@@ -149,12 +149,14 @@ $grid-breakpoints:null !default;
 				$-min-width: plus(container-width($-breakpoint-min), 1px);
 				$media-query: $media-query + " and (min-width:"+ $-min-width +")";
 				$-breakpoint-comment: $-breakpoint-comment + " from " + $-breakpoint-min + " columns";
+				$-is-legacy: $grid-legacy and $grid-legacy >= $-breakpoint-min;
 			}
 	
 			@if(type-of($-breakpoint-max) == "number" and $-breakpoint-max > 0){
 				$-max-width: container-width($-breakpoint-max);
 				$media-query: $media-query + " and (max-width:"+ $-max-width +")";
 				$-breakpoint-comment: $-breakpoint-comment + " to " + $-breakpoint-max + " columns";
+				$-is-legacy: $grid-legacy and $grid-legacy <= $-breakpoint-max;
 			}
 	
 			@media #{$media-query} {
@@ -167,9 +169,30 @@ $grid-breakpoints:null !default;
 				}@else if(type-of($semantics) == "string"){
 					@include grid-semantics($prefix: $semantics);
 				}
+				//Scope it, if specified
+				@if($-breakpoint-scope != null and $base-level){
+					#{$-breakpoint-scope} {
+						@content;
+					}
+				}@else if($-breakpoint-scope != null){
+					#{$-breakpoint-scope} & {
+						@content;
+					}
+				}@else{
+					@content;
+				}				
 				
-				@content;
-				
+			}
+			
+			//Output for legacy
+			@if($-is-legacy and $base-level){
+				.legacy {
+					@content;
+				}				
+			}@else if($-is-legacy){
+				.legacy & {
+					@content;
+				}
 			}
 	
 	

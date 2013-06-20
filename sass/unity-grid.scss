@@ -2,14 +2,15 @@
 
 
 $baseline: 16px !default;
-$em-baseline: 13px !default;
 
-$grid-columns: 4; //Mobile first
+$grid-columns: 4 !default; //Mobile first
+$grid-legacy: 12 !default; //Number of columns for older browsers that do not support media queries.
+
 $grid-column-width: 68px !default;
 $grid-gutter-width: 14px !default;
 $grid-unit: rem !default; //Only relevant for static dimensions
 $grid-style: static !default;
-$grid-padding: 1rem;
+$grid-padding: 1rem !default;
 
 
 * {
