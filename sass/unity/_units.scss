@@ -142,8 +142,9 @@ $pt-per-inch: 72pt !default;
 // Sometimes em values are still viable, obviously, but you have to know the context for calculations. The baseline is stored, so each subsequent call will use the previous $baseline parameter, if none is passed.
 // @function em
 // @param $dim {Number}
-// @param $baseline {Number} However many px = 1em, or the relative em of the current context. Defaults to global $em-baseline.
-@function em($dim, $baseline: $em-baseline){	
+// @param $baseline {Number} [global $em-baseline] However many px = 1em, or the relative em of the current context. 
+// @param $adjust {Boolean} [false] When true, adjusts the global $em-baseline to whatever the result is. this is useful if you want to set things font-size: em(12px)
+@function em($dim, $baseline: $em-baseline, $adjust: false){	
 	@if(type-of($dim) == "arglist" or type-of($dim) == "list"){
 		$ems: ();
 		@each $value in $dim {
@@ -165,11 +166,14 @@ $pt-per-inch: 72pt !default;
 	}@else if(unit($dim) == "em" or unitless($dim)){
 		//Ensure em unit
 		@return strip-unit($dim) + 0em;
-	}@else{
-		//Convert to px, then em
+	}@else{		
+		//Make sure $dim is a px, then convert
 		$dim: px($dim);
-		$em-baseline: px($baseline); //Update global $em-baseline
-		@return strip-unit($dim / $em-baseline) + 0em;
+		$-em: strip-unit($dim / $baseline) + 0em;
+		@if($adjust){
+			$em-baseline: px($dim); //Update global $em-baseline
+		}		
+		@return $-em;
 	}
 }
 

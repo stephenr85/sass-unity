@@ -8,6 +8,8 @@ But wait, there's more -- a grid that ties it all together.
 
 Feel free to start a conversation: https://groups.google.com/forum/#!forum/sass-unity
 
+API documentation is available in docs/out/index.html.
+
 
 Usage for unit functions
 --------------------------
@@ -27,7 +29,7 @@ Usage for unit functions
 	}
 	
 	div.rounded {
-		border-radius: unity(1rem 12px 1em 1); //Convert all values to the same unit as the first value.
+		margin: unity(1rem 12px 1em 1); //Convert all values to the same unit as the first value.
 	}
 
 ####Use the "rem" mixin to create px fallbacks for older browsers
@@ -36,7 +38,7 @@ Usage for unit functions
 		@include rem(font-size 12px, padding 1rem);
 	}
 	
-####Add or subtract
+####Add or subtract numbers of different units
 	
 	$total-width: plus(1120px, 1rem); 
 	
@@ -65,15 +67,18 @@ Usage for grid
 
 ####A few globals
 
-	$grid-width: 320px; //The width of the grid, not including its padding
-	$grid-columns: 12; //The number of columns
+	$grid-width: 320px; //The width of the grid, not including its padding; mobile first
+	$grid-columns: 4; //The number of columns; mobile first
 	$grid-column-width: 68px; //The width of a single column
 	$grid-gutter-width: auto; //The width of a single gutter
+	$grid-style: static;
+	$grid-padding: 1rem;
+	$grid-unit: rem;
 
 ####Use multiple grids
 
 	@include grid(12, static, 62px, auto){
-		//All rules within this @include are subject to the grid settings.
+		//All grid variables, functions, and mixins are subject to the parameters passed to this mixin.
 		#container {width: container-width(); }
 	}
 
@@ -85,14 +90,18 @@ These helpers have many parameters, but will use the current grid context if non
 	column-width(); //The static width of a column
 	gutter-width(); //The static width of a gutter
 	container-width(); //The static total width of your container, which is the grid-width plus its padding.
+	
+	grid-padding-left(); //The left padding of the grid containers.
+	grid-padding-right(); //The right padding of the grid containers.
+	grid-padding-width(); //The left and right padding of the grid containers.
 
 #####Breakpoint helpers
 
 These helpers accept a breakpoint list or a breakpoint handle. If neither is passed, it uses the current global $grid-breakpoint.
 	
-	grid-breakpoint($handle);
-	grid-breakpoint-columns(); //Get the current breakpoint's columns, or pass a handle, ie. grid-brea
-	grid-breakpoint-handle($breakpoint)
+	grid-breakpoint($handle); //Get a global breakpoint by its handle
+	grid-breakpoint-handle($breakpoint); //Get the handle from a breakpoint
+	grid-breakpoint-columns();	
 	grid-breakpoint-min();
 	grid-breakpoint-max();
 	

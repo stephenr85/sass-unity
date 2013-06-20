@@ -26,7 +26,7 @@ html {
 }
 
 body {
-	font-size: em($em-baseline, 16px);
+	font-size: em($em-baseline, $baseline, true); //Sets the body font size to a baseline-relative em and adjusts the global $em-baseline.
 	padding: 0;
 	margin: 0;
 }
