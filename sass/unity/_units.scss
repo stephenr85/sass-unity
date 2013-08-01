@@ -365,7 +365,10 @@ $pt-per-inch: 72pt !default;
 		$rems:();
 		@for $i from 2 through length($property) {
 			$value: nth($property, $i);
-			@if(unit($value) == "px"){
+			@if($value == "auto"){
+				$pxs: append($pxs, $value, space);
+				$rems: append($rems, $value, space);
+			}@else if(unit($value) == "px"){
 				$pxs: append($pxs, $value, space);
 				$rems: append($rems, rem($value), space);
 			}@else{
